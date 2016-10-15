@@ -1,0 +1,4 @@
+co/simplon/repository/ComputerRepository.class
+co/simplon/web/ComputerController.class
+co/simplon/service/ComputerService.class
+co/simplon/model/Computer.class

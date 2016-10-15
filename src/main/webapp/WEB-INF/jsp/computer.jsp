@@ -1,11 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <html>
     <head>
-        <title>Computer Page</title>
+        <title>Ordianteur</title>
     </head>
     <body>
-        ${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
+    	<p>tous les ordinateurs</p>
+        
+     <c:forEach items="${computerList}" var="computer">
+	   	${computer.id}
+	   	${computer.brand}
+	   	${computer.model}
+	   	${computer.serial}
+	   	<form action="deleteComputer">
+        	 <input name="id" value="${computer.id}" type="hidden" />
+        	 <input type="submit" value="Delete" />
+       	</form>
+	   	</br>
+	</c:forEach>
+	
+	<form method="get" action="addComputer">
+			<p>Inserer un ordinateur</p>
+		<div>
+			brand :<input type="text" name="brand">
+			model :<input type="text" name="model">
+			serial:<input type="number" name="serial"></br>
+			<p><input type="submit" value="Confirmer"></p></br>
+		</div>
+	</form>
+	
+	<form method="get" action="computerById">
+		<p>Recherche ordinateur : inserer l'id</p>
+		<div>
+			id:<input type="number" name="id">
+			<p><input type="submit" value="Rechercher"></br>
+		</div>
+	</form>
+	
     </body>
 </html>
