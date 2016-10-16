@@ -18,7 +18,6 @@ public class Room {
 
 	private String description;
 
-
 	public Room() {
 		super();
 	}
@@ -32,6 +31,10 @@ public class Room {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -57,4 +60,5 @@ public class Room {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 }

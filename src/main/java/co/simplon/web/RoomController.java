@@ -19,31 +19,29 @@ public class RoomController {
 	private RoomService roomService;
 
 	@RequestMapping("/room")
-	public ModelAndView getPersonList(ModelMap model) {
+	public ModelAndView getList(ModelMap model) {
 		List<Room> roomList = roomService.getAll();
 		model.addAttribute("roomList", roomList);
 		return new ModelAndView("room", model);
 	}
 
-	@RequestMapping("/roomrById")
-	public ModelAndView getByName(@RequestParam("id") Integer id, ModelMap model) {
+	@RequestMapping("/roomById")
+	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Room room = roomService.findById(id);
 		model.addAttribute("room", room);
-		return new ModelAndView("recherche-pc", model);
+		return new ModelAndView("search-room", model);
 	}
 
 	@RequestMapping("/addRoom")
-	public ModelAndView addComputer(@RequestParam("name") String name, @RequestParam("places") Integer places,
+	public ModelAndView addRoom(@RequestParam("name") String name, @RequestParam("places") Integer places,
 			String description) {
 		Room room = new Room(name, places, description);
 		roomService.addOrUpdate(room);
 		return new ModelAndView("redirect:/room");
 	}
 
-	// http://localhost:8080/addPerson?nom=ffgsfg&prenom=fgsg
-
 	@RequestMapping("/deleteRoom")
-	public ModelAndView deleteComputer(@RequestParam("id") Integer id, ModelMap model) {
+	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
 		roomService.delete(id);
 		return new ModelAndView("redirect:/room");
 	}

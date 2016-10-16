@@ -29,7 +29,7 @@ public class ComputerController {
 	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Computer computer = computerService.findById(id);
 		model.addAttribute("computer", computer);
-		return new ModelAndView("recherche-pc", model);
+		return new ModelAndView("search-pc", model);
 	}
 
 	@RequestMapping("/addComputer")
@@ -39,8 +39,6 @@ public class ComputerController {
 		computerService.addOrUpdate(computer);
 		return new ModelAndView("redirect:/computer");
 	}
-
-	// http://localhost:8080/addPerson?nom=ffgsfg&prenom=fgsg
 
 	@RequestMapping("/deleteComputer")
 	public ModelAndView deleteComputer(@RequestParam("id") Integer id, ModelMap model) {

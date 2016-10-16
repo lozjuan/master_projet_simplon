@@ -21,7 +21,7 @@ public class RoomService {
 	public Room findById(Integer id) {
 		return roomRepository.findOne(id);
 	}
-
+	
 	public Room addOrUpdate(Room room) {
 		return roomRepository.save(room);
 	}
@@ -29,5 +29,4 @@ public class RoomService {
 	public void delete(Integer id) {
 		roomRepository.delete(id);
 	}
-
 }

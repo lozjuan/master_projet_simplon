@@ -12,6 +12,6 @@
 		 <form method="get" action="computer">
 	        ${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
 	        <input type="submit" value="retour" >
-	     </form> 
+	     </form>	    
 	    </body>
 </html>
