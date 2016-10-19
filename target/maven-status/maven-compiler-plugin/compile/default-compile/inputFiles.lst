@@ -1,4 +1,12 @@
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/model/Room.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/model/User.java
 /Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/repository/ComputerRepository.java
 /Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/service/ComputerService.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/service/RoomService.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/repository/RoomRepository.java
 /Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/web/ComputerController.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/web/RoomController.java
 /Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/model/Computer.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/service/UserService.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/web/UserController.java
+/Users/juanlozano/Documents/workspace_projet_final/reservation_simplon/src/main/java/co/simplon/repository/UserRepository.java
