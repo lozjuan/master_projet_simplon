@@ -22,11 +22,10 @@
 	<form method="get" action="addComputer">
 		<p>Inserer un ordinateur</p>
 		<div>
-			brand :<input type="text" name="brand"> model :<input
-				type="text" name="model"> serial:<input type="number"
-				name="serial"></br> <input type="submit" value="Confirmer">
-
-			</br>
+			brand :<input type="text" name="brand"> 
+			model :<input type="text" name="model"> 
+			serial:<input type="number" name="serial"></br> 
+			   	   <input type="submit" value="Confirmer"></br>
 		</div>
 	</form>
 
