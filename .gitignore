@@ -16,3 +16,5 @@ target
 
 #ignores eclipse settings
 .settings
+.project
+.classpath
