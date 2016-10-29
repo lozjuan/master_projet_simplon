@@ -2,33 +2,57 @@ package co.simplon.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Booking")
 public class Booking {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
 
 	// TODO foreign key to room
+	@Column(name="roomName")
 	private String roomName;
 
 	// TODO foreign key to computer
+	@Column(name="computerId")
 	private String computerId;
 
+	@Column(name="starts")
 	private Date starts;
 
+	@Column(name="ends")
 	private Date Ends;
 
+	@Column(name="createdAt")
 	private	Date createdAt;
 
 	// foreign key to user
+	@Column(name="userId")
 	private Integer userId;
 
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Computer computer; 
+	
+	@ManyToOne
+	@JoinColumn(name="id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="id")
+	private Room rooml; 
+	
+	
 	public Booking() {
 		super();
 	}

@@ -29,12 +29,13 @@ public class BookingController {
 	}
 
 	@RequestMapping("/book")
-	public ModelAndView addBooking(@RequestParam("roomName") String roomName,
-			@RequestParam("computerId") String computerId, @RequestParam("starts") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date starts, @RequestParam("ends") @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss") Date ends,
-			Integer userId) {
-		Date createdAt = new Date();
-		Booking booking = new Booking(roomName, computerId, starts, ends, createdAt , userId);
-		bookingService.addOrUpdate(booking);
-		return new ModelAndView("redirect:/booking");
-	}
+    public ModelAndView addBooking(@RequestParam("roomName") String roomName,
+            @RequestParam("computerId") String computerId, @RequestParam("starts") @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm") Date starts, @RequestParam("ends") @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm") Date ends,
+            Integer userId) {
+        Date createdAt = new Date();
+        Booking booking = new Booking(roomName, computerId, starts, ends, createdAt , userId);
+        bookingService.addOrUpdate(booking);
+        return new ModelAndView("redirect:/booking");
+    }
+	
 }

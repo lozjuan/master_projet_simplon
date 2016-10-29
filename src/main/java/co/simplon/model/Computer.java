@@ -1,9 +1,13 @@
 package co.simplon.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 public class Computer {
@@ -18,6 +22,8 @@ public class Computer {
 
 	private Integer serial;
 
+	
+	
 	public Computer() {
 		super();
 	}

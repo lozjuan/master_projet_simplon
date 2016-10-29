@@ -1,9 +1,12 @@
 package co.simplon.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
 public class Room {
@@ -16,7 +19,9 @@ public class Room {
 
 	private Integer places;
 
+
 	private String description;
+
 
 	public Room() {
 		super();

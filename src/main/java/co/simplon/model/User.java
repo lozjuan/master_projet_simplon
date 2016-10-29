@@ -1,9 +1,12 @@
 package co.simplon.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
 public class User {
@@ -15,11 +18,12 @@ public class User {
 	private String name;
 
 	private String surname;
-
+	
 	private String email;
 
 	private String userRights;
 
+	
 	public User() {
 		super();
 	}
