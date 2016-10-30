@@ -8,17 +8,16 @@
 <body>
 	<c:forEach items="${bookingList}" var="booking">
 	   	${booking.id}
-	   	${booking.roomName}
-	   	${booking.computerId}
+	   	${booking.room.id}
+	   	${booking.computer.id}
 	   	${booking.starts}
 	   	${booking.ends}
-	   	${booking.userId}
 	</c:forEach>
 	
 	<form method="get" action="book">
 		<p>Reservez</p>
 		<div>
-			Salle :         		<input type="text" name="roomName">
+			Salle :         		<input type="text" name="roomId">
 			Id Ordinateur : 		<input type="text" name="computerId"> 
 			debut :         		<input type="datetime-local" name="starts">
 			fin :           		<input type="datetime-local" name="ends">
@@ -27,5 +26,8 @@
 		</div>
 	</form>
 
+	<c:if test="${erreur != null}">
+		<div style="color: red;"><c:out value="${erreur}"/></div>
+	</c:if>
 </body>
 </html>

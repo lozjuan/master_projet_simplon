@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,13 +20,6 @@ public class Booking {
 	@Column(name="id")
 	private Integer id;
 
-	// TODO foreign key to room
-	@Column(name="roomName")
-	private String roomName;
-
-	// TODO foreign key to computer
-	@Column(name="computerId")
-	private String computerId;
 
 	@Column(name="starts")
 	private Date starts;
@@ -37,57 +31,39 @@ public class Booking {
 	private	Date createdAt;
 
 	// foreign key to user
-	@Column(name="userId")
-	private Integer userId;
+	//@Column(name="userId")
+	//private Integer userId;
 
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="computerId")
 	private Computer computer; 
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="userId")
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="id")
-	private Room rooml; 
+	@JoinColumn(name="roomId")
+	private Room room; 
 	
 	
 	public Booking() {
 		super();
 	}
 
-	public Booking(String roomName, String computerId, Date starts, Date ends, Date createdAt,
+	public Booking(int roomId, int computerId, Date starts, Date ends, Date createdAt,
 			Integer userId) {
 		super();
-		this.roomName = roomName;
-		this.computerId = computerId;
 		this.starts = starts;
 		Ends = ends;
 		this.createdAt = createdAt;
-		this.userId = userId;
-	}
+			}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String getRoomName() {
-		return roomName;
-	}
-
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
-
-	public String getComputerId() {
-		return computerId;
-	}
-
-	public void setComputerId(String computerId) {
-		this.computerId = computerId;
-	}
-
+	
 	public Date getStarts() {
 		return starts;
 	}
@@ -103,6 +79,35 @@ public class Booking {
 	public void setEnds(Date ends) {
 		Ends = ends;
 	}
+	
+	public Room getRoom() {
+		return room;
+	}
+
+	
+	public Computer getComputer() {
+		return computer;
+	}
+
+	public void setComputer(Computer computer) {
+		this.computer = computer;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;
@@ -112,12 +117,6 @@ public class Booking {
 		this.createdAt = createdAt;
 	}
 
-	public Integer getUserId() {
-		return userId;
-	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
 
 }
