@@ -36,7 +36,7 @@ public class BookingController {
 	
     public ModelAndView addBooking(@RequestParam("roomId") int room_id,
             @RequestParam("computerId") int computerId, @RequestParam("starts") @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm") Date starts, @RequestParam("ends") @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm") Date ends,
-            Integer userId, RedirectAttributes redirectAttributes) {
+			Integer userId, RedirectAttributes redirectAttributes) {
         Date createdAt = new Date();
         Booking booking = new Booking(room_id, computerId, starts, ends, createdAt , userId);
         if (starts.before(Date.from(Instant.now()))) redirectAttributes.addFlashAttribute("erreur","La date de début est inférieure à la date du jour");
