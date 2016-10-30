@@ -1,15 +1,20 @@
 package co.simplon.model;
 
-import javax.persistence.Column;
+
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Table;
 
 @Entity
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +24,9 @@ public class User {
 
 	private String surname;
 	
+
+	private String password;
+
 	private String email;
 
 	private String userRights;
@@ -56,6 +64,14 @@ public class User {
 		this.surname = surname;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 	public String getEmail() {
 		return email;
 	}

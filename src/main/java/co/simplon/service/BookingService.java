@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import co.simplon.model.Booking;
 import co.simplon.repository.BookingRepository;
-import co.simplon.service.*;
 
 @Repository
 public class BookingService {
@@ -36,12 +35,12 @@ public class BookingService {
 		public boolean isAvaibleComputer(int id, Date dateDebut, Date dateFin){
 			
 			List<Booking> list = bookingRepository.findBookingComputer(id);
-			if (list==null) return true; 
+			if (list.isEmpty()) return true; 
 			else return false; 
 		}
 		public boolean isAvaibleRoom(int id, Date dateDebut, Date dateFin){
 			List<Booking> list = bookingRepository.findBookingRoom(id);
-			if (list==null) return true; 
+			if (list.isEmpty()) return true; 
 			else return false; 
 		}
 		

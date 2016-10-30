@@ -1,5 +1,6 @@
 package co.simplon.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,11 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="Booking")
-public class Booking {
+public class Booking implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +30,6 @@ public class Booking {
 
 	@Column(name="createdAt")
 	private	Date createdAt;
-
 	// foreign key to user
 	//@Column(name="userId")
 	//private Integer userId;
@@ -46,24 +46,29 @@ public class Booking {
 	@JoinColumn(name="roomId")
 	private Room room; 
 	
-	
+
+
 	public Booking() {
 		super();
 	}
 
-	public Booking(int roomId, int computerId, Date starts, Date ends, Date createdAt,
-			Integer userId) {
+
+	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt,
+			User userId) {
 		super();
+		this.room = roomId;
+		this.computer = computerId;
 		this.starts = starts;
 		Ends = ends;
 		this.createdAt = createdAt;
-			}
+		this.user = userId;
+	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	
+
 	public Date getStarts() {
 		return starts;
 	}
@@ -116,7 +121,5 @@ public class Booking {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-
-
 
 }
