@@ -20,30 +20,29 @@ public class Booking implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Room.class)
-	@JoinColumn(name="roomId")
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Room.class)
+	@JoinColumn(name = "roomId")
 	private Room room;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=Computer.class)
-	@JoinColumn(name="computerId")
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Computer.class)
+	@JoinColumn(name = "computerId")
 	private Computer computer;
 
 	private Date starts;
 
 	private Date Ends;
 
-	private	Date createdAt;
+	private Date createdAt;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, targetEntity=User.class)
-	@JoinColumn(name="userId")
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+	@JoinColumn(name = "userId")
 	private User user;
 
 	public Booking() {
 		super();
 	}
 
-	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt,
-			User userId) {
+	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt, User userId) {
 		super();
 		this.room = roomId;
 		this.computer = computerId;
@@ -79,5 +78,29 @@ public class Booking implements Serializable {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public Computer getComputer() {
+		return computer;
+	}
+
+	public void setComputer(Computer computer) {
+		this.computer = computer;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

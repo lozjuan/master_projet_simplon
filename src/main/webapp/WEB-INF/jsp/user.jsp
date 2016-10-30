@@ -4,39 +4,43 @@
 <html>
 <head>
 <title>utilisateurs</title>
+<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-	<c:forEach items="${userList}" var="user">
-		   	${user.id}
-		   	${user.name}
-		   	${user.surname}
-		   	${user.email}
-		   	${user.userRights}
-		   	<form action="deleteUser">
-			<input name="id" value="${user.id}" type="hidden" /> 
-			<input type="submit" value="Delete" />
+	<div class="container">
+		<c:forEach items="${userList}" var="user">
+			   	${user.id}
+			   	${user.name}
+			   	${user.surname}
+			   	${user.email}
+			   	${user.userRights}
+			   	<form action="deleteUser">
+				<input name="id" value="${user.id}" type="hidden" /> 
+				<input type="submit" value="Delete" />
+			</form>
+		</c:forEach>
+	
+		<form method="get" action="addUser">
+			<p>Inserer un utilisateur</p>	
+			<div>
+				nom :<input type="text" name="name"> 
+				prenom :<input type="text" name="surname"> 
+				email:<input type="text"name="email">
+				droits:<input type="text"name="userRights"> 
+				<input type="submit" value="Confirmer">
+			</div>
 		</form>
-		</br>
-	</c:forEach>
-
-	<form method="get" action="addUser">
-		<p>Inserer un utilisateur</p>	
-		<div>
-			nom :<input type="text" name="name"> 
-			prenom :<input type="text" name="surname"> 
-			email:<input type="text"name="email">
-			droits:<input type="text"name="userRights"> 
-			<input type="submit" value="Confirmer"> </br>
-		</div>
-	</form>
-
-	<form method="get" action="userById">
-		<p>Recherche d'utilisateur</p>
-		<div>
-			id:<input type="number" name="id"> <input type="submit"
-				value="Rechercher"></br>
-		</div>
-	</form>
+	
+		<form method="get" action="userById">
+			<p>Recherche d'utilisateur</p>
+			<div>
+				id:<input type="number" name="id"> <input type="submit"
+					value="Rechercher">
+			</div>
+		</form>
+	</div>	
+	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 </body>
 </html>
