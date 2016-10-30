@@ -2,9 +2,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>co.simplon</groupId>
-  <artifactId>reservation</artifactId>
+  <artifactId>reservation_simplon</artifactId>
+  <version>0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
   <properties>
         <spring.version>4.3.3.RELEASE</spring.version>
         <spring.data.version>1.10.4.RELEASE</spring.data.version>
