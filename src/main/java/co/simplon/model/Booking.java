@@ -1,67 +1,59 @@
 package co.simplon.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Booking {
+public class Booking implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	// TODO foreign key to room
-	private String roomName;
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Room.class)
+	@JoinColumn(name = "roomId")
+	private Room room;
 
-	// TODO foreign key to computer
-	private String computerId;
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Computer.class)
+	@JoinColumn(name = "computerId")
+	private Computer computer;
 
 	private Date starts;
 
 	private Date Ends;
 
-	private	Date createdAt;
+	private Date createdAt;
 
-	// foreign key to user
-	private Integer userId;
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+	@JoinColumn(name = "userId")
+	private User user;
 
 	public Booking() {
 		super();
 	}
 
-	public Booking(String roomName, String computerId, Date starts, Date ends, Date createdAt,
-			Integer userId) {
+	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt, User userId) {
 		super();
-		this.roomName = roomName;
-		this.computerId = computerId;
+		this.room = roomId;
+		this.computer = computerId;
 		this.starts = starts;
 		Ends = ends;
 		this.createdAt = createdAt;
-		this.userId = userId;
+		this.user = userId;
 	}
 
 	public Integer getId() {
 		return id;
-	}
-
-	public String getRoomName() {
-		return roomName;
-	}
-
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
-
-	public String getComputerId() {
-		return computerId;
-	}
-
-	public void setComputerId(String computerId) {
-		this.computerId = computerId;
 	}
 
 	public Date getStarts() {
@@ -88,12 +80,27 @@ public class Booking {
 		this.createdAt = createdAt;
 	}
 
-	public Integer getUserId() {
-		return userId;
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setRoom(Room room) {
+		this.room = room;
 	}
 
+	public Computer getComputer() {
+		return computer;
+	}
+
+	public void setComputer(Computer computer) {
+		this.computer = computer;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }
