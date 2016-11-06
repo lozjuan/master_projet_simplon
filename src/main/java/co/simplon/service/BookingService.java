@@ -12,37 +12,40 @@ import co.simplon.repository.BookingRepository;
 @Repository
 public class BookingService {
 
-		@Autowired
-		public BookingRepository bookingRepository;
-		
 
-		public List<Booking> getAll() {
-			return bookingRepository.findAll();
-		}
+	@Autowired
+	public BookingRepository bookingRepository;
 
-		public Booking findById(Integer id) {
-			return bookingRepository.findOne(id);
-		}
+	public List<Booking> getAll() {
+		return bookingRepository.findAll();
+	}
 
-		public Booking addOrUpdate(Booking booking) {
-			return bookingRepository.save(booking);
-		}
+	public Booking findById(Integer id) {
+		return bookingRepository.findOne(id);
+	}
 
-		public void delete(Integer id) {
-			bookingRepository.delete(id);
-		}
-		
-		public boolean isAvaibleComputer(int id, Date dateDebut, Date dateFin){
-			
-			List<Booking> list = bookingRepository.findBookingComputer(id);
-			if (list.isEmpty()) return true; 
-			else return false; 
-		}
-		public boolean isAvaibleRoom(int id, Date dateDebut, Date dateFin){
-			List<Booking> list = bookingRepository.findBookingRoom(id);
-			if (list.isEmpty()) return true; 
-			else return false; 
-		}
-		
-		
+	public Booking addOrUpdate(Booking booking) {
+		return bookingRepository.save(booking);
+	}
+
+	public void delete(Integer id) {
+		bookingRepository.delete(id);
+	}
+
+	public boolean isAvaibleComputer(int id, Date starts, Date ends) {
+
+		List<Booking> list = bookingRepository.findBookingComputer(id);
+		if (list == null)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean isAvaibleRoom(int id, Date starts, Date ends) {
+		List<Booking> list = bookingRepository.findBookingRoom(id);
+		if (list == null)
+			return true;
+		else
+			return false;
+	}
 }

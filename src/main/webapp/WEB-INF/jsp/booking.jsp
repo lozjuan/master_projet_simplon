@@ -3,15 +3,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Insert title here</title>
+<title>Booking</title>
+<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="container">
 	<c:forEach items="${bookingList}" var="booking">
 	   	${booking.id}
-	   	${booking.room.id}
-	   	${booking.computer.id}
+
+	   	${booking.room.name}
+	   	${booking.computer.model}
 	   	${booking.starts}
 	   	${booking.ends}
+	   	${booking.user.name}
+
 	</c:forEach>
 	
 	<form method="get" action="book">
@@ -43,7 +48,11 @@
 	</form>
 
 	<c:if test="${erreur != null}">
-		<div style="color: red;"><c:out value="${erreur}"/></div>
-	</c:if>
+        <div style="color: red;"><c:out value="${erreur}"/></div>
+    </c:if>
+</div>
+<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>

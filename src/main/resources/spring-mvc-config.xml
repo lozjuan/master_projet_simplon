@@ -13,7 +13,9 @@
 	<context:component-scan base-package="co.simplon.web" />
 
 	<mvc:annotation-driven />
-
+	
+	<mvc:resources mapping="/webjars/**" location="/webjars/"/>
+	
 	<bean id="viewResolver"
 		  class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"

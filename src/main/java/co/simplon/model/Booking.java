@@ -3,6 +3,7 @@ package co.simplon.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,30 +23,26 @@ public class Booking implements Serializable {
 	private Integer id;
 
 
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Room.class)
+	@JoinColumn(name = "roomId")
+	private Room room;
+
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Computer.class)
+	@JoinColumn(name = "computerId")
+	private Computer computer;
+
+
 	@Column(name="starts")
 	private Date starts;
 
 	@Column(name="ends")
 	private Date Ends;
-
-	@Column(name="createdAt")
-	private	Date createdAt;
-	// foreign key to user
-	//@Column(name="userId")
-	//private Integer userId;
-
-	@ManyToOne
-	@JoinColumn(name="computerId")
-	private Computer computer; 
 	
-	@ManyToOne
-	@JoinColumn(name="userId")
+	private Date createdAt;
+
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+	@JoinColumn(name = "userId")
 	private User user;
-	
-	@ManyToOne
-	@JoinColumn(name="roomId")
-	private Room room; 
-	
 
 
 	public Booking() {
@@ -53,8 +50,7 @@ public class Booking implements Serializable {
 	}
 
 
-	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt,
-			User userId) {
+	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt, User userId) {
 		super();
 		this.room = roomId;
 		this.computer = computerId;
@@ -110,6 +106,7 @@ public class Booking implements Serializable {
 		this.id = id;
 	}
 
+
 	public void setRoom(Room room) {
 		this.room = room;
 	}
@@ -120,6 +117,8 @@ public class Booking implements Serializable {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+
 	}
+
 
 }
