@@ -171,16 +171,6 @@ html {
 .connect.facebook .connect__icon {
   background: #283d68;
 }
-.connect.googleplus {
-  background: #dd4b39;
-  color: #FFF;
-}
-.connect.googleplus a {
-  color: #FFF;
-}
-.connect.googleplus .connect__icon {
-  background: #b52f1f;
-}
 
 .simform {
   position: relative;
