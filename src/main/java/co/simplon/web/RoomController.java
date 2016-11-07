@@ -15,6 +15,15 @@ import co.simplon.service.RoomService;
 @RequestMapping
 public class RoomController {
 
+	public RoomController() {
+		super();
+	}
+
+	public RoomController(RoomService roomService) {
+		super();
+		this.roomService = roomService;
+	}
+
 	@Autowired
 	private RoomService roomService;
 
@@ -22,14 +31,14 @@ public class RoomController {
 	public ModelAndView getList(ModelMap model) {
 		List<Room> roomList = roomService.getAll();
 		model.addAttribute("roomList", roomList);
-		return new ModelAndView("room", model);
+		return new ModelAndView("room/room", model);
 	}
 
 	@RequestMapping("/roomById")
 	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Room room = roomService.findById(id);
 		model.addAttribute("room", room);
-		return new ModelAndView("search-room", model);
+		return new ModelAndView("room/search-room", model);
 	}
 
 	@RequestMapping("/addRoom")
@@ -37,12 +46,12 @@ public class RoomController {
 			String description) {
 		Room room = new Room(name, places, description);
 		roomService.addOrUpdate(room);
-		return new ModelAndView("redirect:/room");
+		return new ModelAndView("redirect:/room/room");
 	}
 
 	@RequestMapping("/deleteRoom")
 	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
 		roomService.delete(id);
-		return new ModelAndView("redirect:/room");
+		return new ModelAndView("redirect:/room/room");
 	}
 }

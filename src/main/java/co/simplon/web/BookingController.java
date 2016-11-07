@@ -66,8 +66,8 @@ public class BookingController {
 	}
 
 	@RequestMapping("/book")
-	public ModelAndView addBooking(@RequestParam("roomId") Integer roomId,
-			@RequestParam("computerId") Integer computerId,
+	public ModelAndView addBooking(@RequestParam(name="roomId", defaultValue="-1") Integer roomId,
+			@RequestParam(name="computerId", defaultValue="-1") Integer computerId,
 			@RequestParam("starts") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date starts,
 			@RequestParam("ends") @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date ends, Integer userId,
 			RedirectAttributes redirectAttributes) {
@@ -94,6 +94,6 @@ public class BookingController {
 			redirectAttributes.addFlashAttribute("erreur", "La salle est déjà réservée");
 		else
 			bookingService.addOrUpdate(booking);
-		return new ModelAndView("redirect:/booking");
+		return new ModelAndView("redirect:booking");
 	}
 }
