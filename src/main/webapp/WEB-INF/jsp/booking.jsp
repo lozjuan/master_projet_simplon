@@ -10,7 +10,6 @@
 <div class="container">
 	<c:forEach items="${bookingList}" var="booking">
 	   	${booking.id}
-
 	   	${booking.room.name}
 	   	${booking.computer.model}
 	   	${booking.starts}

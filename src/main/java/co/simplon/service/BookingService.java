@@ -34,7 +34,7 @@ public class BookingService {
 
 	public boolean isAvaibleComputer(int id, Date starts, Date ends) {
 
-		List<Booking> list = bookingRepository.findBookingComputer(id);
+		List<Booking> list = bookingRepository.findBookingComputer(id,starts,ends);
 		if (list.isEmpty())
 			return true;
 		else
@@ -42,7 +42,7 @@ public class BookingService {
 	}
 
 	public boolean isAvaibleRoom(int id, Date starts, Date ends) {
-		List<Booking> list = bookingRepository.findBookingRoom(id);
+		List<Booking> list = bookingRepository.findBookingRoom(id,starts,ends);
 		if (list.isEmpty())
 			return true;
 		else
