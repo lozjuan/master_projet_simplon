@@ -27,18 +27,18 @@ public class User implements Serializable {
 
 	private String email;
 
-	private String userRights;
+	private String authorities;
 
 	public User() {
 		super();
 	}
 
-	public User(String name, String surname, String email, String userRights) {
+	public User(String name, String surname, String email, String authorities) {
 		super();
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
-		this.userRights = userRights;
+		this.authorities = authorities;
 	}
 
 	public Integer getId() {
@@ -77,12 +77,12 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public String getUserRights() {
-		return userRights;
+	public String getAutorities() {
+		return authorities;
 	}
 
-	public void setUserRights(String userRights) {
-		this.userRights = userRights;
+	public void setAuthorities(String authorities) {
+		this.authorities = authorities;
 	}
 
 }

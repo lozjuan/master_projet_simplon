@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import co.simplon.model.Booking;
 import co.simplon.repository.BookingRepository;
+import co.simplon.service.GenericService;
 
 @Service
 public class BookingService extends GenericService< Booking, BookingRepository > {
