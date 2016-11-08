@@ -7,7 +7,8 @@
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,400italic,700italic,700'>
 
-        <link rel="stylesheet" href="css/style2.css">
+        <link rel="stylesheet" href="/ressources/css/style2.css">
+        <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
   </head>
 
@@ -66,9 +67,11 @@
     </li>
   </ul>
 </nav>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-        <script src="js/index2.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="/ressources/js/index2.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 
