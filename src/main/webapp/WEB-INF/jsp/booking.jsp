@@ -16,15 +16,15 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-      		<a class="navbar-brand" href="#">Simplon réservation</a>
+      		<a class="navbar-brand" href="#">Simplon.co réservation</a>
 		</div>
 
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="/booking">Réservations</a></li>
-				<li><a href="/computer">Ordinateurs</a></li>
-				<li><a href="/room">Salles</a></li>
-				<li><a href="/user">Utilisateurs</a></li>
+				<li><a href="/computer">Réservation Ordinateurs</a></li>
+				<li><a href="/room">Réservation Salles</a></li>
+				<li><a href="/user">Réservation Utilisateurs</a></li>
 			</ul>
    		</div>
 

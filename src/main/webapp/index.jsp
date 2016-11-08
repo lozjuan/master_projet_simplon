@@ -9,11 +9,34 @@
     <link rel="stylesheet" href="/ressources/css/normalize.css">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 	<link rel="stylesheet" href="/ressources/css/style.css">
+	<link rel="stylesheet" href="/ressources/css/style2.css">
 	<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	
   </head>
 
   <body>
+  
+  <div class="navbar navbar-default navbar-fixed-top">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+      		<a class="navbar-brand" href="#">Simplon.co réservation</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/booking">Réservations</a></li>
+				<li><a href="/computer">Réservation Ordinateurs</a></li>
+				<li><a href="/room">Réservation Salles</a></li>
+				<li><a href="/user">Réservation Utilisateurs</a></li>
+			</ul>
+   		</div>
+
+  </div>
 
     <div class="logmod">
   <div class="logmod__wrapper">
@@ -88,6 +111,7 @@
             </div>
           </form>
         </div>
+        
         <div class="logmod__alter">
           <div class="logmod__alter-container">
             <a href="#" class="connect facebook">
@@ -99,11 +123,13 @@
               </div>
             </a>
           </div>
+         </div>
+         
         </div>
-          </div>
       </div>
     </div>
   </div>
+  <footer class="text-center">2016</footer>
 </div>
 
 
