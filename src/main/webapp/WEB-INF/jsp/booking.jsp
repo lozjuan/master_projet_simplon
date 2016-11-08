@@ -16,7 +16,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-      		<a class="navbar-brand" href="#">Simplon.co réservation</a>
+      		<a class="navbar-brand" href="#">Simplon.co</a>
 		</div>
 
 		<div class="collapse navbar-collapse">
@@ -26,7 +26,12 @@
 				<li><a href="/room">Réservation Salles</a></li>
 				<li><a href="/user">Réservation Utilisateurs</a></li>
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+        		<li><a href="#">Link</a></li>
+        	</ul>
+			
    		</div>
+   		
 
   </div>
   
