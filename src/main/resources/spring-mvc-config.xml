@@ -22,6 +22,12 @@
 				  value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
+		
 	</bean>
-	
+	                                             
+	<mvc:resources mapping="/ressources/**" location="/WEB-INF/jsp/ressources/"
+    cache-period="31556926"/>
+    
+    <mvc:annotation-driven />
+    
 </beans>

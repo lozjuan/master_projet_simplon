@@ -6,11 +6,11 @@
     <title>Login/Sign-In</title>
 
 
-    <link rel="stylesheet" href="css/normalize.css">
-
+    <link rel="stylesheet" href="/resources/css/normalize.css">
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-
-        <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/resources/css/style.css">
+	<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	
   </head>
 
   <body>
@@ -107,8 +107,9 @@
 </div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-        <script src="js/index.js"></script>
-
+        <script src="/ressources/js/index.js"></script>
+		<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
   </body>
