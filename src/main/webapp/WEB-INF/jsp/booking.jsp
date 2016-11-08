@@ -4,6 +4,7 @@
 <head>
 <title>Booking</title>
 <link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/ressources/css/style2.css">
 </head>
 <body>
 
@@ -15,9 +16,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			
       		<a class="navbar-brand" href="#">Simplon réservation</a>
-      		
 		</div>
 
 		<div class="collapse navbar-collapse">
@@ -123,12 +122,10 @@
 
     </div><!--/col-->
   </div><!--/row-->
-</div><!--/container-->
 <!-- /Main -->
 
 
 <footer class="text-center">2016</footer>
-
 <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
