@@ -15,6 +15,9 @@
 	   	${booking.starts}
 	   	${booking.ends}
 	   	${booking.user.name}
+	   	<form action="deleteBook">
+			<input name="id" value="${booking.id}" type="hidden" /> <input type="submit" value="Delete" />
+		</form>
 	</c:forEach>
 	
 	<form method="get" action="book">

@@ -17,15 +17,15 @@ public class BookingService extends GenericService< Booking, BookingRepository >
 
 	public boolean isAvaibleComputer(int id, Date starts, Date ends) {
 
-		List<Booking> list = bookingRepository.findBookingComputer(id);
+		List<Booking> list = bookingRepository.findBookingComputer(id, starts, ends);
 		if (list.isEmpty())
 			return true;
 		else
 			return false;
 	}
 
-	public boolean isAvaibleRoom(int id) {
-		List<Booking> list = bookingRepository.findBookingRoom(id);
+	public boolean isAvaibleRoom(int id, Date starts, Date ends) {
+		List<Booking> list = bookingRepository.findBookingRoom(id, starts, ends);
 		if (list.isEmpty())
 			return true;
 		else
