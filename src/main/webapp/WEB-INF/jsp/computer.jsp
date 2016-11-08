@@ -18,6 +18,10 @@
 				<input name="id" value="${computer.id}" type="hidden" /> <input
 					type="submit" value="Delete" />
 			</form>
+			<form action="modifyComputer">
+				<input name="id" value="${computer.id}" type="hidden" /> <input
+					type="submit" value="Modify" />
+			</form>
 			
 		</c:forEach>
 	

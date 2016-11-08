@@ -101,7 +101,7 @@ public class BookingController {
 	@RequestMapping("/deleteBook")
 	public ModelAndView deleteBooking(@RequestParam("id") Integer id, ModelMap model) {
 		bookingService.delete(id);
-		return new ModelAndView("redirect:/book");
+		return new ModelAndView("redirect:/booking");
 	}
 	
 
