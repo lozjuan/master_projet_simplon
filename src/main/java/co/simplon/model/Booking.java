@@ -28,15 +28,15 @@ public class Booking implements Serializable {
 	@JoinColumn(name = "computerId")
 	private Computer computer;
 
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+	@JoinColumn(name = "userId")
+	private User user;
+	
 	private Date starts;
 
 	private Date Ends;
 
 	private Date createdAt;
-
-	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
-	@JoinColumn(name = "userId")
-	private User user;
 
 	public Booking() {
 		super();
