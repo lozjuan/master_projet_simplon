@@ -23,8 +23,11 @@
 				
 
 		<!-- JS Dependencies -->
-		<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+		<!-- <script src="webjars/jquery/1.9.1/jquery.min.js"></script> -->
+		<script src="/ressources/js/jquery-3.1.1.min.js"></script>
 		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/ressources/js/moment.min.js"></script>
+		<script type="text/javascript" src="/ressources/js/bootstrap-datetimepicker.js"></script>
 		<script src="/ressources/js/index.js"></script>
 		<script src="/ressources/js/index2.js"></script>
 		<script src="/ressources/js/index3.js"></script>

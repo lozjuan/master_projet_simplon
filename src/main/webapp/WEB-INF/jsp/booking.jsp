@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
-	<title>Booking</title>
+	<title>Reservation</title>
 </head>
 
 <t:genericpage>
@@ -18,7 +18,7 @@
 
         <div class="panel-heading">
           <div class="panel-title">
-            <h4>Booking</h4>
+            <h4>Réservation</h4>
           </div>
         </div>
 
@@ -94,10 +94,29 @@
       </div><!--/panel-->
 	
 	<hr>
-	
+
+<div class="form-group">
+					    <label for="book-start-input">Date de début</label>
+						<div class="input-group date" id="book-start">
+			                <input type='text' name="start" class="form-control" placeholder="Date de début" id="book-start-input" />
+			                <span class="input-group-addon">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+					</div>
+					<div class="form-group">
+					    <label for="book-end-input">Date de fin</label>
+						<div class="input-group date" id="book-end">
+			                <input type='text' name="end" class="form-control" placeholder="Date de fin" id="book-end-input" />
+			                <span class="input-group-addon">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+					</div>
+					<button type="submit" class="btn btn-primary">Réserver</button>
   
       </jsp:body>
 </t:genericpage>
-
+<script type="text/javascript" src="/ressources/js/bookings.js"></script>
 </body>
 </html>
