@@ -10,37 +10,12 @@
       <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
     </jsp:attribute>
 
-    <jsp:attribute name="footer">
-      <%@ include file="/WEB-INF/jsp/include/footer.jsp" %>
-    </jsp:attribute>
     <jsp:body>
 
-  
+    <div class="col-md-12">
+      <br><br><br>
+  <div class="panel panel-default">
 
-			<div class="panel-body">
-
-					<c:forEach items="${bookingList}" var="booking">
-					   	${booking.id}
-							<br>
-							${booking.room.name}
-							<br>
-							${booking.computer.model}
-							<br>
-					   	${booking.starts}
-							<br>
-					   	${booking.ends}
-							<br>
-					   	${booking.user.name}
-							<br>
-					</c:forEach>
-
-					<hr>
-
-	<form method="get" action="book"></form>
-	&nbsp;
-	
-	<div class="panel panel-default">
-      
         <div class="panel-heading">
           <div class="panel-title">
             <h4>Booking</h4>
@@ -48,6 +23,7 @@
         </div>
 
 			<div class="panel-body">
+
 					<c:forEach items="${bookingList}" var="booking">
 					   	${booking.id}
 							<br>
@@ -63,8 +39,11 @@
 							<br>
 					</c:forEach>
 
-	<form method="get" action="book"></form>
-	<div>
+	<form method="get" action="book">
+	<p>Reservez</p>
+	
+	<br>
+
 			Salles :
 			<select name="roomId">
 								<option value=""></option>
@@ -81,8 +60,7 @@
 								<c:forEach items="${computerList}" var="computer">
 									<option value="${computer.id}">${computer.id}&nbsp;${computer.brand}</option>
 								</c:forEach>
-			</select>
-			
+							</select>
 			<hr>
 
 			debut :
@@ -104,16 +82,17 @@
 
 			<input type="submit" value="Confirmer">
 
-		</div>
-	
 
-	<c:if test="${erreur != null}">
-        <div style="color: red;"><c:out value="${erreur}"/></div>
-    </c:if>
+	</form>
+
+			<c:if test="${erreur != null}">
+	        <div style="color: red;"><c:out value="${erreur}"/></div>
+	    </c:if>
             </div>
 
         </div><!--/panel content-->
       </div><!--/panel-->
+
 
       </jsp:body>
 </t:genericpage>
