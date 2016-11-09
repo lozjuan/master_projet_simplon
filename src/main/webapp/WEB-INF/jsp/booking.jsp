@@ -92,8 +92,10 @@
 
         </div><!--/panel content-->
       </div><!--/panel-->
-
-
+	
+	<hr>
+	
+  
       </jsp:body>
 </t:genericpage>
 

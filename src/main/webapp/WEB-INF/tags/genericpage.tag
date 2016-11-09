@@ -18,6 +18,7 @@
 		<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="/ressources/css/style2.css">
 		<link rel="stylesheet" href="/ressources/css/style3.css">
+		<link rel="stylesheet" href="/ressources/css/style4.css">
 		<link rel="stylesheet" href="/ressources/css/normalize.css">
 				
 
@@ -26,6 +27,8 @@
 		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="/ressources/js/index.js"></script>
 		<script src="/ressources/js/index2.js"></script>
+		<script src="/ressources/js/index3.js"></script>
+		
 		
 		
 		
