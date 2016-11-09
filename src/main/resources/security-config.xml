@@ -9,11 +9,19 @@
 	<http auto-config="true">
 		<form-login login-page="/login" username-parameter="user-email"
 			password-parameter="user-pw" />
+			<intercept-url pattern="/user" access="hasAuthority('admin')" />
+	        <intercept-url pattern="/computer" access="hasAuthority('admin')" />
+	        <intercept-url pattern="/room" access="hasAuthority('admin')" />
+	        <intercept-url pattern="/**" access="permitAll" />
 		<csrf />
 	</http>
 
-	<user-service>
-		<user name="juan@juan.com" password="juan" authorities="Admin, User" />
-	</user-service>
+    <authentication-manager>
+        <authentication-provider ref="daoAuthenticationProvider" />
+    </authentication-manager>
+
+    <beans:bean class="org.springframework.security.authentication.dao.DaoAuthenticationProvider" id="daoAuthenticationProvider">
+        <beans:property name="userDetailsService" ref="authService" />
+    </beans:bean>
 
 </beans:beans>

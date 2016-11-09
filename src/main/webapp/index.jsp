@@ -14,11 +14,10 @@
 		<div class="page-header">
 			<h1>SIMPLON.CO</h1>
 			
-			<!-- TODO TOMORROW !! -->
-			<c:if test="${username != null}">
-			<security:authentication property="username"/>
-       			<p><c:out value="${username}"/>toto</p>
-    		</c:if>
+		<security:authorize access="isAuthenticated()">
+       		<security:authentication property="principal.name"/>
+   		</security:authorize>
+   		
 			
 		</div>
 		<div class="jumbotron">

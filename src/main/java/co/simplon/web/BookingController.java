@@ -19,10 +19,10 @@ import co.simplon.model.Booking;
 import co.simplon.model.Computer;
 import co.simplon.model.Room;
 import co.simplon.model.User;
-import co.simplon.service.BookingService;
-import co.simplon.service.ComputerService;
-import co.simplon.service.RoomService;
-import co.simplon.service.UserService;
+import co.simplon.service.business.BookingService;
+import co.simplon.service.business.ComputerService;
+import co.simplon.service.business.RoomService;
+import co.simplon.service.business.UserService;
 
 @Controller
 @RequestMapping
