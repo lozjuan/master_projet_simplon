@@ -23,6 +23,7 @@
 		<property name="url" value="jdbc:mysql://localhost:8889/simplon" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
+
 	</bean>
 
 	<bean id="entityManagerFactory"
