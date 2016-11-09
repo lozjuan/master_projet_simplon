@@ -1,55 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
-<title>Booking</title>
-<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/ressources/css/style2.css">
+	<title>Booking</title>
 </head>
-<body>
 
-<div class="navbar navbar-default navbar-fixed-top">
+<t:genericpage>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+    </jsp:attribute>
 
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-      		<a class="navbar-brand" href="#">Simplon.co</a>
-		</div>
+    <jsp:attribute name="footer">
+      <%@ include file="/WEB-INF/jsp/include/footer.jsp" %>
+    </jsp:attribute>
+    <jsp:body>
 
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="/booking">Réservations</a></li>
-				<li><a href="/computer">Réservation Ordinateurs</a></li>
-				<li><a href="/room">Réservation Salles</a></li>
-				<li><a href="/user">Réservation Utilisateurs</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-        		<li><a href="#">Link</a></li>
-        	</ul>
-			
-   		</div>
-   		
-
-  </div>
   
-<div class="container">
-
-  <div class="row">
-    <div class="col-md-12">
-    
-       <h3>Inteface</h3>
-			 &nbsp;
-      
-     <div class="panel panel-default">
-      
-        <div class="panel-heading">
-          <div class="panel-title">
-            <h4>Booking</h4>
-          </div>
-        </div>
 
 			<div class="panel-body">
 
@@ -122,17 +88,8 @@
     </c:if>
             </div>
 
-        </div><!--/panel content-->
-      </div><!--/panel-->
-
-    </div><!--/col-->
-  </div><!--/row-->
-<!-- /Main -->
-
-
-<footer class="text-center">2016</footer>
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      </jsp:body>
+</t:genericpage>
 
 </body>
 </html>

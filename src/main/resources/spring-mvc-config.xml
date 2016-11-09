@@ -25,7 +25,7 @@
 		
 	</bean>
 	                                             
-	<mvc:resources mapping="/ressources/**" location="/WEB-INF/jsp/ressources/"
+	<mvc:resources mapping="/ressources/**" location="/WEB-INF/ressources/"
     cache-period="31556926"/>
     
     <mvc:annotation-driven />
