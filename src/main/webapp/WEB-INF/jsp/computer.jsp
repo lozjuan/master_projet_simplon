@@ -1,14 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<html>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
-<title>Computer</title>
-<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<title>Booking</title>
 </head>
-<body>
-	<div class="container">
+
+<t:genericpage>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+    </jsp:attribute>
+
+    <jsp:attribute name="footer">
+      <%@ include file="/WEB-INF/jsp/include/footer.jsp" %>
+    </jsp:attribute>
+    <jsp:body>
+    
 		<c:forEach items="${computerList}" var="computer">
 		   	${computer.id}
 		   	${computer.brand}
@@ -38,8 +44,6 @@
 					value="Rechercher">
 			</div>
 		</form>
-	</div>	
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
+
+	      </jsp:body>
+</t:genericpage>

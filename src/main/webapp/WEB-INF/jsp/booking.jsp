@@ -105,7 +105,7 @@
 			<input type="submit" value="Confirmer">
 
 		</div>
-	</form>
+	
 
 	<c:if test="${erreur != null}">
         <div style="color: red;"><c:out value="${erreur}"/></div>
