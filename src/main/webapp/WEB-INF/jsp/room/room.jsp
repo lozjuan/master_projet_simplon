@@ -15,13 +15,13 @@
 			   	${room.name}
 			   	${room.places}
 			   	${room.description}
-			   	<form action="deleteRoom">
+			   	<form action="/room/deleteRoom">
 					<input name="id" value="${room.id}" type="hidden" /> 
 					<input type="submit" value="Delete" />
 				</form>
 		</c:forEach>
 	
-		<form method="get" action="addRoom">
+		<form method="get" action="/room/addRoom">
 			<p>Inserer une salle</p>
 			<div>
 				name :<input type="text" name="name"> 
@@ -31,7 +31,7 @@
 			</div>
 		</form>
 	
-		<form method="get" action="roomById">
+		<form method="get" action="/room/roomById">
 			<p>Recherche de salles</p>
 			<div>
 				id:<input type="number" name="id"> <input type="submit"

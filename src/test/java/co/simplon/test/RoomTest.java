@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import co.simplon.model.Room;
-import co.simplon.service.RoomService;
+import co.simplon.service.business.RoomService;
 import co.simplon.web.RoomController;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package co.simplon.service;
+package co.simplon.service.business;
 
 import java.util.Date;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import co.simplon.model.Booking;
 import co.simplon.repository.BookingRepository;
+import co.simplon.service.business.GenericService;
 
 @Service
 public class BookingService extends GenericService< Booking, BookingRepository > {

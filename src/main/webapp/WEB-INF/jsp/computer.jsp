@@ -21,7 +21,7 @@
 			
 		</c:forEach>
 	
-		<form method="get" action="addComputer">
+		<form method="get" action="computer/addComputer">
 			<p>Inserer un ordinateur</p>
 			<div>
 				brand :<input type="text" name="brand"> 
@@ -31,7 +31,7 @@
 			</div>
 		</form>
 	
-		<form method="get" action="computerById">
+		<form method="get" action="computer/computerById">
 			<p>Recherche ordinateur : inserer l'id</p>
 			<div>
 				id:<input type="number" name="id"> <input type="submit"

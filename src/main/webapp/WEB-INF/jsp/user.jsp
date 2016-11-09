@@ -14,25 +14,27 @@
 			   	${user.name}
 			   	${user.surname}
 			   	${user.email}
-			   	${user.userRights}
+			   	${user.password}
+			   	${user.role}
 			   	<form action="deleteUser">
 				<input name="id" value="${user.id}" type="hidden" /> 
 				<input type="submit" value="Delete" />
 			</form>
 		</c:forEach>
 	
-		<form method="get" action="addUser">
+		<form method="get" action="user/addUser">
 			<p>Inserer un utilisateur</p>	
 			<div>
 				nom :<input type="text" name="name"> 
 				prenom :<input type="text" name="surname"> 
-				email:<input type="text"name="email">
-				droits:<input type="text"name="userRights"> 
+				email:<input type="text" name="email">
+				mdp:<input type="text" name="password">
+				droits:<input type="text"name="role"> 
 				<input type="submit" value="Confirmer">
 			</div>
 		</form>
 	
-		<form method="get" action="userById">
+		<form method="get" action="user/userById">
 			<p>Recherche d'utilisateur</p>
 			<div>
 				id:<input type="number" name="id"> <input type="submit"

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.simplon.model.Room;
-import co.simplon.service.RoomService;
+import co.simplon.service.business.RoomService;
 
 @Controller
-@RequestMapping
+@RequestMapping("/room")
 public class RoomController {
 
 	public RoomController() {
@@ -27,7 +27,7 @@ public class RoomController {
 	@Autowired
 	private RoomService roomService;
 
-	@RequestMapping("/room")
+	@RequestMapping
 	public ModelAndView getList(ModelMap model) {
 		List<Room> roomList = roomService.getAll();
 		model.addAttribute("roomList", roomList);
@@ -46,12 +46,12 @@ public class RoomController {
 			String description) {
 		Room room = new Room(name, places, description);
 		roomService.addOrUpdate(room);
-		return new ModelAndView("redirect:/room/room");
+		return new ModelAndView("redirect:/room");
 	}
 
 	@RequestMapping("/deleteRoom")
 	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
 		roomService.delete(id);
-		return new ModelAndView("redirect:/room/room");
+		return new ModelAndView("redirect:/room");
 	}
 }

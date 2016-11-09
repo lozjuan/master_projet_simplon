@@ -8,17 +8,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import co.simplon.model.Computer;
-import co.simplon.service.ComputerService;
+import co.simplon.service.business.ComputerService;
+
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping
+@RequestMapping("/computer")
 public class ComputerController {
 
 	@Autowired
 	private ComputerService computerService;
 
-	@RequestMapping("/computer")
+	@RequestMapping
 	public ModelAndView getComputerList(ModelMap model) {
 		List<Computer> computerList = computerService.getAll();
 		model.addAttribute("computerList", computerList);

@@ -1,4 +1,4 @@
-package co.simplon.service;
+package co.simplon.service.business;
 
 import java.util.List;
 
