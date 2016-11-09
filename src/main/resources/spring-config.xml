@@ -20,9 +20,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:8889/simplon" />
-		<property name="username" value="juan" />
-		<property name="password" value="juan" />
+		<property name="url" value="jdbc:mysql://localhost:8889/master-projet-simplon" />
+		<property name="username" value="testjpa" />
+		<property name="password" value="testjpa" />
 	</bean>
 
 	<bean id="entityManagerFactory"

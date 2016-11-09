@@ -1,56 +1,122 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
-<title>Booking</title>
-<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<title>Reservation</title>
 </head>
-<body>
-<div class="container">
-	<c:forEach items="${bookingList}" var="booking">
-	   	${booking.id}
-	   	${booking.room.name}
-	   	${booking.computer.model}
-	   	${booking.starts}
-	   	${booking.ends}
-	   	${booking.user.name}
-	   	<form action="deleteBook">
-			<input name="id" value="${booking.id}" type="hidden" /> <input type="submit" value="Delete" />
-		</form>
-	</c:forEach>
-	
+
+<t:genericpage>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+    </jsp:attribute>
+
+    <jsp:body>
+
+    <div class="col-md-12">
+      <br><br><br>
+  <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <div class="panel-title">
+            <h4>Réservation</h4>
+          </div>
+        </div>
+
+			<div class="panel-body">
+
+					<c:forEach items="${bookingList}" var="booking">
+					   	${booking.id}
+							<br>
+							${booking.room.name}
+							<br>
+							${booking.computer.model}
+							<br>
+					   	${booking.starts}
+							<br>
+					   	${booking.ends}
+							<br>
+					   	${booking.user.name}
+							<br>
+					</c:forEach>
+
 	<form method="get" action="book">
-		<p>Reservez</p>
-		<div>
-			Salles :        <select name="roomId">
+	<p>Reservez</p>
+
+	<br>
+
+			Salles :
+			<select name="roomId">
 								<option value=""></option>
-								<c:forEach items="${roomList}" var="room">
-									<option value="${room.id}">${room.name}</option>
-								</c:forEach>
-							</select>
-			Id Ordinateur : <select name="computerId">
+										<c:forEach items="${roomList}" var="room">
+								<option value="${room.id}">${room.name}</option>
+										</c:forEach>
+			</select>
+
+			<hr>
+
+			Id Ordinateur :
+			<select name="computerId">
 								<option value=""></option>
 								<c:forEach items="${computerList}" var="computer">
 									<option value="${computer.id}">${computer.id}&nbsp;${computer.brand}</option>
 								</c:forEach>
-							</select>		
-			debut :         <input type="datetime-local" name="starts">
-			fin :           <input type="datetime-local" name="ends">
-			Utilisateur :   <select name="userId">
+							</select>
+			<hr>
+
+			debut :
+			<input type="datetime-local" name="starts">
+
+			<hr>
+
+			fin :
+			<input type="datetime-local" name="ends">
+
+			Utilisateur :
+			<select name="userId">
 								<option value=""></option>
-								<c:forEach items="${userList}" var="user">
-									<option value="${user.id}">${user.name}&nbsp;${user.surname}</option>
+									<c:forEach items="${userList}" var="user">
+										<option value="${user.id}">${user.name}&nbsp;${user.surname}</option>
 								</c:forEach>
-							</select>					
-							<input type="submit" value="Confirmer">
-		</div>
+			</select>
+
+
+			<input type="submit" value="Confirmer">
+
+
 	</form>
-	<c:if test="${erreur != null}">
-        <div style="color: red;"><c:out value="${erreur}"/></div>
-    </c:if>
-</div>
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+			<c:if test="${erreur != null}">
+	        <div style="color: red;"><c:out value="${erreur}"/></div>
+	    </c:if>
+            </div>
+
+        </div><!--/panel content-->
+      </div><!--/panel-->
+
+	<hr>
+
+<div class="form-group">
+					    <label for="book-start-input">Date de début</label>
+						<div class="input-group date" id="book-start">
+			                <input type='text' name="start" class="form-control" placeholder="Date de début" id="book-start-input" />
+			                <span class="input-group-addon">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+					</div>
+					<div class="form-group">
+					    <label for="book-end-input">Date de fin</label>
+						<div class="input-group date" id="book-end">
+			                <input type='text' name="end" class="form-control" placeholder="Date de fin" id="book-end-input" />
+			                <span class="input-group-addon">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+					</div>
+					<button type="submit" class="btn btn-primary">Réserver</button>
+
+      </jsp:body>
+</t:genericpage>
+<script type="text/javascript" src="/ressources/js/bookings.js"></script>
 </body>
 </html>
