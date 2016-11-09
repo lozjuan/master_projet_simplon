@@ -18,12 +18,18 @@
 				<input name="id" value="${computer.id}" type="hidden" /> <input
 					type="submit" value="Delete" />
 			</form>
-			<form action="modifyComputer">
-				<input name="id" value="${computer.id}" type="hidden" /> <input
-					type="submit" value="Modify" />
-			</form>
+		
+		<form method="get" action="modifyComputer">
+			<div>
+				<input name="id" value="${computer.id}" type="hidden" /> <input type="submit"
+					value="Modifier">
+			</div>
+		</form>
+		
 			
 		</c:forEach>
+		
+		
 	
 		<form method="get" action="addComputer">
 			<p>Inserer un ordinateur</p>
