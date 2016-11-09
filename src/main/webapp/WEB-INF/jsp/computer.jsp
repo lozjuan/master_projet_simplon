@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
-	<title>Booking</title>
+	<title>Computer</title>
 </head>
 
 <t:genericpage>
@@ -69,9 +69,8 @@
 							</div>
 						</form>
 
-        </div><!--/panel content-->
+        </div>
       </div>
-
     </div>
 
 
