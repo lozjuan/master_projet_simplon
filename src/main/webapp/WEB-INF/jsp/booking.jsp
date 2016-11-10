@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
 <head>
 	<title>Reservation</title>
 </head>
@@ -38,6 +39,7 @@
 					   	${booking.user.name}
 							<br>
 					</c:forEach>
+
 
 	<form method="get" action="book">
 	<p>Reservez</p>
@@ -118,5 +120,3 @@
       </jsp:body>
 </t:genericpage>
 <script type="text/javascript" src="/ressources/js/bookings.js"></script>
-</body>
-</html>

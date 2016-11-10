@@ -6,8 +6,8 @@
 <title>Recherche Salle</title>
 </head>
 <body>
-	<form method="get" action="user">
-		${user.id}&nbsp;${user.name}&nbsp;${user.surname}&nbsp;${user.userRights}
+	<form method="get" action="/user">
+		${user.id}&nbsp;${user.name}&nbsp;${user.surname}&nbsp;${user.role}
 		<input type="submit" value="retour">
 	</form>
 </body>

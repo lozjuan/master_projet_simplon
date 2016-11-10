@@ -9,27 +9,36 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.simplon.model.Room;
-import co.simplon.service.RoomService;
+import co.simplon.service.business.RoomService;
 
 @Controller
-@RequestMapping
+@RequestMapping("/room")
 public class RoomController {
+
+	public RoomController() {
+		super();
+	}
+
+	public RoomController(RoomService roomService) {
+		super();
+		this.roomService = roomService;
+	}
 
 	@Autowired
 	private RoomService roomService;
 
-	@RequestMapping("/room")
+	@RequestMapping
 	public ModelAndView getList(ModelMap model) {
 		List<Room> roomList = roomService.getAll();
 		model.addAttribute("roomList", roomList);
-		return new ModelAndView("room", model);
+		return new ModelAndView("room/room", model);
 	}
 
 	@RequestMapping("/roomById")
 	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Room room = roomService.findById(id);
 		model.addAttribute("room", room);
-		return new ModelAndView("search-room", model);
+		return new ModelAndView("room/search-room", model);
 	}
 
 	@RequestMapping("/addRoom")

@@ -7,12 +7,17 @@
 		<spring:url value="/ressources/css/bootstrap.min.css" var="bootstrapCss" />
 		<spring:url value="/ressources/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
 		<spring:url value="/ressources/css/bootstrap-datetimepicker.min.css" var="bootstrapDateTimePickerCss" />
+<<<<<<< HEAD
+=======
+		<spring:url value="/ressources/css/style.css" var="styleCss"/>
+>>>>>>> origin
 
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="${bootstrapCss}"/>
 		<link rel="stylesheet" type="text/css" href="${bootstrapThemeCss}"/>
 		<link rel="stylesheet" type="text/css" href="${bootstrapDateTimePickerCss}"/>
+<<<<<<< HEAD
 		<link rel="stylesheet" href="/ressources/css/normalize.css">
 		<link rel="stylesheet" href="/ressources/css/style2.css">
 		<link rel="stylesheet" href="/ressources/css/style3.css">
@@ -30,6 +35,22 @@
 		
 		
 		
+=======
+		<link rel="stylesheet" type="text/css" href="${styleCss}"/>
+		<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/ressources/css/style2.css">
+		<link rel="stylesheet" href="/ressources/css/style3.css">
+		<link rel="stylesheet" href="/ressources/css/style4.css">
+		<link rel="stylesheet" href="/ressources/css/normalize.css">
+				
+
+		<!-- JS Dependencies -->
+		<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="/ressources/js/index.js"></script>
+		<script src="/ressources/js/index2.js"></script>
+		<script src="/ressources/js/index3.js"></script>
+>>>>>>> origin
 		
 	</head>
   	<body>

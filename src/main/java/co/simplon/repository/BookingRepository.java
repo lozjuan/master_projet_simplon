@@ -1,5 +1,6 @@
 package co.simplon.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,10 +13,10 @@ import co.simplon.model.Booking;
 @Resource
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
-	@Query("select id from Booking where computerId=?1")
-	public List<Booking> findBookingComputer(Integer computerId);
+	@Query("select id from Booking where computerId=?1 and not(?2>=ends or starts>=?3)")
+	public List<Booking> findBookingComputer(Integer computerId, Date starts, Date ends);
 
-	@Query("select id from Booking where roomId=?1")
-	public List<Booking> findBookingRoom(Integer salleId);
+	@Query("select id from Booking where roomId=?1 and not(?2>=ends or starts>=?3)")
+	public List<Booking> findBookingRoom(Integer salleId, Date starts, Date ends);
 
 }
