@@ -37,7 +37,7 @@ public class Booking implements Serializable {
 	private Date starts;
 
 	@Column(name="ends")
-	private Date Ends;
+	private Date ends;
 	
 	private Date createdAt;
 
@@ -56,7 +56,7 @@ private User user;
 		this.room = roomId;
 		this.computer = computerId;
 		this.starts = starts;
-		Ends = ends;
+		this.ends = ends;
 		this.createdAt = createdAt;
 		this.user = userId;
 	}
@@ -75,11 +75,11 @@ private User user;
 	}
 
 	public Date getEnds() {
-		return Ends;
+		return ends;
 	}
 
 	public void setEnds(Date ends) {
-		Ends = ends;
+		this.ends = ends;
 	}
 
 

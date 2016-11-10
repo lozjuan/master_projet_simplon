@@ -40,11 +40,22 @@
 				<input name="id" value="${computer.id}" type="hidden" />
 				<input type="submit" value="Delete" />
 			</form>
+<<<<<<< HEAD
 
 			<form action="modifyComputer">
 				<input name="id" value="${computer.id}" type="hidden" /> <input
 					type="submit" value="Modify" />
 			</form>
+=======
+		
+		<form method="get" action="modifyComputer">
+			<div>
+				<input name="id" value="${computer.id}" type="hidden" /> <input type="submit"
+					value="Modifier">
+			</div>
+		</form>
+		
+>>>>>>> Seb
 			
 
 
@@ -52,6 +63,7 @@
 
 
 		</c:forEach>
+<<<<<<< HEAD
 
 			        
 					<form method="get" action="addComputer">
@@ -87,3 +99,30 @@
 
 	      </jsp:body>
 </t:genericpage>
+=======
+		
+		
+	
+		<form method="get" action="addComputer">
+			<p>Inserer un ordinateur</p>
+			<div>
+				brand :<input type="text" name="brand"> 
+				model :<input type="text" name="model"> 
+				serial:<input type="number" name="serial"> 
+				   	   <input type="submit" value="Confirmer">
+			</div>
+		</form>
+	
+		<form method="get" action="computerById">
+			<p>Recherche ordinateur : inserer l'id</p>
+			<div>
+				id:<input type="number" name="id"> <input type="submit"
+					value="Rechercher">
+			</div>
+		</form>
+	</div>	
+	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+>>>>>>> Seb

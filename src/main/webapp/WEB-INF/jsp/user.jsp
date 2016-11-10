@@ -2,7 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
+<<<<<<< HEAD
 	<title>User</title>
+=======
+<title>utilisateurs</title>
+<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet">
+>>>>>>> Seb
 </head>
 
 <t:genericpage>
@@ -33,10 +39,18 @@
 			   	${user.password}
 			   	${user.role}
 			   	<form action="deleteUser">
-				<input name="id" value="${user.id}" type="hidden" /> 
-				<input type="submit" value="Delete" />
+				<input name="id" value="${user.id}" type="hidden" /> <input
+					type="submit" value="Delete" />
 			</form>
+			<form method="get" action="modifyUser">
+				<div>
+					<input name="id" value="${user.id}" type="hidden" /> <input
+						type="submit" value="Modifier">
+				</div>
+			</form>
+
 		</c:forEach>
+<<<<<<< HEAD
 	
 		<form method="get" action="user/addUser">
 			<p>Inserer un utilisateur</p>	
@@ -51,12 +65,27 @@
 		</form>
 	
 		<form method="get" action="user/userById">
+=======
+
+		<form method="get" action="addUser">
+			<p>Inserer un utilisateur</p>
+			<div>
+				nom :<input type="text" name="name"> prenom :<input
+					type="text" name="surname"> email:<input type="text"
+					name="email"> droits:<input type="text" name="userRights">
+				<input type="submit" value="Confirmer">
+			</div>
+		</form>
+
+		<form method="get" action="userById">
+>>>>>>> Seb
 			<p>Recherche d'utilisateur</p>
 			<div>
 				id:<input type="number" name="id"> <input type="submit"
 					value="Rechercher">
 			</div>
 		</form>
+<<<<<<< HEAD
 		
 		</div>
 	</div>
@@ -65,3 +94,10 @@
 		
 		      </jsp:body>
 </t:genericpage>
+=======
+	</div>
+	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+>>>>>>> Seb

@@ -22,7 +22,7 @@ public class Computer implements Serializable {
 	private String model;
 
 	@Column(unique=true, nullable=false)
-	private Integer serial;
+	private String serial;
 
 	
 	
@@ -30,7 +30,7 @@ public class Computer implements Serializable {
 		super();
 	}
 
-	public Computer(String brand, String model, Integer serial) {
+	public Computer(String brand, String model, String serial) {
 		this.brand = brand;
 		this.model = model;
 		this.serial = serial;
@@ -38,6 +38,11 @@ public class Computer implements Serializable {
 
 	public Integer getId() {
 		return id;
+	}
+	
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getBrand() {
@@ -56,11 +61,11 @@ public class Computer implements Serializable {
 		this.model = model;
 	}
 
-	public Integer getSerial() {
+	public String getSerial() {
 		return serial;
 	}
 
-	public void setSerial(Integer serial) {
+	public void setSerial(String serial) {
 		this.serial = serial;
 	}
 

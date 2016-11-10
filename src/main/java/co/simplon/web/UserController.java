@@ -46,5 +46,25 @@ public class UserController {
 		userService.delete(id);
 		return new ModelAndView("redirect:/user");
 	}
+	
+	@RequestMapping("/modifyUser")
+	public ModelAndView modifyUser(@RequestParam("id") Integer id,ModelMap model) {
+		User user=userService.findById(id);
+		model.addAttribute("user",user);
+		return new ModelAndView("modifyUser",model);
+	}
+	
+	@RequestMapping("/modifyUserWithInput")
+	public ModelAndView modifyUserWithInput(@RequestParam("id") Integer id,@RequestParam("name") String name, @RequestParam("surname") String surname,
+			String email, String role, ModelMap model){
+		
+		User user = userService.findById(id);
+		user.setName(name);
+		user.setSurname(surname);
+		user.setEmail(email);
+		user.setRole(role);
+		userService.addOrUpdate(user);
+		return new ModelAndView("redirect:/user");
+	}
 
 }
