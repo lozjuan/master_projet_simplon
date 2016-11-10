@@ -13,7 +13,7 @@
 		name :<input type="text" name="name" value="${user.name}">
 		surname :<input type="text" name="surname" value="${user.surname}">
 		email :<input type="text" name="email" value="${user.email}">
-		userRights :<input type="text" name="userRights" value="${user.userRights}">
+		userRights :<input type="text" name="role" value="${user.role}">
 		<input name="id" value="${user.id}" type="hidden" /> <input
 			type="submit" value="Modify" />
 	</form>

@@ -1,17 +1,17 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
 <head>
-	<title>Computer</title>
+<title>Computer</title>
 </head>
 
 <t:genericpage>
-    <jsp:attribute name="header">
-      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+	<jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp"%>
     </jsp:attribute>
 
-    <jsp:body>
+	<jsp:body>
 
     <div class="col-md-12">
       <br><br><br>
@@ -34,39 +34,32 @@
 		   	${computer.model}
 			<br>
 		   	${computer.serial}
-			<br><br>
+			<br>
+						<br>
 
-		<form action="deleteComputer">
+		<form action="computer/deleteComputer">
 				<input name="id" value="${computer.id}" type="hidden" />
 				<input type="submit" value="Delete" />
 			</form>
-<<<<<<< HEAD
 
-			<form action="modifyComputer">
-				<input name="id" value="${computer.id}" type="hidden" /> <input
-					type="submit" value="Modify" />
-			</form>
-=======
 		
-		<form method="get" action="modifyComputer">
+		<form method="get" action="computer/modifyComputer">
 			<div>
-				<input name="id" value="${computer.id}" type="hidden" /> <input type="submit"
-					value="Modifier">
+				<input name="id" value="${computer.id}" type="hidden" /> <input
+									type="submit" value="Modifier">
 			</div>
 		</form>
 		
->>>>>>> Seb
-			
+
 
 
 			<hr>
 
 
 		</c:forEach>
-<<<<<<< HEAD
 
 			        
-					<form method="get" action="addComputer">
+					<form method="get" action="computer/addComputer">
 							<p>Inserer un ordinateur</p>
 							<div>
 								brand :
@@ -83,11 +76,11 @@
 
 						<hr>
 
-						<form method="get" action="computerById">
+						<form method="get" action="computer/computerById">
 							<p>Recherche ordinateur : inserer l'id</p>
 							<div>
 								id:<input type="number" name="id"> <input type="submit"
-									value="Rechercher">
+								value="Rechercher">
 							</div>
 						</form>
 
@@ -99,30 +92,6 @@
 
 	      </jsp:body>
 </t:genericpage>
-=======
-		
-		
-	
-		<form method="get" action="addComputer">
-			<p>Inserer un ordinateur</p>
-			<div>
-				brand :<input type="text" name="brand"> 
-				model :<input type="text" name="model"> 
-				serial:<input type="number" name="serial"> 
-				   	   <input type="submit" value="Confirmer">
-			</div>
-		</form>
-	
-		<form method="get" action="computerById">
-			<p>Recherche ordinateur : inserer l'id</p>
-			<div>
-				id:<input type="number" name="id"> <input type="submit"
-					value="Rechercher">
-			</div>
-		</form>
-	</div>	
-	<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
->>>>>>> Seb

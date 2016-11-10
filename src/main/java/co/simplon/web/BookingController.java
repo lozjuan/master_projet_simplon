@@ -137,7 +137,7 @@ public class BookingController {
 		return testBooking(roomId, computerId, starts, ends, redirectAttributes, booking);
 	}
 
-	private ModelAndView testBooking(Integer roomId, Integer computerId, Date starts, Date ends,
+	private ModelAndView testBooking(Integer roomId, Integer computerId, @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date starts,@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date ends,
 			RedirectAttributes redirectAttributes, Booking booking) {
 		if (starts.before(Date.from(Instant.now()))) redirectAttributes.addFlashAttribute("erreur","La date de début est inférieure à la date du jour");
         else if (ends.before(starts)) redirectAttributes.addFlashAttribute("erreur","La date de début est supérieure à la date de fin");

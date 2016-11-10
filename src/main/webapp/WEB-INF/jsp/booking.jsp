@@ -1,17 +1,17 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <head>
 
-	<title>Reservation</title>
+<title>Reservation</title>
 </head>
 
 <t:genericpage>
-    <jsp:attribute name="header">
-      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+	<jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp"%>
     </jsp:attribute>
 
-    <jsp:body>
+	<jsp:body>
 
     <div class="col-md-12">
       <br><br><br>
@@ -38,6 +38,17 @@
 							<br>
 					   	${booking.user.name}
 							<br>
+					<form action="deleteBook">
+				<input name="id" value="${booking.id}" type="hidden" /> <input
+								type="submit" value="Delete" />
+			</form>
+			<form method="get" action="modifyBookingForm">
+
+				<input name="id" value="${booking.id}" type="hidden" /> <input
+								type="submit" value="Modifier" />
+
+			</form>		
+							
 					</c:forEach>
 
 	<form method="get" action="book">
@@ -87,12 +98,16 @@
 	</form>
 
 			<c:if test="${erreur != null}">
-	        <div style="color: red;"><c:out value="${erreur}"/></div>
+	        <div style="color: red;">
+							<c:out value="${erreur}" />
+						</div>
 	    </c:if>
             </div>
 
-        </div><!--/panel content-->
-      </div><!--/panel-->
+        </div>
+			<!--/panel content-->
+      </div>
+		<!--/panel-->
 	
 	<hr>
 
@@ -101,5 +116,6 @@
       </jsp:body>
 </t:genericpage>
 <script type="text/javascript" src="/ressources/js/bookings.js"></script>
+
 </body>
 </html>
