@@ -20,6 +20,7 @@
 			</ul>
 			 <ul class="nav navbar-nav navbar-right">
        			 <li><a href="#">Profil</a></li>
+       			 <li><a href="#">Deconnexion</a></li>
         	</ul>
    		</div>
    	</div>
