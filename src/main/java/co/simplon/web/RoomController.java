@@ -34,14 +34,14 @@ public class RoomController {
 		return new ModelAndView("room/room", model);
 	}
 
-	@RequestMapping("/roomById")
+	@RequestMapping(path="/roomById")
 	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Room room = roomService.findById(id);
 		model.addAttribute("room", room);
 		return new ModelAndView("room/search-room", model);
 	}
 
-	@RequestMapping("/addRoom")
+	@RequestMapping(path="/addRoom")
 	public ModelAndView addRoom(@RequestParam("name") String name, @RequestParam("places") Integer places,
 			String description) {
 		Room room = new Room(name, places, description);
@@ -49,7 +49,7 @@ public class RoomController {
 		return new ModelAndView("redirect:/room");
 	}
 
-	@RequestMapping("/deleteRoom")
+	@RequestMapping(path="/deleteRoom")
 	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
 		roomService.delete(id);
 		return new ModelAndView("redirect:/room");

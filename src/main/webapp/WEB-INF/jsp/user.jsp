@@ -38,7 +38,7 @@
 			</form>
 		</c:forEach>
 	
-		<form method="get" action="user/addUser">
+		<form method="get" action="/user/addUser">
 			<p>Inserer un utilisateur</p>	
 			<div>
 				nom :<input type="text" name="name"> 
@@ -50,7 +50,7 @@
 			</div>
 		</form>
 	
-		<form method="get" action="user/userById">
+		<form method="get" action="/user/userById">
 			<p>Recherche d'utilisateur</p>
 			<div>
 				id:<input type="number" name="id"> <input type="submit"
@@ -61,6 +61,6 @@
 		</div>
 	</div>
 
-		
-		      </jsp:body>
+	</jsp:body>
+
 </t:genericpage>

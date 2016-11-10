@@ -1,6 +1,8 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
 <head>
 	<title>Reservation</title>
 </head>
@@ -40,6 +42,8 @@
 					</c:forEach>
 
 	<form method="get" action="book">
+
+    <security:authorize access="isAuthenticated()">
 	<p>Reservez</p>
 
 	<br>
@@ -47,7 +51,7 @@
 			Salles :
 			<select name="roomId">
 								<option value=""></option>
-										<c:forEach items="${roomList}" var="room">
+									<c:forEach items="${roomList}" var="room">
 								<option value="${room.id}">${room.name}</option>
 										</c:forEach>
 			</select>
@@ -71,19 +75,17 @@
 			fin :
 			<input type="datetime-local" name="ends">
 
-			Utilisateur :
-			<select name="userId">
-								<option value=""></option>
-									<c:forEach items="${userList}" var="user">
-										<option value="${user.id}">${user.name}&nbsp;${user.surname}</option>
-								</c:forEach>
-			</select>
 
+			<c:set var="userId">
+			    <security:authentication property="principal.id"/>
+			</c:set>
+			<input type='hidden' name="userId" value="${userId}">
 
 			<input type="submit" value="Confirmer">
 
 
 	</form>
+
 
 			<c:if test="${erreur != null}">
 	        <div style="color: red;"><c:out value="${erreur}"/></div>
@@ -95,26 +97,9 @@
 
 	<hr>
 
-<div class="form-group">
-					    <label for="book-start-input">Date de début</label>
-						<div class="input-group date" id="book-start">
-			                <input type='text' name="start" class="form-control" placeholder="Date de début" id="book-start-input" />
-			                <span class="input-group-addon">
-			                    <span class="glyphicon glyphicon-calendar"></span>
-			                </span>
-			            </div>
-					</div>
-					<div class="form-group">
-					    <label for="book-end-input">Date de fin</label>
-						<div class="input-group date" id="book-end">
-			                <input type='text' name="end" class="form-control" placeholder="Date de fin" id="book-end-input" />
-			                <span class="input-group-addon">
-			                    <span class="glyphicon glyphicon-calendar"></span>
-			                </span>
-			            </div>
-					</div>
 					<button type="submit" class="btn btn-primary">Réserver</button>
 
+     </security:authorize>
       </jsp:body>
 </t:genericpage>
 <script type="text/javascript" src="/ressources/js/bookings.js"></script>

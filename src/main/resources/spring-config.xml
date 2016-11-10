@@ -20,9 +20,9 @@
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:8889/master-projet-simplon" />
-		<property name="username" value="testjpa" />
-		<property name="password" value="testjpa" />
+		<property name="url" value="jdbc:mysql://localhost:8889/simplon" />
+		<property name="username" value="juan" />
+		<property name="password" value="juan" />
 	</bean>
 
 	<bean id="entityManagerFactory"
@@ -40,7 +40,7 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	
+
 	<import resource="security-config.xml"/>
 
 	<tx:annotation-driven />

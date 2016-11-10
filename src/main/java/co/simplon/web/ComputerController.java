@@ -1,6 +1,6 @@
 package co.simplon.web;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,8 @@ import co.simplon.model.Computer;
 import co.simplon.service.business.ComputerService;
 
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/computer")
@@ -26,14 +28,14 @@ public class ComputerController {
 		return new ModelAndView("computer", model);
 	}
 
-	@RequestMapping("/computerById")
+	@RequestMapping(path="/computerById")
 	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Computer computer = computerService.findById(id);
 		model.addAttribute("computer", computer);
 		return new ModelAndView("search-pc", model);
 	}
 
-	@RequestMapping("/addComputer")
+	@RequestMapping(path="/addComputer")
 	public ModelAndView addComputer(@RequestParam("brand") String brand, @RequestParam("model") String model,
 			Integer serial) {
 		Computer computer = new Computer(brand, model, serial);
@@ -41,7 +43,7 @@ public class ComputerController {
 		return new ModelAndView("redirect:/computer");
 	}
 
-	@RequestMapping("/deleteComputer")
+	@RequestMapping(path="/deleteComputer")
 	public ModelAndView deleteComputer(@RequestParam("id") Integer id, ModelMap model) {
 		computerService.delete(id);
 		return new ModelAndView("redirect:/computer");

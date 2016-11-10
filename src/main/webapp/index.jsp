@@ -1,6 +1,8 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
 <head>
 	<title>Log in - Sign up</title>
 </head>
@@ -11,6 +13,12 @@
     </jsp:attribute>
 
     <jsp:body>
+
+    <div class="col-md-12"><p>Vous êtes connecté</p>
+        <security:authorize access="isAuthenticated()">
+           <security:authentication property="principal.name"/>
+        </security:authorize>
+    </div>
 
     <div class="logmod">
   <div class="logmod__wrapper">
@@ -65,22 +73,23 @@
           <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
         </div>
         <div class="logmod__form">
-          <form accept-charset="utf-8" action="#" class="simform">
+          <form accept-charset="utf-8" action="/login" class="simform" method="post">
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                <input class="string optional" maxlength="255" id="user-email" name="user-email" placeholder="Email" type="email" size="50" />
               </div>
             </div>
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-pw">Password *</label>
-                <input class="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="50" />
+                <input class="string optional" maxlength="255" id="user-pw" name="user-pw" placeholder="Password" type="password" size="50" />
                 						<span class="hide-password">Show</span>
               </div>
             </div>
             <div class="simform__actions">
               <input class="sumbit" name="commit" type="submit" value="Log In"/>
+               <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
               <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Forgot your password?<br>Click here</a></span>
             </div>
           </form>

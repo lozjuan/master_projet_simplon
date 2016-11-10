@@ -17,8 +17,6 @@
 		<link rel="stylesheet" href="/ressources/css/style3.css">
 		<link rel="stylesheet" href="/ressources/css/style4.css">
 
-
-
 		<!-- JS Dependencies -->
 		<script src="/ressources/js/jquery-3.1.1.min.js"></script>
 		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>

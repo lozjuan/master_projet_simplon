@@ -7,12 +7,17 @@
             http://www.springframework.org/schema/security/spring-security-4.1.xsd">
 
 	<http auto-config="true">
-		<form-login login-page="/login" username-parameter="user-email"
-			password-parameter="user-pw" />
+		<intercept-url pattern="/ressources/**" access="permitAll" />
+		<form-login
+				login-processing-url="/login"
+				login-page="/"
+				username-parameter="user-email"
+				password-parameter="user-pw"
+				authentication-success-forward-url="/booking" />
 			<intercept-url pattern="/user" access="hasAuthority('admin')" />
 	        <intercept-url pattern="/computer" access="hasAuthority('admin')" />
 	        <intercept-url pattern="/room" access="hasAuthority('admin')" />
-	        <intercept-url pattern="/**" access="permitAll" />
+		<intercept-url pattern="/**" access="permitAll" />
 		<csrf />
 	</http>
 

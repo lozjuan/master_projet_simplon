@@ -44,31 +44,30 @@
 
 		</c:forEach>
 
-					<form method="get" action="addComputer">
-							<p>Inserer un ordinateur</p>
-							<div>
-								brand :
-								<input type="text" name="brand">
-								&nbsp;
-								model :
-								<input type="text" name="model">
-									&nbsp;
-								serial:
-								<input type="number" name="serial">
-								<input type="submit" value="Confirmer">
-							</div>
-						</form>
+            <form method="get" action="/computer/addComputer">
+                    <p>Inserer un ordinateur</p>
+                    <div>
+                        brand :
+                        <input type="text" name="brand">
+                        &nbsp;
+                        model :
+                        <input type="text" name="model">
+                            &nbsp;
+                        serial:
+                        <input type="number" name="serial">
+                        <input type="submit" value="Confirmer">
+                    </div>
+                </form>
 
-						<hr>
+                <hr>
 
-						<form method="get" action="computerById">
-							<p>Recherche ordinateur : inserer l'id</p>
-							<div>
-								id:<input type="number" name="id"> <input type="submit"
-									value="Rechercher">
-							</div>
-						</form>
-
+                <form method="get" action="/computer/computerById">
+                    <p>Recherche ordinateur : inserer l'id</p>
+                    <div>
+                        id:<input type="number" name="id"> <input type="submit"
+                            value="Rechercher">
+                    </div>
+                </form>
         </div>
       </div>
     </div>
