@@ -44,7 +44,7 @@
 			<hr>
 
 		</c:forEach>
-<<<<<<< HEAD
+
 			        
 					<form method="get" action="addComputer">
 							<p>Inserer un ordinateur</p>

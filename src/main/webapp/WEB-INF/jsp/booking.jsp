@@ -119,4 +119,5 @@
   
       </jsp:body>
 </t:genericpage>
+
 <script type="text/javascript" src="/ressources/js/bookings.js"></script>
