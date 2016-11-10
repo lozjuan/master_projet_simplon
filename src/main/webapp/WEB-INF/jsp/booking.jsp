@@ -116,7 +116,8 @@
 			            </div>
 					</div>
 					<button type="submit" class="btn btn-primary">Réserver</button>
-  
+
+
       </jsp:body>
 </t:genericpage>
 

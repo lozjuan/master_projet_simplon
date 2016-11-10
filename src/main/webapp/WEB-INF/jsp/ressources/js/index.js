@@ -1,3 +1,5 @@
+//Log//
+
 var LoginModalController = {
     tabsElementName: ".logmod__tabs li",
     tabElementName: ".logmod__tab",
