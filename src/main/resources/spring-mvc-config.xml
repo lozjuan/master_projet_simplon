@@ -15,7 +15,6 @@
 	<mvc:annotation-driven />
 	
 	<mvc:resources mapping="/webjars/**" location="/webjars/"/>
-	<mvc:resources mapping="/ressources/**" location="/ressources/"/>
 	
 	<bean id="viewResolver"
 		  class="org.springframework.web.servlet.view.UrlBasedViewResolver">

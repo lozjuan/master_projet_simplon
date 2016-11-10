@@ -64,13 +64,7 @@
 							</select>
 			<hr>
 
-			debut :
-			<input type="datetime-local" name="starts">
-
-			<hr>
-
-			fin :
-			<input type="datetime-local" name="ends">
+	
 
 			Utilisateur :
 			<select name="userId">
@@ -81,7 +75,25 @@
 			</select>
 
 
-			<input type="submit" value="Confirmer">
+			<div class="form-group">
+					    <label for="book-start-input">Date de début</label>
+						<div class="input-group date" id="book-start">
+			                <input type='text' name="starts" class="form-control" placeholder="Date de début" id="book-start-input" />
+			                <span class="input-group-addon">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+					</div>
+					<div class="form-group">
+					    <label for="book-end-input">Date de fin</label>
+						<div class="input-group date" id="book-end">
+			                <input type='text' name="ends" class="form-control" placeholder="Date de fin" id="book-end-input" />
+			                <span class="input-group-addon">
+			                    <span class="glyphicon glyphicon-calendar"></span>
+			                </span>
+			            </div>
+					</div>
+					<button type="submit" class="btn btn-primary">Réserver</button>
 
 
 	</form>
@@ -96,25 +108,7 @@
 	
 	<hr>
 
-<div class="form-group">
-					    <label for="book-start-input">Date de début</label>
-						<div class="input-group date" id="book-start">
-			                <input type='text' name="start" class="form-control" placeholder="Date de début" id="book-start-input" />
-			                <span class="input-group-addon">
-			                    <span class="glyphicon glyphicon-calendar"></span>
-			                </span>
-			            </div>
-					</div>
-					<div class="form-group">
-					    <label for="book-end-input">Date de fin</label>
-						<div class="input-group date" id="book-end">
-			                <input type='text' name="end" class="form-control" placeholder="Date de fin" id="book-end-input" />
-			                <span class="input-group-addon">
-			                    <span class="glyphicon glyphicon-calendar"></span>
-			                </span>
-			            </div>
-					</div>
-					<button type="submit" class="btn btn-primary">Réserver</button>
+
   
       </jsp:body>
 </t:genericpage>
