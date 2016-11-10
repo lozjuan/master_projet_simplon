@@ -1,15 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<html>
 <head>
-<title>Salles</title>
-<link href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<title>Room</title>
 </head>
 
-<body>
-	<div class="container">
+<t:genericpage>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+    </jsp:attribute>
+
+    <jsp:body>
+    
+    <div class="col-md-12">
+      <br><br><br>
+      
+      	<div class="panel panel-default">
+			      
+			        <div class="panel-heading">
+			          <div class="panel-title">
+			            <h4>Room</h4>
+			          </div>
+			        </div>
+			
+			<div class="panel-body">
+			
 		<c:forEach items="${roomList}" var="room">
 			   	${room.id}
 			   	${room.name}
@@ -38,8 +54,11 @@
 					value="Rechercher">
 			</div>
 		</form>
+		
+		
+		</div>
 	</div>
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+
+		      </jsp:body>
+</t:genericpage>

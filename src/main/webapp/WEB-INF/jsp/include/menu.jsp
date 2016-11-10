@@ -22,5 +22,5 @@
        			 <li><a href="#">Profil</a></li>
         	</ul>
    		</div>
+   	</div>
 
-  </div>
