@@ -19,7 +19,7 @@
 				<li><a href="/user">Utilisateurs</a></li>
 			</ul>
 			 <ul class="nav navbar-nav navbar-right">
-       			 <li><a href="#">Profil</a></li>
+       			 <li><a href="/profil">Profil</a></li>
        			 <li><a href="#">Deconnexion</a></li>
         	</ul>
    		</div>
