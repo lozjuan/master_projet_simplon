@@ -32,6 +32,7 @@ public class Booking implements Serializable {
 	private Computer computer;
 
 
+
 	@Column(name="starts")
 	private Date starts;
 
@@ -40,15 +41,15 @@ public class Booking implements Serializable {
 	
 	private Date createdAt;
 
-	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
-	@JoinColumn(name = "userId")
-	private User user;
+
+@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+@JoinColumn(name = "userId")
+private User user;
 
 
 	public Booking() {
 		super();
 	}
-
 
 	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt, User userId) {
 		super();
@@ -80,7 +81,9 @@ public class Booking implements Serializable {
 	public void setEnds(Date ends) {
 		Ends = ends;
 	}
-	
+
+
+
 	public Room getRoom() {
 		return room;
 	}
@@ -102,6 +105,7 @@ public class Booking implements Serializable {
 		this.user = user;
 	}
 
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -119,6 +123,5 @@ public class Booking implements Serializable {
 		this.createdAt = createdAt;
 
 	}
-
 
 }

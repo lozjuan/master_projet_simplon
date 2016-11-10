@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
 <head>
 
 	<title>Reservation</title>
@@ -40,6 +41,7 @@
 							<br>
 					</c:forEach>
 
+
 	<form method="get" action="book">
 	<p>Reservez</p>
 	
@@ -75,7 +77,23 @@
 			</select>
 
 
-			<div class="form-group">
+
+			<input type="submit" value="Confirmer">
+
+
+	</form>
+
+			<c:if test="${erreur != null}">
+	        <div style="color: red;"><c:out value="${erreur}"/></div>
+	    </c:if>
+            </div>
+
+        </div><!--/panel content-->
+      </div><!--/panel-->
+	
+	<hr>
+
+<div class="form-group">
 					    <label for="book-start-input">Date de début</label>
 						<div class="input-group date" id="book-start">
 			                <input type='text' name="starts" class="form-control" placeholder="Date de début" id="book-start-input" />
@@ -113,5 +131,3 @@
       </jsp:body>
 </t:genericpage>
 <script type="text/javascript" src="/ressources/js/bookings.js"></script>
-</body>
-</html>
