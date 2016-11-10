@@ -25,7 +25,7 @@
       <div class="logmod__tab-wrapper">
       <div class="logmod__tab lgm-1">
         <div class="logmod__heading">
-          <span class="logmod__heading-subtitle">Enter your personal details <strong>to create an acount</strong></span>
+          <span class="logmod__heading-subtitle">Entrez vos données personnelles <strong>afin de créer un compte</strong></span>
         </div>
         <div class="logmod__form">
           <form accept-charset="utf-8" action="#" class="simform">
@@ -37,11 +37,11 @@
             </div>
             <div class="sminputs">
               <div class="input string optional">
-                <label class="string optional" for="user-pw">Password *</label>
+                <label class="string optional" for="user-pw">Mot de passe *</label>
                 <input class="string optional" maxlength="255" id="user-pw" name="user-pw" placeholder="Password" type="text" size="50" />
               </div>
               <div class="input string optional">
-                <label class="string optional" for="user-pw-repeat">Repeat password *</label>
+                <label class="string optional" for="user-pw-repeat">Insérez une seconde fois le mot de passe *</label>
                 <input class="string optional" maxlength="255" id="user-pw-repeat" placeholder="Repeat password" type="text" size="50" />
               </div>
             </div>
@@ -57,7 +57,7 @@
                 <i class="fa fa-facebook"></i>
               </div>
               <div class="connect__context">
-                <span>Create an account with <strong>Facebook</strong></span>
+                <span>Créez un compte avec <strong>Facebook</strong></span>
               </div>
             </a>
           </div>
@@ -65,7 +65,7 @@
       </div>
       <div class="logmod__tab lgm-2">
         <div class="logmod__heading">
-          <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
+          <span class="logmod__heading-subtitle">Entrez votre email et mot de passe <strong>pour la connexion</strong></span>
         </div>
         <div class="logmod__form">
           <form accept-charset="utf-8" action="/login" class="simform" method="post">
@@ -77,15 +77,14 @@
             </div>
             <div class="sminputs">
               <div class="input full">
-                <label class="string optional" for="user-pw">Password *</label>
+                <label class="string optional" for="user-pw">Mot de passe *</label>
                 <input class="string optional" maxlength="255" id="user-pw" name="user-pw" placeholder="Password" type="password" size="50" />
-                						<span class="hide-password">Show</span>
               </div>
             </div>
             <div class="simform__actions">
 			  <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
               <input class="sumbit" name="commit" type="submit" value="Log In"/>
-              <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Forgot your password?<br>Click here</a></span>
+              <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Vous avez oublié votre mot de passe ? Cliquez ici</a></span>
             </div>
           </form>
         </div>
@@ -96,7 +95,7 @@
                 <i class="fa fa-facebook"></i>
               </div>
               <div class="connect__context">
-                <span>Sign in with <strong>Facebook</strong></span>
+                <span>Connectez-vous avec <strong>Facebook</strong></span>
               </div>
             </a>
           </div>
