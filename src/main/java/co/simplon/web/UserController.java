@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,43 +19,45 @@ import co.simplon.service.business.UserService;
 @RequestMapping("/user")
 public class UserController {
 
-	@Autowired
-	public UserService userService;
+    @Autowired
+    public UserService userService;
 
-	@RequestMapping
-	public ModelAndView getList(ModelMap model) {
-		List<User> userList = userService.getAll();
-		model.addAttribute("userList", userList);
-		return new ModelAndView("user", model);
-	}
 
-	@RequestMapping(path="/userById")
-	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
-		User user = userService.findById(id);
-		model.addAttribute("user", user);
-		return new ModelAndView("search-user", model);
-	}
+    @RequestMapping
+    public ModelAndView getList(ModelMap model) {
+        List<User> userList = userService.getAll();
+        model.addAttribute("userList", userList);
+        return new ModelAndView("user", model);
+    }
 
-	@RequestMapping(path="/addUser")
-	public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
-			String email, String role) {
-		User user = new User(name, surname, email, password, role);
-		userService.addOrUpdate(user);
-		return new ModelAndView("redirect:/user");
-	}
+    @RequestMapping(path = "/userById")
+    public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return new ModelAndView("search-user", model);
+    }
 
-	@RequestMapping(path="/deleteUser")
-	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
-		userService.delete(id);
-		return new ModelAndView("redirect:/user");
-	}
+    @RequestMapping(path = "/addUser")
+    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
+                                String email, String role) {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        User user = new User(name, surname, email, encoder.encode(password), role);
+        userService.addOrUpdate(user);
+        return new ModelAndView("redirect:/user");
+    }
 
-	@RequestMapping(path="/profil")
-	public ModelAndView showProfilInfo(ModelMap model){
-		String name = SecurityContextHolder.getContext().getAuthentication().getName();
-		User currentUser = userService.authenticateUser(name);
-		model.addAttribute("currentUser", currentUser);
-		return new ModelAndView("profil", model);
-	}
+    @RequestMapping(path = "/deleteUser")
+    public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
+        userService.delete(id);
+        return new ModelAndView("redirect:/user");
+    }
+
+    @RequestMapping(path = "/profil")
+    public ModelAndView showProfilInfo(ModelMap model) {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        User currentUser = userService.authenticateUser(name);
+        model.addAttribute("currentUser", currentUser);
+        return new ModelAndView("profil", model);
+    }
 
 }
