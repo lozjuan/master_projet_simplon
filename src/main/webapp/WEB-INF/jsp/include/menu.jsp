@@ -20,9 +20,10 @@
 				<li><a href="/computer">Ordinateurs</a></li>
 				<li><a href="/room">Salles</a></li>
 				<li><a href="/user">Utilisateurs</a></li>
+				<li><a href="/message">Messagerie</a></li>
 			</security:authorize>
 			</ul>
-			 <ul class="nav navbar-nav navbar-right">
+			<ul class="nav navbar-nav navbar-right">
        			 <li><a href="/user/profil">
                      <security:authorize access="isAuthenticated()">
                                <security:authentication property="principal.name"/>

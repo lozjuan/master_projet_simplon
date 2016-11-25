@@ -53,7 +53,7 @@ public class BookingController {
 		return new ModelAndView("booking", model);
 	}
 
-	// Pour test de format de l'heure.
+	// Pour test de format de l'heure. TODO effacer avant rendu :-)
 	public static void main(String args[]) {
 		SimpleDateFormat d = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		try {
@@ -102,7 +102,7 @@ public class BookingController {
 		return new ModelAndView("redirect:/booking");
 	}
 
-	@RequestMapping("/deleteBook")
+	@RequestMapping("/deleteBooking")
 	public ModelAndView deleteBooking(@RequestParam("id") Integer id, ModelMap model) {
 		bookingService.delete(id);
 		return new ModelAndView("redirect:/booking");
