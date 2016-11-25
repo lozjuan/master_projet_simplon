@@ -1,17 +1,17 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <head>
-<title>Computer</title>
+	<title>Computer</title>
 </head>
 
 <t:genericpage>
-	<jsp:attribute name="header">
-      <%@ include file="/WEB-INF/jsp/include/menu.jsp"%>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
     </jsp:attribute>
 
-	<jsp:body>
+    <jsp:body>
 
     <div class="col-md-12">
       <br><br><br>
@@ -34,32 +34,19 @@
 		   	${computer.model}
 			<br>
 		   	${computer.serial}
-			<br>
-						<br>
+			<br><br>
 
-		<form action="computer/deleteComputer">
+		<form action="deleteComputer">
 				<input name="id" value="${computer.id}" type="hidden" />
 				<input type="submit" value="Delete" />
 			</form>
 
-		
-		<form method="get" action="computer/modifyComputer">
-			<div>
-				<input name="id" value="${computer.id}" type="hidden" /> <input
-									type="submit" value="Modifier">
-			</div>
-		</form>
-		
-
-
-
 			<hr>
-
 
 		</c:forEach>
 
 			        
-					<form method="get" action="computer/addComputer">
+					<form method="get" action="addComputer">
 							<p>Inserer un ordinateur</p>
 							<div>
 								brand :
@@ -76,11 +63,11 @@
 
 						<hr>
 
-						<form method="get" action="computer/computerById">
+						<form method="get" action="computerById">
 							<p>Recherche ordinateur : inserer l'id</p>
 							<div>
 								id:<input type="number" name="id"> <input type="submit"
-								value="Rechercher">
+									value="Rechercher">
 							</div>
 						</form>
 
@@ -92,6 +79,3 @@
 
 	      </jsp:body>
 </t:genericpage>
-
-</body>
-</html>

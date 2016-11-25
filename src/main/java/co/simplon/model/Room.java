@@ -20,9 +20,7 @@ public class Room implements Serializable {
 
 	private Integer places;
 
-
 	private String description;
-
 
 	public Room() {
 		super();

@@ -1,6 +1,5 @@
 package co.simplon.model;
 
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -37,7 +36,6 @@ public class User implements Serializable, UserDetails, CredentialsContainer {
 
 	private String role;
 
-	
 	public User() {
 		super();
 	}

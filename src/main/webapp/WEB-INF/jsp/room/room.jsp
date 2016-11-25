@@ -35,10 +35,6 @@
 					<input name="id" value="${room.id}" type="hidden" /> 
 					<input type="submit" value="Delete" />
 				</form>
-				<form method="get" action="room/modifyRoom">
-					<input name="id" value="${room.id}" type="hidden" /> <input
-						type="submit" value="Modifier"/>
-				</form>
 		</c:forEach>
 	
 		<form method="get" action="/room/addRoom">

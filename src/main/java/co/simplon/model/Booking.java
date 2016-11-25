@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,9 +18,7 @@ public class Booking implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
 	private Integer id;
-
 
 	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Room.class)
 	@JoinColumn(name = "roomId")
@@ -31,21 +28,15 @@ public class Booking implements Serializable {
 	@JoinColumn(name = "computerId")
 	private Computer computer;
 
-
-
-	@Column(name="starts")
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+	@JoinColumn(name = "userId")
+	private User user;
+	
 	private Date starts;
 
-	@Column(name="ends")
-	private Date ends;
-	
+	private Date Ends;
+
 	private Date createdAt;
-
-
-@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
-@JoinColumn(name = "userId")
-private User user;
-
 
 	public Booking() {
 		super();
@@ -56,7 +47,7 @@ private User user;
 		this.room = roomId;
 		this.computer = computerId;
 		this.starts = starts;
-		this.ends = ends;
+		Ends = ends;
 		this.createdAt = createdAt;
 		this.user = userId;
 	}
@@ -64,7 +55,6 @@ private User user;
 	public Integer getId() {
 		return id;
 	}
-
 
 	public Date getStarts() {
 		return starts;
@@ -75,20 +65,29 @@ private User user;
 	}
 
 	public Date getEnds() {
-		return ends;
+		return Ends;
 	}
 
 	public void setEnds(Date ends) {
-		this.ends = ends;
+		Ends = ends;
 	}
 
+	public Date getCreatedAt() {
+		return createdAt;
+	}
 
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
 	public Room getRoom() {
 		return room;
 	}
 
-	
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
 	public Computer getComputer() {
 		return computer;
 	}
@@ -104,24 +103,4 @@ private User user;
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-
-	}
-
 }

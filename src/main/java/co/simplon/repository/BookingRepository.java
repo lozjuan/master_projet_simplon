@@ -14,11 +14,9 @@ import co.simplon.model.Booking;
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
 
 	@Query("select id from Booking where computerId=?1 and not(?2>=ends or starts>=?3)")
-
 	public List<Booking> findBookingComputer(Integer computerId, Date starts, Date ends);
 
 	@Query("select id from Booking where roomId=?1 and not(?2>=ends or starts>=?3)")
 	public List<Booking> findBookingRoom(Integer salleId, Date starts, Date ends);
-
 
 }
