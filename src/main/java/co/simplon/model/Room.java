@@ -10,9 +10,6 @@ import javax.persistence.Id;
 @Entity
 public class Room implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,7 +20,9 @@ public class Room implements Serializable {
 
 	private Integer places;
 
+
 	private String description;
+
 
 	public Room() {
 		super();
