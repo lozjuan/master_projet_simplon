@@ -7,6 +7,8 @@
 		<spring:url value="/ressources/css/bootstrap.min.css" var="bootstrapCss" />
 		<spring:url value="/ressources/css/bootstrap-theme.min.css" var="bootstrapThemeCss" />
 		<spring:url value="/ressources/css/bootstrap-datetimepicker.min.css" var="bootstrapDateTimePickerCss" />
+		<spring:url value="/ressources/css/style.css" var="styleCss"/>
+
 
 		<!-- Bootstrap -->
 		<link rel="stylesheet" type="text/css" href="${bootstrapCss}"/>

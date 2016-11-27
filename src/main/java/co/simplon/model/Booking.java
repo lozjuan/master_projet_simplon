@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,9 @@ public class Booking implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
+
 
 	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Room.class)
 	@JoinColumn(name = "roomId")
@@ -28,15 +31,21 @@ public class Booking implements Serializable {
 	@JoinColumn(name = "computerId")
 	private Computer computer;
 
-	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
-	@JoinColumn(name = "userId")
-	private User user;
-	
+
+
+	@Column(name="starts")
 	private Date starts;
 
-	private Date Ends;
-
+	@Column(name="ends")
+	private Date ends;
+	
 	private Date createdAt;
+
+
+@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+@JoinColumn(name = "userId")
+private User user;
+
 
 	public Booking() {
 		super();
@@ -47,7 +56,7 @@ public class Booking implements Serializable {
 		this.room = roomId;
 		this.computer = computerId;
 		this.starts = starts;
-		Ends = ends;
+		this.ends = ends;
 		this.createdAt = createdAt;
 		this.user = userId;
 	}
@@ -55,6 +64,7 @@ public class Booking implements Serializable {
 	public Integer getId() {
 		return id;
 	}
+
 
 	public Date getStarts() {
 		return starts;
@@ -65,29 +75,20 @@ public class Booking implements Serializable {
 	}
 
 	public Date getEnds() {
-		return Ends;
+		return ends;
 	}
 
 	public void setEnds(Date ends) {
-		Ends = ends;
+		this.ends = ends;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
 
 	public Room getRoom() {
 		return room;
 	}
 
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-
+	
 	public Computer getComputer() {
 		return computer;
 	}
@@ -103,4 +104,24 @@ public class Booking implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+
+	}
+
 }

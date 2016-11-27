@@ -1,5 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
@@ -12,7 +13,7 @@
       <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
     </jsp:attribute>
 
-    <jsp:body>
+	<jsp:body>
 
     <div class="col-md-12">
       <br><br><br>
@@ -26,7 +27,7 @@
 
 			<div class="panel-body">
 
-					<c:forEach items="${bookingList}" var="booking">
+                <c:forEach items="${bookingList}" var="booking">
 					   	${booking.id}
 							<br>
 							${booking.room.name}
@@ -39,13 +40,24 @@
 							<br>
 					   	${booking.user.name}
 							<br>
-					</c:forEach>
+					<form action="deleteBook">
+                        <input name="id" value="${booking.id}" type="hidden" /> <input
+                                        type="submit" value="Delete" />
+                    </form>
+                    <form method="get" action="modifyBookingForm">
+
+                        <input name="id" value="${booking.id}" type="hidden" /> <input
+                                        type="submit" value="Modifier" />
+
+			        </form>
+
+                </c:forEach>
 
 	<form method="get" action="book">
 
     <security:authorize access="isAuthenticated()">
 	<p>Reservez</p>
-
+	
 	<br>
 
 			Salles :
@@ -85,7 +97,6 @@
 
 
 	</form>
-
 
 			<c:if test="${erreur != null}">
 	        <div style="color: red;"><c:out value="${erreur}"/></div>

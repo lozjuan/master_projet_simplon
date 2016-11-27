@@ -32,10 +32,18 @@
 			   	${user.email}
 			   	${user.password}
 			   	${user.role}
-			   	<form action="deleteUser">
-				<input name="id" value="${user.id}" type="hidden" /> 
-				<input type="submit" value="Delete" />
+			   	<form action="user/deleteUser">
+				<input name="id" value="${user.id}" type="hidden" /> <input
+								type="submit" value="Delete" />
+
 			</form>
+			<form method="get" action="user/modifyUser">
+				<div>
+					<input name="id" value="${user.id}" type="hidden" /> <input
+									type="submit" value="Modifier">
+				</div>
+			</form>
+
 		</c:forEach>
 	
 		<form method="get" action="/user/addUser">
@@ -45,7 +53,7 @@
 				prenom :<input type="text" name="surname"> 
 				email:<input type="text" name="email">
 				mdp:<input type="text" name="password">
-				droits:<input type="text"name="role"> 
+				droits:<input type="text" name="role">
 				<input type="submit" value="Confirmer">
 			</div>
 		</form>
