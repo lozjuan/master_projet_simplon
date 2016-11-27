@@ -107,9 +107,6 @@
       </div><!--/panel-->
 
 	<hr>
-
-					<button type="submit" class="btn btn-primary">Réserver</button>
-
      </security:authorize>
       </jsp:body>
 </t:genericpage>
