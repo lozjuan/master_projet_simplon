@@ -42,9 +42,9 @@ public class Booking implements Serializable {
 	private Date createdAt;
 
 
-@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
-@JoinColumn(name = "userId")
-private User user;
+	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
+	@JoinColumn(name = "userId")
+	private User user;
 
 
 	public Booking() {

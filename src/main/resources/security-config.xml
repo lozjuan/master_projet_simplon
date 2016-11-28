@@ -18,8 +18,7 @@
         <intercept-url pattern="/user" access="hasAuthority('admin')"/>
         <intercept-url pattern="/computer" access="hasAuthority('admin')"/>
         <intercept-url pattern="/room" access="hasAuthority('admin')"/>
-        <intercept-url pattern="/message**" access="hasAuthority('admin')"/>
-
+        <intercept-url pattern="/message**" access="isAuthenticated()"/>
 
         <intercept-url pattern="/**" access="permitAll"/>
         <csrf/>

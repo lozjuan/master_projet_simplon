@@ -11,4 +11,13 @@ public class MessageService extends GenericService<Message, MessageRepository> {
 
     @Autowired
     public MessageRepository messageRepository;
+
+    public boolean isTreated(Integer id) {
+        Message message = messageRepository.findMessageById(id);
+        if (message.getTreated().equals(0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

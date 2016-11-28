@@ -1,25 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
 
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>recherche PC</title>
+<title>Messagerie</title>
 		<head>
 		        <title>Messagerie</title>
 		</head>
 
 		 <body>
 	        <c:forEach items="${messageList}" var="message">
+	        <c:if test="${message.treated == 0}">
                 ${message.id}
                 ${message.content}
                 ${message.createdAt}
-                <form action="">
-                    <input name="id" value="${message.id}" type="hidden" />
-                    <input type="submit" value="Delete" />
+                <form action="message/setMessageAsTreated">
+                    <security:authorize access="hasAuthority('admin')">
+                        <input name="id" value="${message.id}" type="hidden" />
+                        <input type="submit" value="Traiter" />
+                   </security:authorize>
                 </form>
-             </c:forEach>
+            </c:if>
+            <c:if test="${message.treated == 1}">
+                ${message.id}
+                ${message.content}
+                ${"Traité le"}
+                ${message.treatedAt}
+            </c:if>
+            </c:forEach>
 
 	        <form method="get" action="/message/sendMessage">
                 <div>

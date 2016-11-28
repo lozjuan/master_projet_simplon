@@ -24,14 +24,17 @@
 			        </div>
 			
 			<div class="panel-body">
-    
+
 		<c:forEach items="${userList}" var="user">
+        <c:if test="${user.isEnable == 0}">
+
 			   	${user.id}
 			   	${user.name}
 			   	${user.surname}
 			   	${user.email}
 			   	${user.password}
 			   	${user.role}
+
 			   	<form action="user/deleteUser">
 				<input name="id" value="${user.id}" type="hidden" /> <input
 								type="submit" value="Delete" />
@@ -39,12 +42,20 @@
 			</form>
 			<form method="get" action="user/modifyUser">
 				<div>
-					<input name="id" value="${user.id}" type="hidden" /> <input
-									type="submit" value="Modifier">
+					<input name="id" value="${user.id}" type="hidden" />
+					<input type="submit" value="Modifier">
 				</div>
 			</form>
 
+			<form method="get" action="user/unableUser">
+                <div>
+                    <input name="id" value="${user.id}" type="hidden" />
+                    <input type="submit" value="Désactiver">
+                </div>
+            </form>
+        </c:if>
 		</c:forEach>
+
 	
 		<form method="get" action="/user/addUser">
 			<p>Inserer un utilisateur</p>	

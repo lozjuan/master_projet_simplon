@@ -82,9 +82,6 @@ public class BookingController {
         return testBooking(roomId, computerId, starts, ends, redirectAttributes, booking);
     }
 
-
-
-
 	@RequestMapping("/deleteBook")
 	public ModelAndView deleteBooking(@RequestParam("id") Integer id, ModelMap model) {
 		bookingService.delete(id);

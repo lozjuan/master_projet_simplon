@@ -9,11 +9,20 @@ import co.simplon.repository.UserRepository;
 @Service
 public class UserService extends GenericService<User, UserRepository> {
 
-	@Autowired
-	public UserRepository userRepository;
-	
-	public User authenticateUser (String email) {
-		User userEmail = userRepository.findByEmail(email);
-		return userEmail;
-	}
+    @Autowired
+    public UserRepository userRepository;
+
+    public User authenticateUser(String email) {
+        User userEmail = userRepository.findByEmail(email);
+        return userEmail;
+    }
+
+    public boolean unableUser(Integer id) {
+        User user = userRepository.findUserById(id);
+        if (user.isEnabled()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
