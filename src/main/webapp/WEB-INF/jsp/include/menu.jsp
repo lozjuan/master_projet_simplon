@@ -20,6 +20,8 @@
             <li><a href="/computer">Ordinateurs</a></li>
             <li><a href="/room">Salles</a></li>
             <li><a href="/user">Utilisateurs</a></li>
+        </security:authorize>
+        <security:authorize access="isAuthenticated()">
             <li><a href="/message">Messagerie</a></li>
         </security:authorize>
         </ul>

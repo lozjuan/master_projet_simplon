@@ -19,12 +19,21 @@ public class Message implements Serializable {
 
     private Date createdAt;
 
-    public Message() {}
+    @Column(name = "treated", nullable = false, columnDefinition = "int default 0")
+    private Integer treated;
 
-    public Message(String content, String userName, Date createdAt) {
+    private Date treatedAt;
+
+    public Message() {
+    }
+
+    public Message(String content, String userName, Date createdAt, Integer treated, Date treatedAt) {
         this.content = content;
         this.userName = userName;
         this.createdAt = createdAt;
+        this.treated = treated;
+        this.treatedAt = treatedAt;
+
     }
 
     public Integer getId() {
@@ -54,4 +63,21 @@ public class Message implements Serializable {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
+
+    public Integer getTreated() {
+        return treated;
+    }
+
+    public void setTreated(Integer treated) {
+        this.treated = treated;
+    }
+
+    public Date getTreatedAt() {
+        return treatedAt;
+    }
+
+    public void setTreatedAt(Date treatedAt) {
+        this.treatedAt = treatedAt;
+    }
+
 }

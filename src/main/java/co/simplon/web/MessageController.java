@@ -39,11 +39,22 @@ public class MessageController {
     @RequestMapping(path = "/sendMessage")
     public ModelAndView sendMessage(@RequestParam("content") String content, String userName) {
         Date createdAt = new Date();
+        Date treatedAt = null;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUser = auth.getName();
-        Message message = new Message(content, currentUser, createdAt);
+        Message message = new Message(content, currentUser, createdAt, 0, treatedAt);
         messageService.addOrUpdate(message);
         return new ModelAndView("redirect:/message");
     }
 
+    @RequestMapping(path = "/setMessageAsTreated")
+    public ModelAndView setMessageAsTreated(Integer id) {
+        Message message = messageService.findById(id);
+        if (messageService.isTreated(message.getId())) {
+            message.setTreated(1);
+            message.setTreatedAt(new Date());
+            messageService.addOrUpdate(message);
+        }
+        return new ModelAndView("redirect:/message");
+    }
 }

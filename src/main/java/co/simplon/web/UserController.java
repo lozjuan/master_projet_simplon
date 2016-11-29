@@ -1,6 +1,6 @@
 package co.simplon.web;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.simplon.model.User;
 import co.simplon.service.business.UserService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -39,9 +41,9 @@ public class UserController {
 
     @RequestMapping(path = "/addUser")
     public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
-                                String email, String role) {
+                                String email, String role, Integer isEnable) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = new User(name, surname, email, encoder.encode(password), role);
+        User user = new User(name, surname, email, encoder.encode(password), role, isEnable);
         userService.addOrUpdate(user);
         return new ModelAndView("redirect:/user");
     }
@@ -61,7 +63,7 @@ public class UserController {
     }
 
     @RequestMapping("/modifyUser")
-    public ModelAndView modifyUser(@RequestParam("id") Integer id,ModelMap model) {
+    public ModelAndView modifyUser(@RequestParam("id") Integer id, ModelMap model) {
         User user=userService.findById(id);
         model.addAttribute("user",user);
         return new ModelAndView("modifyUser",model);
@@ -69,7 +71,7 @@ public class UserController {
 
     @RequestMapping("/modifyUserWithInput")
     public ModelAndView modifyUserWithInput(@RequestParam("id") Integer id,@RequestParam("name") String name, @RequestParam("surname") String surname,
-                                            String email, String role, ModelMap model){
+                                            String email, String role){
 
         User user = userService.findById(id);
         user.setName(name);
@@ -78,6 +80,26 @@ public class UserController {
         user.setRole(role);
 
         userService.addOrUpdate(user);
+        return new ModelAndView("redirect:/user");
+    }
+
+    @RequestMapping("/unableUser")
+    public ModelAndView unableUser(@RequestParam("id") Integer id){
+        User user = userService.findById(id);
+        if(userService.unableUser(user.getId())) {
+            user.setIsEnable(1);
+            userService.addOrUpdate(user);
+        }
+        return new ModelAndView("redirect:/user");
+    }
+
+    @RequestMapping("/enableUser")
+    public ModelAndView enableUser(@RequestParam("id") Integer id){
+        User user = userService.findById(id);
+        if(!userService.unableUser(user.getId())) {
+            user.setIsEnable(0);
+            userService.addOrUpdate(user);
+        }
         return new ModelAndView("redirect:/user");
     }
 }

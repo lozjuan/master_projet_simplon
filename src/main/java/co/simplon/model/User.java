@@ -20,120 +20,134 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class User implements Serializable, UserDetails, CredentialsContainer {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	private String name;
+    private String name;
 
-	private String surname;
-	
-	private String password;
+    private String surname;
 
-	@Column(unique=true)
-	private String email;
+    private String password;
 
-	private String role;
+    @Column(unique = true)
+    private String email;
 
-	
-	public User() {
-		super();
-	}
+    private String role;
 
-	public User(String name, String surname, String email, String password, String role) {
-		super();
-		this.name = name;
-		this.surname = surname;
-		this.email = email;
-		this.password = password;
-		this.role = role;
-	}
+    @Column(name = "inEnable", nullable = false, columnDefinition = "int default 0")
+    private Integer isEnable;
 
-	public Integer getId() {
-		return id;
-	}
+    public User() {
+        super();
+    }
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public User(String name, String surname, String email, String password, String role, Integer isEnable) {
+        super();
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.isEnable = isEnable;
 
-	public String getSurname() {
-		return surname;
-	}
+    }
 
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getSurname() {
+        return surname;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	@Override
-	public void eraseCredentials() {
-		this.role = "";
-		
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Integer getIsEnable() {
+        return isEnable;
+    }
+
+    public void setIsEnable(Integer isEnable) {
+        this.isEnable = isEnable;
+    }
+
+    @Override
+    public void eraseCredentials() {
+        this.role = "";
+
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority(role.toString()));
-	}
-	
-	
+    }
 
-	@Override
-	public String getUsername() {
-		return email;
-	}
 
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
+    @Override
+    public String getUsername() {
+        return email;
+    }
 
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
-	@Override
-	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
-	}
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
 
+    @Override
+    public boolean isEnabled() {
+        if (isEnable.equals(0)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
