@@ -1,6 +1,6 @@
 package co.simplon.web;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.simplon.model.User;
 import co.simplon.service.business.UserService;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -86,6 +88,16 @@ public class UserController {
         User user = userService.findById(id);
         if(userService.unableUser(user.getId())) {
             user.setIsEnable(1);
+            userService.addOrUpdate(user);
+        }
+        return new ModelAndView("redirect:/user");
+    }
+
+    @RequestMapping("/enableUser")
+    public ModelAndView enableUser(@RequestParam("id") Integer id){
+        User user = userService.findById(id);
+        if(!userService.unableUser(user.getId())) {
+            user.setIsEnable(0);
             userService.addOrUpdate(user);
         }
         return new ModelAndView("redirect:/user");

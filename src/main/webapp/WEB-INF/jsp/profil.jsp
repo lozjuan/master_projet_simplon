@@ -1,14 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>recherche PC</title>
-		<head>
-		        <title>Item retrouve</title>
-		</head>
-		 <body>
-	        ${currentUser.id}&nbsp;${currentUser.name}&nbsp;${currentUser.surname}&nbsp;${currentUser.email}
-	    </body>
-</html>
+	<title>Votre Profil</title>
+</head>
+
+<t:genericpage>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+    </jsp:attribute>
+
+    <jsp:body>
+
+    <div class="col-md-12">
+    <br><br><br>
+
+      	<div class="panel panel-default">
+
+			        <div class="panel-heading">
+			          <div class="panel-title">
+			            <h4>Votre Profil</h4>
+			          </div>
+			        </div>
+
+			<div class="panel-body">
+                <h4>ID Utilisateur</h4>
+			   	${currentUser.id}<br>
+			   	<h4>Prénom</h4>
+			   	${currentUser.name}<br>
+			   	<h4>Nom</h4>
+			   	${currentUser.surname}<br>
+			   	<h4>Email</h4>
+			   	${currentUser.email}<br>
+			   	<h4>Droits</h4>
+			   	${currentUser.role}<br><br>
+
+			<form method="get" action="">
+                <div>
+                    <input type="submit" value="changer votre mot de pass">
+                </div>
+            </form>
+		</div>
+	</div>
+
+	</jsp:body>
+
+</t:genericpage>

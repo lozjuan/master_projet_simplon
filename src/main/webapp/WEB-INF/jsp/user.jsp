@@ -28,35 +28,51 @@
 		<c:forEach items="${userList}" var="user">
         <c:if test="${user.isEnable == 0}">
 
-			   	${user.id}
-			   	${user.name}
-			   	${user.surname}
-			   	${user.email}
-			   	${user.password}
+			   	${user.id}<br/>
+			   	${user.name}<br/>
+			   	${user.surname}<br/>
+			   	${user.email}<br/>
 			   	${user.role}
-
-			   	<form action="user/deleteUser">
-				<input name="id" value="${user.id}" type="hidden" /> <input
-								type="submit" value="Delete" />
-
-			</form>
-			<form method="get" action="user/modifyUser">
-				<div>
+            <div>
+			   	<form method="post" action="user/deleteUser">
+                    <input name="id" value="${user.id}" type="hidden" />
+                    <input type="submit" value="Delete" />
+			    </form>
+			    <form method="get" action="user/modifyUser">
 					<input name="id" value="${user.id}" type="hidden" />
 					<input type="submit" value="Modifier">
-				</div>
-			</form>
-
-			<form method="get" action="user/unableUser">
-                <div>
+			    </form>
+			    <form method="get" action="user/unableUser">
                     <input name="id" value="${user.id}" type="hidden" />
                     <input type="submit" value="Désactiver">
-                </div>
-            </form>
+                </form>
+            </div>
+        </c:if>
+        <c:if test="${user.isEnable == 1}">
+
+                <p>le compte est bloqué</p>
+                ${user.id}<br/>
+                ${user.name}
+                ${user.surname}<br/>
+                ${user.email}<br/>
+                ${user.role}
+            <div>
+                <form action="user/deleteUser">
+                     <input name="id" value="${user.id}" type="hidden" />
+                     <input type="submit" value="Supprimer" />
+                </form>
+                <form method="get" action="user/modifyUser">
+                        <input name="id" value="${user.id}" type="hidden" />
+                        <input type="submit" value="Modifier">
+                </form>
+                <form method="get" action="user/enableUser">
+                    <input name="id" value="${user.id}" type="hidden" />
+                    <input type="submit" value="Activer">
+                </form>
+            </div>
         </c:if>
 		</c:forEach>
 
-	
 		<form method="get" action="/user/addUser">
 			<p>Inserer un utilisateur</p>	
 			<div>
