@@ -18,7 +18,6 @@
             <div class="logmod__container">
               <ul class="logmod__tabs">
                 <li data-tabtar="lgm-2"><a href="#">Login</a></li>
-                <li data-tabtar="lgm-1"><a href="#">Sign Up</a></li>
               </ul>
               <div class="logmod__tab-wrapper">
               <div class="logmod__tab lgm-1">
@@ -26,7 +25,7 @@
                   <span class="logmod__heading-subtitle">Enter your personal details <strong>to create an acount</strong></span>
                 </div>
                 <div class="logmod__form">
-                  <form accept-charset="utf-8" action="#" class="simform">
+                  <form accept-charset="utf-8" action="" class="simform">
                     <div class="sminputs">
                       <div class="input full">
                         <label class="string optional" for="user-name">Email*</label>
@@ -77,7 +76,7 @@
                       <div class="input full">
                         <label class="string optional" for="user-pw">Password *</label>
                         <input class="string optional" maxlength="255" id="user-pw" name="user-pw" placeholder="Password" type="password" size="50" />
-                                                <span class="hide-password">Show</span>
+                        <span class="hide-password">Show</span>
                       </div>
                     </div>
                     <div class="simform__actions">

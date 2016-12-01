@@ -26,12 +26,21 @@
         </security:authorize>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-             <li><a href="/user/profil">
-                 <security:authorize access="isAuthenticated()">
-                           <security:authentication property="principal.name"/>
-                  </security:authorize></a></li>
-             <li><a href="/logout">Deconnexion</a></li>
-        </ul>
+
+            <li>
+                <security:authorize access="isAnonymous()">
+                <a href="user/createUser">Créer votre compte</a>
+                </security:authorize></a>
+            </li>
+            <li>
+                <a href="/user/profil">
+                <security:authorize access="isAuthenticated()">
+                    <security:authentication property="principal.name"/>
+                </security:authorize></a>
+            </li>
+            <li>
+                <a href="/logout">Deconnexion</a></li>
+                </ul>
     </div>
 </div>
 

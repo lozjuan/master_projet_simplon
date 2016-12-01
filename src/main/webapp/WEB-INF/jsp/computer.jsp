@@ -43,8 +43,8 @@
 
 		<form method="get" action="computer/modifyComputer">
 			<div>
-				<input name="id" value="${computer.id}" type="hidden" /> <input
-									type="submit" value="Modifier">
+				<input name="id" value="${computer.id}" type="hidden" />
+				<input type="submit" value="Modifier">
 			</div>
 		</form>
 

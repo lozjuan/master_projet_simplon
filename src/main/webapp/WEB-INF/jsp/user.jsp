@@ -36,6 +36,7 @@
             <div>
 			   	<form method="post" action="user/deleteUser">
                     <input name="id" value="${user.id}" type="hidden" />
+                    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
                     <input type="submit" value="Delete" />
 			    </form>
 			    <form method="get" action="user/modifyUser">
@@ -80,6 +81,7 @@
 				prenom :<input type="text" name="surname"> 
 				email:<input type="text" name="email">
 				mdp:<input type="text" name="password">
+				mdp2:<input type="text" name="password_control">
 				droits:<input type="text" name="role">
 				<input type="submit" value="Confirmer">
 			</div>
