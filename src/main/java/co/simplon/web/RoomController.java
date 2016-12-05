@@ -75,6 +75,4 @@ public class RoomController {
 		return new ModelAndView("redirect:/room");
 	}
 	
-	
-	
 }
