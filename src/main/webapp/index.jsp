@@ -82,7 +82,7 @@
                     <div class="simform__actions">
                       <input class="sumbit" name="commit" type="submit" value="Log In"/>
                        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-                      <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Forgot your password?<br>Click here</a></span>
+                      <span class="simform__actions-sidetext"><a class="special" role="link" href="/changePassword">Forgot your password?<br>Click here</a></span>
                     </div>
                   </form>
                 </div>

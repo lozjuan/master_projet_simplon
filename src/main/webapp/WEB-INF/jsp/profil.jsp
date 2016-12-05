@@ -35,9 +35,9 @@
 			   	<h4>Droits</h4>
 			   	${currentUser.role}<br><br>
 
-			<form method="get" action="">
+			<form method="get" action="/newPassword">
                 <div>
-                    <input type="submit" value="changer votre mot de pass">
+                    <input type="submit" value="changer votre mot de passe">
                 </div>
             </form>
 		</div>
