@@ -16,11 +16,6 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 @RequestMapping
 public class AuthController {
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView logIn(ModelMap model) {
-		return new ModelAndView("login", model);
-	}
-
 	@RequestMapping(value = "/logout")
 	public ModelAndView logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

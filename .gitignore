@@ -18,3 +18,10 @@ target
 .settings
 .project
 .classpath
+
+#ignore intellij config
+*.iml
+.idea
+
+#ignores hidden mac files
+**/.DS_Store
