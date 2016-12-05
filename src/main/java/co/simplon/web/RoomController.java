@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.simplon.model.Room;
 import co.simplon.service.business.RoomService;
@@ -51,8 +52,14 @@ public class RoomController {
 	}
 
 	@RequestMapping(path="/deleteRoom")
-	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model) {
+	public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model, RedirectAttributes redirectAttr) {
+		try {
 		roomService.delete(id);
+		}
+		catch(Exception e)
+		{
+		redirectAttr.addFlashAttribute("erreur","Erreur, la salle est certainement déjà réservée.");	
+		}
 		return new ModelAndView("redirect:/room");
 	}
 	
