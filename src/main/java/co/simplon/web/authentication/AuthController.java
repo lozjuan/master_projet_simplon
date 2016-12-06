@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.simplon.model.TokenPasswordRecovery;
 import co.simplon.model.User;
+import co.simplon.service.Mailer.SimplonEmailAPI;
 import co.simplon.service.authentication.TokenPasswordRecoveryService;
 import co.simplon.service.business.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class AuthController {
     @Autowired
     public TokenPasswordRecoveryService tokenPasswordRecoveryService;
 
+    @Autowired
+    SimplonEmailAPI simplonEmailAPI;
 
     @RequestMapping(value = "/logout")
     public ModelAndView logoutPage(HttpServletRequest request, HttpServletResponse response) {
@@ -49,11 +52,7 @@ public class AuthController {
 
     @RequestMapping("/emailChangePassword")
     @ResponseBody
-    public String emailChangePassword(@RequestParam(name = "email") String email,
-                                      HttpServletResponse response) {
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-
+    public ModelAndView emailChangePassword(@RequestParam(name = "email") String email) {
         User user = userService.authenticateUser(email);
 
         if (user == null) {
@@ -61,8 +60,14 @@ public class AuthController {
         } else {
             TokenPasswordRecovery token = new TokenPasswordRecovery(user);
             tokenPasswordRecoveryService.addOrUpdate(token);
+
+            String to = user.getEmail();
+            String from = "simplonreservation@gmail.com";
+            String subject = "réinitialisez votre mot de passe";
             String url = "http://localhost:8080/emailChangePasswordWithToken?email=" + user.getEmail() + "&token=" + token.getToken();
-            return url;
+            String body = "Voici l'url qui vous permettra de réinitialiser votre mot de passe : " + url;
+            simplonEmailAPI.SendEmail(to, from, subject, body);
+            return new ModelAndView("recoveryMessageSent");
         }
     }
 
@@ -93,7 +98,6 @@ public class AuthController {
 
     @RequestMapping("/newPassword")
     public ModelAndView changePasswordWithOutToken(ModelMap model) {
-
         return new ModelAndView("settingNewPassword", model);
     }
 }

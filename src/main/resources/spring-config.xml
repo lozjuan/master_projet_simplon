@@ -41,6 +41,8 @@
 	</bean>
 	
 	<import resource="security-config.xml"/>
+	<import resource="mailer-config.xml"/>
+
 
 	<tx:annotation-driven />
 

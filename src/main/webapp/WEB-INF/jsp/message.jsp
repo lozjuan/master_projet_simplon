@@ -37,8 +37,12 @@
                         <input name="id" value="${message.id}" type="hidden" />
                         <input type="submit" value="Traiter" />
                    </security:authorize>
+               </form>
+               <form action="message/reply">
+                   <security:authorize access="hasAuthority('admin')">
+                        <input type="submit" value="Répondre" />
+                  </security:authorize>
                 </form>
-
             </c:if>
             <c:if test="${message.treated == 1}">
                 ${message.id}
@@ -57,7 +61,6 @@
          </form>
 		</div>
 	</div>
-
 	</jsp:body>
 
 </t:genericpage>
