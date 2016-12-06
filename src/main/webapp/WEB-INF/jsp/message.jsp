@@ -24,6 +24,7 @@
 			           <h4>Messagerie</h4>
 			    </div>
 			</div>
+		</div>
 
 		<div class="panel-body">
 
