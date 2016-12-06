@@ -13,18 +13,21 @@ import co.simplon.repository.UserRepository;
 @Service
 public class AuthService implements UserDetailsService {
 
-	@Autowired
+    @Autowired
     private UserRepository userRepository;
 
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
         User user = userRepository.findByEmail(username);
-        if(user==null) {
+        if (user == null) {
             throw new UsernameNotFoundException("User name not found");
+        } else if (!user.isEnabled()) {
+            throw new UsernameNotFoundException("Compte bloqué");
+        } else {
+            return user;
         }
-        return user;
     }
 
 

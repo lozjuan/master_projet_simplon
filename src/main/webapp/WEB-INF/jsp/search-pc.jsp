@@ -9,7 +9,7 @@
 		        <title>Item retrouve</title>
 		</head>
 		 <body>
-		 <form method="get" action="computer">
+		 <form method="get" action="/computer">
 	        ${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
 	        <input type="submit" value="retour" >
 	     </form>	    

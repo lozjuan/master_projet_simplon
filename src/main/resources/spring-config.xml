@@ -13,7 +13,6 @@
 	<context:annotation-config />
 	<jpa:repositories base-package="co.simplon.repository" />
 
-
 	<bean
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
@@ -21,9 +20,8 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:8889/simplon" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
-
+		<property name="username" value="juan" />
+		<property name="password" value="juan" />
 	</bean>
 
 	<bean id="entityManagerFactory"
