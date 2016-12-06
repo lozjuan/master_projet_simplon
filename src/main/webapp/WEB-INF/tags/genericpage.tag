@@ -26,7 +26,6 @@
 		<script type="text/javascript" src="/ressources/js/bootstrap-datetimepicker.js"></script>
 		<script src="/ressources/js/index.js"></script>
 		<script src="/ressources/js/index2.js"></script>
-		<script src="/ressources/js/calendar.js"></script>
 
 	</head>
   	<body>
