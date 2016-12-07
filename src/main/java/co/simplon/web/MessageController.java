@@ -64,18 +64,18 @@ public class MessageController {
     }
 
     @RequestMapping(path = "/reply")
-    public ModelAndView replyMessage() {
-        return new ModelAndView("replyMessage");
-    }
-
-    @RequestMapping(path = "/sendReply", method = RequestMethod.GET )
-    public ModelAndView sendReplyMessage(Integer idMessage, String body) {
+    public ModelAndView replyMessage(Integer idMessage, ModelMap model) {
         Message message = messageService.findById(idMessage);
         String email = messageService.getUserNameByMessageId(message.getId());
-        String to = email;
+        model.addAttribute("email", email);
+        return new ModelAndView("replyMessage", model);
+    }
+
+    @RequestMapping(path = "/sendReply", method = RequestMethod.POST )
+    public ModelAndView sendReplyMessage(String body, String email) {
         String from = "simplonreservation@gmail.com";
         String subject = "Simplon reservation";
-        simplonEmailAPI.SendEmail(to, from, subject, body);
+        simplonEmailAPI.SendEmail(email, from, subject, body);
         return new ModelAndView("replyMessageSent");
     }
 }

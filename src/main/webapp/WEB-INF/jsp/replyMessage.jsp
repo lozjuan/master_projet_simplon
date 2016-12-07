@@ -20,11 +20,14 @@
                   </div>
                 </div>
             <div class="panel-body">
-                <form method="get" action="/message/sendReply">
+            <c:forEach items="${email}" var="email">
+                <form method="post" action="/message/sendReply">
                     <input type="text" name="body">
-                    <input name="idMessage" value="${message.id}" type="hidden" />
                     <input type="submit" value="envoyer">
+                    <input type="hidden" name="email"  value="${email}" />
+                    <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
                 </form>
+            </c:forEach>
             </div>
         </div>
 	</jsp:body>

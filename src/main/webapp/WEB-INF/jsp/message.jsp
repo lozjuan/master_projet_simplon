@@ -40,7 +40,8 @@
                </form>
                <form action="message/reply">
                    <security:authorize access="hasAuthority('admin')">
-                        <input type="submit" value="Répondre" />
+                   <input name="idMessage" value="${message.id}" type="hidden" />
+                    <input type="submit" value="Répondre" />
                   </security:authorize>
                 </form>
             </c:if>

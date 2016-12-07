@@ -23,7 +23,7 @@
               </div>
             </div>
 			<div class="panel-body">
-			    <form method="get" action="/">
+			    <form method="get" action="/booking">
                     <p>Votre message a été envoyé</p>
                 <input type="submit" value="retour" >
 			</div>
