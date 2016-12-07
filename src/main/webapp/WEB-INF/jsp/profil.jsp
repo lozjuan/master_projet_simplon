@@ -37,7 +37,7 @@
 
 			<form method="get" action="">
                 <div>
-                    <input type="submit" value="changer votre mot de pass">
+                    <input type="submit" value="changer votre mot de passe">
                 </div>
             </form>
 		</div>
