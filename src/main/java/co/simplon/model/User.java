@@ -37,7 +37,7 @@ public class User implements Serializable, UserDetails, CredentialsContainer {
 
     private String role;
 
-    @Column(name = "inEnable", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "isEnable", nullable = false)
     private Integer isEnable;
 
     public User() {
@@ -144,7 +144,7 @@ public class User implements Serializable, UserDetails, CredentialsContainer {
 
     @Override
     public boolean isEnabled() {
-        if (isEnable.equals(0)) {
+        if (isEnable.equals(1)) {
             return true;
         } else {
             return false;

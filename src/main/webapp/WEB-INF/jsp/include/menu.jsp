@@ -26,12 +26,6 @@
         </security:authorize>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-
-            <li>
-                <security:authorize access="isAnonymous()">
-                <a href="user/createUser">Créer votre compte</a>
-                </security:authorize></a>
-            </li>
             <li>
                 <a href="/user/profil">
                 <security:authorize access="isAuthenticated()">

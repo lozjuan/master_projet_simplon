@@ -22,7 +22,7 @@
               <div class="logmod__tab-wrapper">
               <div class="logmod__tab lgm-1">
                 <div class="logmod__heading">
-                  <span class="logmod__heading-subtitle">Enter your personal details <strong>to create an acount</strong></span>
+                  <span class="logmod__heading-subtitle">Enter your personal details <strong>to create an account</strong></span>
                 </div>
                 <div class="logmod__form">
                   <form accept-charset="utf-8" action="" class="simform">
@@ -81,25 +81,23 @@
                     </div>
                     <div class="simform__actions">
                       <input class="sumbit" name="commit" type="submit" value="Log In"/>
-                       <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}" />
-                      <span class="simform__actions-sidetext"><a class="special" role="link" href="/changePassword">Forgot your password?<br>Click here</a></span>
+                       <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
+                       <span class="simform__actions-sidetext"><a class="special" role="link" href="/changePassword">Forgot your password?<br>Click here</a></span>
                     </div>
                   </form>
                 </div>
-
                 <div class="logmod__alter">
                   <div class="logmod__alter-container">
-                    <a href="#" class="connect facebook">
+                    <a href="user/signUp" class="connect facebook">
                       <div class="connect__icon">
                         <i class="fa fa-facebook"></i>
                       </div>
                       <div class="connect__context">
-                        <span>Sign in with <strong>Facebook</strong></span>
+                        <span><strong>SIGN UP HERE</strong></span>
                       </div>
                     </a>
                   </div>
                  </div>
-
                 </div>
               </div>
             </div>

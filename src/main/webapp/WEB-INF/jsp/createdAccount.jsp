@@ -22,15 +22,10 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form type="password" method="get" action="/user/createUser">
+					<form type="password" method="get" action="/">
 						<div>
-							nom :
-							<input type="text" required name="name"> prenom :
-							<input type="text" required name="surname"> email:
-							<input type="email" required name="email"> mdp:
-							<input type="password" required name="password"> mdp2:
-							<input type="password" required name="password_control">
-							<input type="submit" value="Confirmer">
+							<h3>Votre compte a été créé</h3>
+							<input type="submit" value="Se connecter">
 						</div>
 					</form>
 				</div>

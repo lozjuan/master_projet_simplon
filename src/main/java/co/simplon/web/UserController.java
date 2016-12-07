@@ -22,7 +22,6 @@ public class UserController {
     @Autowired
     public UserService userService;
 
-
     @RequestMapping
     public ModelAndView getList(ModelMap model) {
         List<User> userList = userService.getAll();
@@ -30,7 +29,7 @@ public class UserController {
         return new ModelAndView("user", model);
     }
 
-    @RequestMapping(path = "/createUser")
+    @RequestMapping(path = "/signUp")
     public ModelAndView singUp(ModelMap model) {
         return new ModelAndView("singup", model);
     }
@@ -39,13 +38,13 @@ public class UserController {
     public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return new ModelAndView("search-user", model);
+        return new ModelAndView("searchUser", model);
     }
 
     //TODO throw exception instead !
-    @RequestMapping(path = "/addUser")
-    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password, String password_control,
-                                String email, String role, Integer isEnable) {
+    @RequestMapping(path = "/createUser")
+    public ModelAndView createUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password, String password_control,
+                                   String email, String role, Integer isEnable) {
         List<User> userList = userService.getAll();
         for (User user : userList) {
             if (user.getEmail().equals(email)) {
@@ -54,9 +53,24 @@ public class UserController {
         }
         if (password.equals(password_control)) {
             PasswordEncoder encoder = new BCryptPasswordEncoder();
-            User user = new User(name, surname, email, encoder.encode(password), role, 0);
+            User user = new User(name, surname, email, encoder.encode(password), "user", 1);
             userService.addOrUpdate(user);
         }
+        return new ModelAndView("createdAccount");
+    }
+
+    @RequestMapping(path = "/addUser")
+    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
+                                String email, String role, Integer isEnable) {
+        List<User> userList = userService.getAll();
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                return new ModelAndView("redirect:/user/addUser");
+            }
+        }
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        User user = new User(name, surname, email, encoder.encode(password), role, isEnable);
+        userService.addOrUpdate(user);
         return new ModelAndView("redirect:/user");
     }
 
@@ -84,13 +98,11 @@ public class UserController {
     @RequestMapping("/modifyUserWithInput")
     public ModelAndView modifyUserWithInput(@RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("surname") String surname,
                                             String email, String role) {
-
         User user = userService.findById(id);
         user.setName(name);
         user.setSurname(surname);
         user.setEmail(email);
         user.setRole(role);
-
         userService.addOrUpdate(user);
         return new ModelAndView("redirect:/user");
     }
@@ -99,7 +111,7 @@ public class UserController {
     public ModelAndView unableUser(@RequestParam("id") Integer id) {
         User user = userService.findById(id);
         if (userService.unableUser(user.getId())) {
-            user.setIsEnable(1);
+            user.setIsEnable(0);
             userService.addOrUpdate(user);
         }
         return new ModelAndView("redirect:/user");
@@ -109,12 +121,10 @@ public class UserController {
     public ModelAndView enableUser(@RequestParam("id") Integer id) {
         User user = userService.findById(id);
         if (!userService.unableUser(user.getId())) {
-            user.setIsEnable(0);
+            user.setIsEnable(1);
             userService.addOrUpdate(user);
         }
         return new ModelAndView("redirect:/user");
     }
-
-
 }
 

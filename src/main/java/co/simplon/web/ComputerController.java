@@ -31,7 +31,7 @@ public class ComputerController {
     public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
         Computer computer = computerService.findById(id);
         model.addAttribute("computer", computer);
-        return new ModelAndView("search-pc", model);
+        return new ModelAndView("searchPc", model);
     }
 
     @RequestMapping(path = "/addComputer")
