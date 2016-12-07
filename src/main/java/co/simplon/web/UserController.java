@@ -42,7 +42,7 @@ public class UserController {
 
     @RequestMapping(path = "/addUser")
     public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
-                                String email, String role, Integer isEnable) {
+                                String email, String role, @RequestParam(name="isEnable", defaultValue="1") Integer isEnable) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User(name, surname, email, encoder.encode(password), role, isEnable);
         userService.addOrUpdate(user);
