@@ -13,6 +13,7 @@
     <jsp:body>
 
     <div class="col-md-12">
+    
       <br><br><br>
       
       	<div class="panel panel-default">
@@ -38,18 +39,15 @@
 		<form action="computer/deleteComputer">
 				<input name="id" value="${computer.id}" type="hidden" />
 				<input type="submit" value="Delete" />
-			</form>
+		</form>
 
 
 		<form method="get" action="computer/modifyComputer">
 			<div>
-				<input name="id" value="${computer.id}" type="hidden" /> <input
-									type="submit" value="Modifier">
+				<input name="id" value="${computer.id}" type="hidden" /> 
+				<input type="submit" value="Modifier">
 			</div>
 		</form>
-
-
-
 
 			<hr>
 
@@ -97,12 +95,14 @@
                 <form method="get" action="/computer/computerById">
                     <p>Recherche ordinateur : inserer l'id</p>
                     <div>
-                        id:<input type="number" name="id"> <input type="submit"
-                            value="Rechercher">
+                        id:<input type="number" name="id"> 
+                        <input type="submit" value="Rechercher">
                     </div>
                 </form>
+                
         </div>
       </div>
     </div>
+	      
 	      </jsp:body>
 </t:genericpage>

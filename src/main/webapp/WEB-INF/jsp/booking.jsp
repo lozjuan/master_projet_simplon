@@ -64,8 +64,8 @@
 			<select name="roomId">
 								<option value=""></option>
 									<c:forEach items="${roomList}" var="room">
-								<option value="${room.id}">${room.name}</option>
-										</c:forEach>
+										<option value="${room.id}">${room.name}</option>
+								  	</c:forEach>
 			</select>
 
 			<hr>
@@ -76,9 +76,10 @@
 								<c:forEach items="${computerList}" var="computer">
 									<option value="${computer.id}">${computer.id}&nbsp;${computer.brand}</option>
 								</c:forEach>
-							</select>
+			</select>
+			
 			<hr>
-
+			
 			debut :
 			<input type="datetime-local" name="starts">
 
@@ -91,22 +92,22 @@
 			<c:set var="userId">
 			    <security:authentication property="principal.id"/>
 			</c:set>
+			
 			<input type='hidden' name="userId" value="${userId}">
-
 			<input type="submit" value="Confirmer">
-
 
 	</form>
 
 			<c:if test="${erreur != null}">
-	        <div style="color: red;"><c:out value="${erreur}"/></div>
-	    </c:if>
+	        	<div style="color: red;"><c:out value="${erreur}"/></div>
+	    	</c:if>
             </div>
 
         </div><!--/panel content-->
       </div><!--/panel-->
 
 	<hr>
+	
      </security:authorize>
       </jsp:body>
 </t:genericpage>
