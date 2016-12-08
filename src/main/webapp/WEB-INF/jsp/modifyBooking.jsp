@@ -33,7 +33,8 @@
 					<option value="${computer.id}">${computer.id}&nbsp;${computer.brand}</option>
 				</c:if>
 			</c:forEach>
-		</select> starts : <input type="datetime-local" name="starts"
+		</select> starts : 
+			<input type="datetime-local" name="starts"
 			value=<fmt:formatDate pattern="yyyy-MM-dd'T'HH:mm" value="${booking.starts}"/>> ends : <input
 			type="datetime-local" name="ends" value=<fmt:formatDate pattern="yyyy-MM-dd'T'HH:mm" value="${booking.ends}"/>> <input
 			name="id" value="${booking.id}" type="hidden" /> <select

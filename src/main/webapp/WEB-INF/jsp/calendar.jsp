@@ -38,9 +38,22 @@
         $(function () {
             $('#datetimepicker12').datetimepicker({
                 inline: true,
-                sideBySide: true
+                sideBySide: true,
+                defaultDate:"10/12/2012"
+            }).on("dp.change", function(e) {
+            	console.log(e.date);
+            	var date = $("#datetimepicker12").data("datetimepicker");
+            	console.log(date);
             });
         });
+        
+        
+        
+        
+        
+        
+        
+        <%--$( "#datetimepicker12" ).datepicker( "setDate", "10/12/2012" )--%>
     </script>
 </div>
         
