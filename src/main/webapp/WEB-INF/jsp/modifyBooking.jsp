@@ -1,17 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Modify PC</title>
-</head>
-<body>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
-	<form method=get action="modifyBookingWithInput">
+<head>
+	<title>Modifier la reservation</title>
+</head>
+
+<t:genericpage>
+    <jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+    </jsp:attribute>
+
+	<jsp:body>
+
+    <div class="col-md-12">
+      <br><br><br>
+  <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <div class="panel-title">
+            <h4>Modifier la réservation</h4>
+          </div>
+        </div>
+
+		<div class="modifybooking">
+			<form method=get action="modifyBookingWithInput">
 		Salles : <select name="roomId">
 			<option value=""></option>
 
@@ -49,10 +64,10 @@
 			</c:forEach>
 		</select> <input type="submit" value="Modify" />
 	</form>
-
-
-
+</div>
+	
+      </jsp:body>
+</t:genericpage>
+<script type="text/javascript" src="/ressources/js/bookings.js"></script>
 </body>
-
-
 </html>
