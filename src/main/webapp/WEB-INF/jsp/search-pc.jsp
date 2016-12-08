@@ -25,7 +25,7 @@
           </div>
         </div>
 
-	<div class="modifybooking-user">
+	<div class="search-pc">
 	 <form method="get" action="/computer">
 	        ${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
 	        <input type="submit" value="retour" >

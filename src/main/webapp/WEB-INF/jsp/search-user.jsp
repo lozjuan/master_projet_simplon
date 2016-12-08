@@ -30,6 +30,7 @@
 		${user.id}&nbsp;${user.name}&nbsp;${user.surname}&nbsp;${user.role}
 		<input type="submit" value="retour">
 	</form>
+	</div>
 	
       </jsp:body>
 </t:genericpage>
