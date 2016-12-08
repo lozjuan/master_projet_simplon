@@ -1,17 +1,17 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 
 <head>
-	<title>Room</title>
+<title>Room</title>
 </head>
 
 <t:genericpage>
-    <jsp:attribute name="header">
-      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+	<jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp"%>
     </jsp:attribute>
 
-    <jsp:body>
+	<jsp:body>
     
     <div class="col-md-12">
       <br><br><br>
@@ -35,18 +35,24 @@
 					<input name="id" value="${room.id}" type="hidden" /> 
 					<input type="submit" value="Delete" />
 				</form>
+			
 				<form method="get" action="room/modifyRoom">
 					<input name="id" value="${room.id}" type="hidden" /> <input
-						type="submit" value="Modifier"/>
+								type="submit" value="Modifier" />
 				</form>
 		</c:forEach>
-	
+		<c:if test="${erreur != null}">
+	        <div style="color: red;">
+								<c:out value="${erreur}" />
+							</div>
+	    </c:if>
 		<form method="get" action="/room/addRoom">
 			<p>Inserer une salle</p>
 			<div>
 				name :<input type="text" name="name"> 
 				places :<input type="number" name="places"> 
-				description:<input type="text"name="description"><input type="submit" value="Confirmer">
+				description:<input type="text" name="description"><input
+								type="submit" value="Confirmer">
 	
 			</div>
 		</form>
@@ -55,7 +61,7 @@
 			<p>Recherche de salles</p>
 			<div>
 				id:<input type="number" name="id"> <input type="submit"
-					value="Rechercher">
+								value="Rechercher">
 			</div>
 		</form>
 		

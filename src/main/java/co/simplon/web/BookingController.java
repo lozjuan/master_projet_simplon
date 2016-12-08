@@ -1,7 +1,5 @@
 package co.simplon.web;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -117,10 +115,10 @@ public class BookingController {
 
 	private ModelAndView testBooking(Integer roomId, Integer computerId, @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date starts,@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") Date ends,
 			RedirectAttributes redirectAttributes, Booking booking) {
-		if (starts.before(Date.from(Instant.now()))) redirectAttributes.addFlashAttribute("erreur","La date de début est inférieure à la date du jour");
-        else if (ends.before(starts)) redirectAttributes.addFlashAttribute("erreur","La date de début est supérieure à la date de fin");
-        else if (starts.equals(null)) redirectAttributes.addFlashAttribute("erreur","La date de début est nulle");
-        else if (ends.equals(null)) redirectAttributes.addFlashAttribute("erreur","La date de fin est nulle");
+		if (starts==null) redirectAttributes.addFlashAttribute("erreur","La date de début est nulle");
+        else if (ends==null) redirectAttributes.addFlashAttribute("erreur","La date de fin est nulle");
+        else if (starts.before(Date.from(Instant.now()))) redirectAttributes.addFlashAttribute("erreur","La date de début est inférieure à la date du jour");
+        else if (ends.before(starts)) redirectAttributes.addFlashAttribute("erreur","La date de début est supérieure à la date de fin"); 
         else if ((roomId == -1) && (computerId == -1)) redirectAttributes.addFlashAttribute("erreur","Vous n'avez réservé ni salle ni ordinateur");
         else if ((!bookingService.isAvaibleComputer(computerId, starts, ends)) && (!bookingService.isAvaibleRoom(roomId,starts,ends))) redirectAttributes.addFlashAttribute("erreur","L'ordinateur et la salle sont déjà réservés");
         else if (!bookingService.isAvaibleComputer(computerId, starts, ends)) redirectAttributes.addFlashAttribute("erreur","L'ordinateur est déjà réservé");

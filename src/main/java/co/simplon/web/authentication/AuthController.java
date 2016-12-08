@@ -24,4 +24,9 @@ public class AuthController {
 		}
 		return new ModelAndView("redirect:/");
 	}
+	
+	@RequestMapping(value = "/calendar")
+	public ModelAndView logoutPage() {
+		return new ModelAndView("/calendar");
+	}
 }

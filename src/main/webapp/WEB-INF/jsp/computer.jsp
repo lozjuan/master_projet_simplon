@@ -1,16 +1,16 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
 <head>
-	<title>Computer</title>
+<title>Computer</title>
 </head>
 
 <t:genericpage>
-    <jsp:attribute name="header">
-      <%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
+	<jsp:attribute name="header">
+      <%@ include file="/WEB-INF/jsp/include/menu.jsp"%>
     </jsp:attribute>
 
-    <jsp:body>
+	<jsp:body>
 
     <div class="col-md-12">
       <br><br><br>
@@ -33,12 +33,14 @@
 		   	${computer.model}
 			<br>
 		   	${computer.serial}
-			<br><br>
+			<br>
+						<br>
 
 		<form action="computer/deleteComputer">
 				<input name="id" value="${computer.id}" type="hidden" />
 				<input type="submit" value="Delete" />
 			</form>
+			
 
 
 		<form method="get" action="computer/modifyComputer">
@@ -54,6 +56,11 @@
 			<hr>
 
 		</c:forEach>
+		  <c:if test="${erreur != null}">
+	        <div style="color: red;">
+							<c:out value="${erreur}" />
+						</div>
+	    </c:if>  
             <form method="get" action="computer/addComputer">
                 <p>Inserer un ordinateur</p>
                     <div>
@@ -69,38 +76,18 @@
                     </div>
             </form>
 
-            <form method="get" action="/computer/addComputer">
-                    <p>Inserer un ordinateur</p>
-                    <div>
-                        brand :
-                        <input type="text" name="brand">
-                        &nbsp;
-                        model :
-                        <input type="text" name="model">
-                            &nbsp;
-                        serial:
-                        <input type="number" name="serial">
-                        <input type="submit" value="Confirmer">
-                    </div>
-                </form>
+     
 
 						<hr>
-
-						<form method="get" action="computer/computerById">
-							<p>Recherche ordinateur : inserer l'id</p>
-							<div>
-								id:<input type="number" name="id"> <input type="submit"
-								value="Rechercher">
-							</div>
-						</form>
 
                 <form method="get" action="/computer/computerById">
                     <p>Recherche ordinateur : inserer l'id</p>
                     <div>
-                        id:<input type="number" name="id"> <input type="submit"
-                            value="Rechercher">
+                        id:<input type="number" name="id"> <input
+								type="submit" value="Rechercher">
                     </div>
                 </form>
+           
         </div>
       </div>
     </div>

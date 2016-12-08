@@ -14,7 +14,7 @@
                 login-page="/"
                 username-parameter="user-email"
                 password-parameter="user-pw"
-                authentication-success-forward-url="/booking"/>
+                authentication-success-forward-url="/calendar"/>
         <intercept-url pattern="/user" access="hasAuthority('admin')"/>
         <intercept-url pattern="/computer" access="hasAuthority('admin')"/>
         <intercept-url pattern="/room" access="hasAuthority('admin')"/>
