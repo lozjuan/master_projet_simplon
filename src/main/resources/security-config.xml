@@ -11,19 +11,18 @@
         <intercept-url pattern="/ressources/**" access="permitAll"/>
         <form-login
                 login-processing-url="/login"
-                login-page="/"
+                login-page="/login"
                 username-parameter="user-email"
                 password-parameter="user-pw"
-                authentication-success-forward-url="/booking"/>
+                default-target-url="/"/>
         <intercept-url pattern="/user" access="hasAuthority('admin')"/>
         <intercept-url pattern="/computer" access="hasAuthority('admin')"/>
         <intercept-url pattern="/room" access="hasAuthority('admin')"/>
         <intercept-url pattern="/message**" access="isAuthenticated()"/>
-
+        <intercept-url pattern="/bookings/getCalendarBookings" access="permitAll" />
         <intercept-url pattern="/**" access="permitAll"/>
         <csrf/>
     </http>
-
 
     <authentication-manager>
         <authentication-provider ref="daoAuthenticationProvider"/>

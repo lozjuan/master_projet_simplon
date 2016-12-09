@@ -3,16 +3,28 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <head>
-	<title>Recherche Salle</title>
+	<title>Recherche utilisateur</title>
 </head>
 
 <t:genericpage>
 	<jsp:attribute name="header">
 		<%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
 	</jsp:attribute>
-	<form method="get" action="/user">
-		${user.id}&nbsp;${user.name}&nbsp;${user.surname}&nbsp;${user.role}
-		<input type="submit" value="retour">
-	</form>
+	<jsp:body>
+		<div class="col-md-12">
+			<br>
+			<br>
+			<br>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4>Recherche utilisateur</h4>
+					</div>
+				</div>
+				<div class="search-user">
+					<form method="get" action="/user">
+						${user.id}&nbsp;${user.name}&nbsp;${user.surname}&nbsp;${user.role}
+						<input type="submit" value="retour">
+					</form>
 	</jsp:body>
 </t:genericpage>

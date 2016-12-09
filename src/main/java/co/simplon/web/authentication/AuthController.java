@@ -36,17 +36,22 @@ public class AuthController {
     @Autowired
     SimplonEmailAPI simplonEmailAPI;
 
+    @RequestMapping(value = "/login")
+    public ModelAndView loginPage() {
+        return new ModelAndView("login");
+    }
+
     @RequestMapping(value = "/logout")
     public ModelAndView logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return new ModelAndView("redirect:/");
+        return new ModelAndView("login");
     }
 
     @RequestMapping("/changePassword")
-    public ModelAndView loginPage() {
+    public ModelAndView forgotPassword() {
         return new ModelAndView("changingPassword");
     }
 
@@ -99,5 +104,10 @@ public class AuthController {
     @RequestMapping("/newPassword")
     public ModelAndView changePasswordWithOutToken(ModelMap model) {
         return new ModelAndView("settingNewPassword", model);
+    }
+
+    @RequestMapping(value = "/calendar")
+    public ModelAndView getHomePage() {
+        return new ModelAndView("/calendar");
     }
 }

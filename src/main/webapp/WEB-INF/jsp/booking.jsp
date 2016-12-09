@@ -1,7 +1,8 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+
 <head>
 	<title>Reservation</title>
 </head>
@@ -31,12 +32,16 @@
 						<br> ${booking.user.name}
 						<br>
 						<form action="deleteBook">
-							<input name="id" value="${booking.id}" type="hidden" />
-							<input type="submit" value="Delete" />
+						    <security:authorize access="hasAuthority('admin')">
+                                <input name="id" value="${booking.id}" type="hidden" />
+                                <input type="submit" value="Delete" />
+                            </security:authorize>
 						</form>
 						<form method="get" action="modifyBookingForm">
-							<input name="id" value="${booking.id}" type="hidden" />
-							<input type="submit" value="Modifier" />
+                            <security:authorize access="isAuthenticated()">
+                                <input name="id" value="${booking.id}" type="hidden" />
+                                <input type="submit" value="Modifier" />
+                            </security:authorize>
 						</form>
 					</c:forEach>
 					<form method="get" action="book">
@@ -56,35 +61,25 @@
 									<option value="${computer.id}">${computer.id}&nbsp;${computer.brand}</option>
 								</c:forEach>
 							</select>
-							<hr>
-							<div class="form-group">
-								<label for="book-start-input">Date de début</label>
-								<div class="input-group date" id="book-start">
-									<input type='text' name="starts" class="form-control" placeholder="Date de début" id="book-start-input" />
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar"></span>
-									</span>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="book-end-input">Date de fin</label>
-								<div class="input-group date" id="book-end">
-									<input type='text' name="ends" class="form-control" placeholder="Date de fin" id="book-end-input" />
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-calendar"></span>
-									</span>
-								</div>
-							</div>
-					</form>
-					<c:if test="${erreur != null}">
-						<div style="color: red;">
-							<c:out value="${erreur}" />
-						</div>
-					</c:if>
-					</security:authorize>
+							<hr> debut :
+							<input type="datetime-local" name="starts">
+							<hr> fin :
+							<input type="datetime-local" name="ends">
+							<c:set var="userId">
+                            <security:authentication property="principal.id" />
+							</c:set>
+							<input type='hidden' name="userId" value="${userId}">
+							<input type="submit" value="Confirmer">
 				</div>
+				</form>
+				<c:if test="${erreur != null}">
+					<div style="color: red;">
+						<c:out value="${erreur}" />
+					</div>
+				</c:if>
+				</security:authorize>
 			</div>
-			<hr>
+		</div>
+		<hr>
 	</jsp:body>
 </t:genericpage>
-<script type="text/javascript" src="/ressources/js/bookings.js"></script>

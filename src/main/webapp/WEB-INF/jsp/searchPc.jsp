@@ -3,7 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <head>
-	<title>Item retrouve</title>
+	<title>Recherche PC</title>
 </head>
 
 <t:genericpage>
@@ -11,9 +11,21 @@
 		<%@ include file="/WEB-INF/jsp/include/menu.jsp" %>
 	</jsp:attribute>
 	<jsp:body>
-		<form method="get" action="/computer">
-			${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
-			<input type="submit" value="retour">
-		</form>
+		<div class="col-md-12">
+			<br>
+			<br>
+			<br>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<h4>Item retrouvé </h4>
+					</div>
+				</div>
+				<div class="modifybooking-user">
+					<form method="get" action="/computer">
+						${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
+						<input type="submit" value="retour">
+					</form>
+				</div>
 	</jsp:body>
 </t:genericpage>

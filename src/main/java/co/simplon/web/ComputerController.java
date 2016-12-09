@@ -52,7 +52,6 @@ public class ComputerController {
     @RequestMapping("/modifyComputerWithInput")
     public ModelAndView modifyComputerWithInput(@RequestParam("id") Integer id, @RequestParam("brand") String brand, @RequestParam("model") String model,
                                                 String serial, ModelMap modele) {
-
         Computer computer = computerService.findById(id);
         computer.setBrand(brand);
         computer.setModel(model);
@@ -60,7 +59,6 @@ public class ComputerController {
         computerService.addOrUpdate(computer);
         return new ModelAndView("redirect:/computer");
     }
-
 
     @RequestMapping(path = "/deleteComputer")
     public ModelAndView deleteComputer(@RequestParam("id") Integer id) {

@@ -12,116 +12,130 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 public class Booking implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private Integer id;
-
-
-	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Room.class)
-	@JoinColumn(name = "roomId")
-	private Room room;
-
-	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = Computer.class)
-	@JoinColumn(name = "computerId")
-	private Computer computer;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @Expose
+    private Integer id;
 
 
+    @ManyToOne(cascade = {CascadeType.MERGE}, targetEntity = Room.class)
+    @JoinColumn(name = "roomId")
+    @Expose
+    private Room room;
 
-	@Column(name="starts")
-	private Date starts;
-
-	@Column(name="ends")
-	private Date ends;
-	
-	private Date createdAt;
-
-
-	@ManyToOne(cascade = { CascadeType.MERGE }, targetEntity = User.class)
-	@JoinColumn(name = "userId")
-	private User user;
+    @ManyToOne(cascade = {CascadeType.MERGE}, targetEntity = Computer.class)
+    @JoinColumn(name = "computerId")
+    @Expose
+    private Computer computer;
 
 
-	public Booking() {
-		super();
-	}
+    @Column(name = "starts")
+    @Expose
+    private Date starts;
 
-	public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt, User userId) {
-		super();
-		this.room = roomId;
-		this.computer = computerId;
-		this.starts = starts;
-		this.ends = ends;
-		this.createdAt = createdAt;
-		this.user = userId;
-	}
+    @Column(name = "ends")
+    @Expose
+    private Date ends;
 
-	public Integer getId() {
-		return id;
-	}
+    private Date createdAt;
 
+    @ManyToOne(cascade = {CascadeType.MERGE}, targetEntity = User.class)
+    @JoinColumn(name = "userId")
+    @Expose
+    private User user;
 
-	public Date getStarts() {
-		return starts;
-	}
+    private String title;
 
-	public void setStarts(Date starts) {
-		this.starts = starts;
-	}
+    public Booking() {
+        super();
+    }
 
-	public Date getEnds() {
-		return ends;
-	}
+    public Booking(Room roomId, Computer computerId, Date starts, Date ends, Date createdAt, User user) {
+        super();
+        this.room = roomId;
+        this.computer = computerId;
+        this.starts = starts;
+        this.ends = ends;
+        this.createdAt = createdAt;
+        this.user = user;
+        this.title = "";
+        if (room != null) {
+            this.title += room.getName() + " " + this.starts + " " + this.ends;
+        }
+        if (computer != null) {
+            this.title += " - " + computer.getBrand() + " " + computer.getModel() + " " + this.starts + " " + this.ends ;
+        }
+    }
 
-	public void setEnds(Date ends) {
-		this.ends = ends;
-	}
+    public Integer getId() {
+        return id;
+    }
 
+    public Date getStarts() {
+        return starts;
+    }
 
+    public void setStarts(Date starts) {
+        this.starts = starts;
+    }
 
-	public Room getRoom() {
-		return room;
-	}
+    public Date getEnds() {
+        return ends;
+    }
 
-	
-	public Computer getComputer() {
-		return computer;
-	}
+    public void setEnds(Date ends) {
+        this.ends = ends;
+    }
 
-	public void setComputer(Computer computer) {
-		this.computer = computer;
-	}
+    public Room getRoom() {
+        return room;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public Computer getComputer() {
+        return computer;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setComputer(Computer computer) {
+        this.computer = computer;
+    }
 
+    public User getUser() {
+        return user;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setRoom(Room room) {
-		this.room = room;
-	}
+    public void setRoom(Room room) {
+        this.room = room;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	}
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

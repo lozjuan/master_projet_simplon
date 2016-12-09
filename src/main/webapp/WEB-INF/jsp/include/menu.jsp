@@ -28,13 +28,22 @@
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <a href="/user/profil">
-                <security:authorize access="isAuthenticated()">
-                    <security:authentication property="principal.name"/>
-                </security:authorize></a>
+                    <security:authorize access="isAuthenticated()">
+                        <security:authentication property="principal.name"/>
+                    </security:authorize>
+                </a>
             </li>
             <li>
-                <a href="/logout">Deconnexion</a></li>
-                </ul>
+                <security:authorize access="isAuthenticated()">
+                    <a href="/logout">Deconnexion</a>
+                 </security:authorize>
+            </li>
+            <li>
+                <security:authorize access="isAnonymous()">
+                    <a href="/login">Se connecter</a>
+                 </security:authorize>
+            </li>
+        </ul>
     </div>
 </div>
 
