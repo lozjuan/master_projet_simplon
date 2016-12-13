@@ -1,9 +1,5 @@
 package co.simplon.web;
 
-
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,13 +14,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import co.simplon.model.User;
 import co.simplon.service.business.UserService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     public UserService userService;
-
 
     @RequestMapping
     public ModelAndView getList(ModelMap model) {
@@ -33,16 +30,45 @@ public class UserController {
         return new ModelAndView("user", model);
     }
 
+    @RequestMapping(path = "/signUp")
+    public ModelAndView singUp(ModelMap model) {
+        return new ModelAndView("singup", model);
+    }
+
     @RequestMapping(path = "/userById")
     public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return new ModelAndView("search-user", model);
+        return new ModelAndView("searchUser", model);
+    }
+
+    //TODO throw exception instead !
+    @RequestMapping(path = "/createUser")
+    public ModelAndView createUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password, String password_control,
+                                   String email, String role, Integer isEnable) {
+        List<User> userList = userService.getAll();
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                return new ModelAndView("redirect:/user/createUser");
+            }
+        }
+        if (password.equals(password_control)) {
+            PasswordEncoder encoder = new BCryptPasswordEncoder();
+            User user = new User(name, surname, email, encoder.encode(password), "user", 1);
+            userService.addOrUpdate(user);
+        }
+        return new ModelAndView("createdAccount");
     }
 
     @RequestMapping(path = "/addUser")
     public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
-                                String email, String role, @RequestParam(name="isEnable", defaultValue="1") Integer isEnable) {
+                                String email, String role, Integer isEnable) {
+        List<User> userList = userService.getAll();
+        for (User user : userList) {
+            if (user.getEmail().equals(email)) {
+                return new ModelAndView("redirect:/user/addUser");
+            }
+        }
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User(name, surname, email, encoder.encode(password), role, isEnable);
         userService.addOrUpdate(user);
@@ -51,11 +77,11 @@ public class UserController {
 
     @RequestMapping(path = "/deleteUser")
     public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model, RedirectAttributes redirectAttr) {
-    	
+
     	try{
         userService.delete(id);}
     	catch(Exception e){
-    		redirectAttr.addFlashAttribute("erreur","Erreur, l'user a certainement déjà effectué une réservation.");	
+    		redirectAttr.addFlashAttribute("erreur","Erreur, l'user a certainement déjà effectué une réservation.");
     	}
         return new ModelAndView("redirect:/user");
     }
@@ -70,40 +96,38 @@ public class UserController {
 
     @RequestMapping("/modifyUser")
     public ModelAndView modifyUser(@RequestParam("id") Integer id, ModelMap model) {
-        User user=userService.findById(id);
-        model.addAttribute("user",user);
-        return new ModelAndView("modifyUser",model);
+        User user = userService.findById(id);
+        model.addAttribute("user", user);
+        return new ModelAndView("modifyUser", model);
     }
 
     @RequestMapping("/modifyUserWithInput")
-    public ModelAndView modifyUserWithInput(@RequestParam("id") Integer id,@RequestParam("name") String name, @RequestParam("surname") String surname,
-                                            String email, String role){
-
+    public ModelAndView modifyUserWithInput(@RequestParam("id") Integer id, @RequestParam("name") String name, @RequestParam("surname") String surname,
+                                            String email, String role) {
         User user = userService.findById(id);
         user.setName(name);
         user.setSurname(surname);
         user.setEmail(email);
         user.setRole(role);
-
         userService.addOrUpdate(user);
         return new ModelAndView("redirect:/user");
     }
 
     @RequestMapping("/unableUser")
-    public ModelAndView unableUser(@RequestParam("id") Integer id){
+    public ModelAndView unableUser(@RequestParam("id") Integer id) {
         User user = userService.findById(id);
-        if(userService.unableUser(user.getId())) {
-            user.setIsEnable(1);
+        if (userService.unableUser(user.getId())) {
+            user.setIsEnable(0);
             userService.addOrUpdate(user);
         }
         return new ModelAndView("redirect:/user");
     }
 
     @RequestMapping("/enableUser")
-    public ModelAndView enableUser(@RequestParam("id") Integer id){
+    public ModelAndView enableUser(@RequestParam("id") Integer id) {
         User user = userService.findById(id);
-        if(!userService.unableUser(user.getId())) {
-            user.setIsEnable(0);
+        if (!userService.unableUser(user.getId())) {
+            user.setIsEnable(1);
             userService.addOrUpdate(user);
         }
         return new ModelAndView("redirect:/user");

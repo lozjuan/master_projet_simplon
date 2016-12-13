@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Computer implements Serializable {
@@ -15,17 +16,19 @@ public class Computer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Expose
 	private Integer id;
 
+	@Expose
 	private String brand;
 
+	@Expose
 	private String model;
 
 	@Column(unique=true, nullable=false)
+	@Expose
 	private String serial;
 
-	
-	
 	public Computer() {
 		super();
 	}

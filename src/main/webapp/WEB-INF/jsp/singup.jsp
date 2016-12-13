@@ -3,7 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <head>
-	<title>Votre Profil</title>
+	<title>User</title>
 </head>
 
 <t:genericpage>
@@ -18,32 +18,21 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">
-						<h4>Votre Profil</h4>
+						<h4>Créer votre compte</h4>
 					</div>
 				</div>
 				<div class="panel-body">
-					<h4>ID Utilisateur</h4>
-					${currentUser.id}
-					<br>
-					<h4>Prénom</h4>
-					${currentUser.name}
-					<br>
-					<h4>Nom</h4>
-					${currentUser.surname}
-					<br>
-					<h4>Email</h4>
-					${currentUser.email}
-					<br>
-					<h4>Droits</h4>
-					${currentUser.role}
-					<br>
-					<br>
-					<form method="get" action="/newPassword">
+					<form type="password" method="get" action="/user/createUser">
 						<div>
-							<input type="submit" value="changer votre mot de passe">
+							nom :
+							<input type="text" required name="name"> prenom :
+							<input type="text" required name="surname"> email:
+							<input type="email" required name="email"> mdp:
+							<input type="password" required name="password"> mdp2:
+							<input type="password" required name="password_control">
+							<input type="submit" value="Confirmer">
 						</div>
 					</form>
 				</div>
-			</div>
 	</jsp:body>
 </t:genericpage>

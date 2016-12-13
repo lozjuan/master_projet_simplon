@@ -20,4 +20,9 @@ public class MessageService extends GenericService<Message, MessageRepository> {
             return false;
         }
     }
+
+    public String getUserNameByMessageId(Integer id) {
+        Message message = messageRepository.findMessageById(id);
+        return message.getUserName();
+    }
 }

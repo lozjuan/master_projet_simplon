@@ -16,6 +16,7 @@ import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class User implements Serializable, UserDetails, CredentialsContainer {
@@ -24,20 +25,25 @@ public class User implements Serializable, UserDetails, CredentialsContainer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Expose
     private Integer id;
 
+    @Expose
     private String name;
 
+    @Expose
     private String surname;
 
     private String password;
 
     @Column(unique = true)
+    @Expose
     private String email;
 
+    @Expose
     private String role;
 
-    @Column(name = "inEnable", nullable = false, columnDefinition = "int default 0")
+    @Column(name = "isEnable", nullable = false)
     private Integer isEnable;
 
     public User() {
@@ -144,7 +150,7 @@ public class User implements Serializable, UserDetails, CredentialsContainer {
 
     @Override
     public boolean isEnabled() {
-        if (isEnable.equals(0)) {
+        if (isEnable.equals(1)) {
             return true;
         } else {
             return false;

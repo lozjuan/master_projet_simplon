@@ -3,7 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <head>
-	<title>Votre Profil</title>
+	<title>Envoyer un message</title>
 </head>
 
 <t:genericpage>
@@ -18,31 +18,18 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">
-						<h4>Votre Profil</h4>
+						<h4>Envoyer un message</h4>
 					</div>
 				</div>
 				<div class="panel-body">
-					<h4>ID Utilisateur</h4>
-					${currentUser.id}
-					<br>
-					<h4>Prénom</h4>
-					${currentUser.name}
-					<br>
-					<h4>Nom</h4>
-					${currentUser.surname}
-					<br>
-					<h4>Email</h4>
-					${currentUser.email}
-					<br>
-					<h4>Droits</h4>
-					${currentUser.role}
-					<br>
-					<br>
-					<form method="get" action="/newPassword">
-						<div>
-							<input type="submit" value="changer votre mot de passe">
-						</div>
-					</form>
+					<c:forEach items="${email}" var="email">
+						<form method="post" action="/message/sendReply">
+							<input type="text" name="body">
+							<input type="submit" value="envoyer">
+							<input type="hidden" name="email" value="${email}" />
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						</form>
+					</c:forEach>
 				</div>
 			</div>
 	</jsp:body>

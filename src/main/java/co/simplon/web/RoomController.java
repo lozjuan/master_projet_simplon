@@ -40,7 +40,7 @@ public class RoomController {
 	public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
 		Room room = roomService.findById(id);
 		model.addAttribute("room", room);
-		return new ModelAndView("room/search-room", model);
+		return new ModelAndView("room/searchRoom", model);
 	}
 
 	@RequestMapping(path="/addRoom")
@@ -58,7 +58,7 @@ public class RoomController {
 		}
 		catch(Exception e)
 		{
-		redirectAttr.addFlashAttribute("erreur","Erreur, la salle est certainement déjà réservée.");	
+		redirectAttr.addFlashAttribute("erreur","Erreur, la salle est certainement déjà réservée.");
 		}
 		return new ModelAndView("redirect:/room");
 	}
@@ -72,8 +72,8 @@ public class RoomController {
 	
 	@RequestMapping("/modifyRoomWithInput")
 	public ModelAndView modifyComputerWithInput(@RequestParam("id") Integer id,@RequestParam("name") String name, @RequestParam("places") Integer places,
-			String description, ModelMap model){
-		
+			String description, ModelMap model) {
+
 		Room room = roomService.findById(id);
 		room.setName(name);
 		room.setPlaces(places);
@@ -81,5 +81,4 @@ public class RoomController {
 		roomService.addOrUpdate(room);
 		return new ModelAndView("redirect:/room");
 	}
-	
 }

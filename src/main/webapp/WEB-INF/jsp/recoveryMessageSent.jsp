@@ -3,7 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <head>
-	<title>Votre Profil</title>
+	<title>Changer de mot de passe</title>
 </head>
 
 <t:genericpage>
@@ -18,32 +18,13 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">
-						<h4>Votre Profil</h4>
+						<h4>Message envoyé</h4>
 					</div>
 				</div>
 				<div class="panel-body">
-					<h4>ID Utilisateur</h4>
-					${currentUser.id}
-					<br>
-					<h4>Prénom</h4>
-					${currentUser.name}
-					<br>
-					<h4>Nom</h4>
-					${currentUser.surname}
-					<br>
-					<h4>Email</h4>
-					${currentUser.email}
-					<br>
-					<h4>Droits</h4>
-					${currentUser.role}
-					<br>
-					<br>
-					<form method="get" action="/newPassword">
-						<div>
-							<input type="submit" value="changer votre mot de passe">
-						</div>
-					</form>
+					<form method="get" action="/">
+						<p>Un Email vous a été envoyé avec le lien de réinitialisation</p>
+						<input type="submit" value="retour">
 				</div>
-			</div>
 	</jsp:body>
 </t:genericpage>
