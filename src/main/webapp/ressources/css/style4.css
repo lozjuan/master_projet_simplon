@@ -2,3 +2,10 @@
     top: 0;
     right: -15px;
 }
+
+//datetimepicker calendar
+
+.form-group {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
