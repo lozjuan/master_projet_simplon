@@ -117,7 +117,7 @@ public class BookingController {
         User user = userService.findById(userId);
         String currentUser = auth.getName();
         Collection<? extends GrantedAuthority> currentUserRole = auth.getAuthorities();
-        if (booking.getUser().getEmail().equals(currentUser) || currentUserRole.equals("admin")) {
+        if (booking.getUser().getEmail().equals(currentUser) || currentUserRole.toString().equals("[admin]")) {
             booking.setComputer(computer);
             booking.setRoom(room);
             booking.setUser(user);
