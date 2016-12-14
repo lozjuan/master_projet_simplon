@@ -135,18 +135,12 @@ public class BookingController {
                                      RedirectAttributes redirectAttributes, Booking booking) {
         if (starts == null) redirectAttributes.addFlashAttribute("erreur", "La date de début est nulle");
         else if (ends == null) redirectAttributes.addFlashAttribute("erreur", "La date de fin est nulle");
-        else if (starts.before(Date.from(Instant.now())))
-            redirectAttributes.addFlashAttribute("erreur", "La date de début est inférieure à la date du jour");
-        else if (ends.before(starts))
-            redirectAttributes.addFlashAttribute("erreur", "La date de début est supérieure à la date de fin");
-        else if ((roomId == -1) && (computerId == -1))
-            redirectAttributes.addFlashAttribute("erreur", "Vous n'avez réservé ni salle ni ordinateur");
-        else if ((!bookingService.isAvaibleComputer(computerId, starts, ends)) && (!bookingService.isAvaibleRoom(roomId, starts, ends)))
-            redirectAttributes.addFlashAttribute("erreur", "L'ordinateur et la salle sont déjà réservés");
-        else if (!bookingService.isAvaibleComputer(computerId, starts, ends))
-            redirectAttributes.addFlashAttribute("erreur", "L'ordinateur est déjà réservé");
-        else if (!bookingService.isAvaibleRoom(roomId, starts, ends))
-            redirectAttributes.addFlashAttribute("erreur", "La salle est déjà réservée");
+        else if (starts.before(Date.from(Instant.now()))) redirectAttributes.addFlashAttribute("erreur", "La date de début est inférieure à la date du jour");
+        else if (ends.before(starts)) redirectAttributes.addFlashAttribute("erreur", "La date de début est supérieure à la date de fin");
+        else if ((roomId == -1) && (computerId == -1)) redirectAttributes.addFlashAttribute("erreur", "Vous n'avez réservé ni salle ni ordinateur");
+        else if ((!bookingService.isAvaibleComputer(computerId, starts, ends)) && (!bookingService.isAvaibleRoom(roomId, starts, ends))) redirectAttributes.addFlashAttribute("erreur", "L'ordinateur et la salle sont déjà réservés");
+        else if (!bookingService.isAvaibleComputer(computerId, starts, ends)) redirectAttributes.addFlashAttribute("erreur", "L'ordinateur est déjà réservé");
+        else if (!bookingService.isAvaibleRoom(roomId, starts, ends)) redirectAttributes.addFlashAttribute("erreur", "La salle est déjà réservée");
         else bookingService.addOrUpdate(booking);
         return new ModelAndView("redirect:/booking");
     }

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping
@@ -51,7 +52,7 @@ public class AuthController {
 
     @RequestMapping("/changePassword")
     public ModelAndView forgotPassword() {
-        return new ModelAndView("changingPassword");
+        return new ModelAndView("/authentication/changingPassword");
     }
 
     @RequestMapping("/emailChangePassword")
@@ -81,23 +82,26 @@ public class AuthController {
                                                      ModelMap model) {
         TokenPasswordRecovery token = tokenPasswordRecoveryService.getTokenPasswordRecovery(tokenAsString);
         if (tokenPasswordRecoveryService.isTokenExpired(token)) {
-            return new ModelAndView("message/settingNewPassword", model);
+            return new ModelAndView("authentication/settingNewPassword", model);
         }
         //TODO exception !
         return new ModelAndView("authentication/changingPassword", model);
     }
 
     @RequestMapping("/saveNewPassword")
-    public ModelAndView changePassword(String email, String newPassword, String newPasswordControl, ModelMap model) {
-        if (newPassword.equals(newPasswordControl)) {
+    public ModelAndView changePassword(String email, String newPassword, String newPasswordControl, ModelMap model, RedirectAttributes redirectAttributes) {
+        if (email.isEmpty()) redirectAttributes.addFlashAttribute("erreur", "Merci de rentrer votre email");
+        else if (newPassword.isEmpty()) redirectAttributes.addFlashAttribute("erreur", "Merci de rentrer votre password");
+        else if (newPasswordControl.isEmpty()) redirectAttributes.addFlashAttribute("erreur", "Merci de rentrer votre password deux fois");
+        else if (!newPassword.equals(newPasswordControl)) redirectAttributes.addFlashAttribute("erreur", "les deux passwords doivent être identiques");
+        else {
             User user = userService.authenticateUser(email);
             PasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(newPassword));
             userService.addOrUpdate(user);
             return new ModelAndView("authentication/changedPassword", model);
         }
-        //TODO exception !
-        return new ModelAndView("authentication/settingNewPassword", model);
+        return new ModelAndView("redirect:/newPassword", model);
     }
 
     @RequestMapping("/newPassword")

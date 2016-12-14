@@ -61,16 +61,16 @@ public class UserController {
     }
 
     @RequestMapping(path = "/addUser")
-    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
-                                String email, String role, Integer isEnable) {
+    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname,  String email,
+                                String password, String role, Integer isEnable, RedirectAttributes redirectAttr) {
         List<User> userList = userService.getAll();
         for (User user : userList) {
-            if (user.getEmail().equals(email)) {
-                return new ModelAndView("redirect:/user/addUser");
+            if (user.getEmail().equals(email)) redirectAttr.addFlashAttribute("erreur","Erreur, l'user existe déjà."); {
+                return new ModelAndView("redirect:/user");
             }
         }
         PasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = new User(name, surname, email, encoder.encode(password), role, isEnable);
+        User user = new User(name, surname, email, encoder.encode(password), role, 1);
         userService.addOrUpdate(user);
         return new ModelAndView("redirect:/user");
     }

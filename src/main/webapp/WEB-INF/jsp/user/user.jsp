@@ -71,11 +71,14 @@
 						<p>Inserer un utilisateur</p>
 						<div>
 							nom :
-							<input type="text" name="name"> prenom :
-							<input type="text" name="surname"> email:
-							<input type="text" name="email"> mdp:
-							<input type="text" name="password"> mdp2:
-							<input type="text" name="password_control"> droits:
+							<input type="text" name="name">
+							prenom :
+							<input type="text" name="surname">
+							email:
+							<input type="text" name="email">
+							mdp:
+							<input type="text" name="password">
+							droits:
 							<input type="text" name="role">
 							<input type="submit" value="Confirmer">
 						</div>
