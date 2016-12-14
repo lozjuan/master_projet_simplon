@@ -25,14 +25,14 @@ public class ComputerController {
     public ModelAndView getComputerList(ModelMap model) {
         List<Computer> computerList = computerService.getAll();
         model.addAttribute("computerList", computerList);
-        return new ModelAndView("computer", model);
+        return new ModelAndView("computer/computer", model);
     }
 
     @RequestMapping(path = "/computerById")
     public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
         Computer computer = computerService.findById(id);
         model.addAttribute("computer", computer);
-        return new ModelAndView("searchPc", model);
+        return new ModelAndView("computer/searchPc", model);
     }
 
     @RequestMapping(path = "/addComputer")
@@ -47,7 +47,7 @@ public class ComputerController {
     public ModelAndView modifyComputer(@RequestParam("id") Integer id, ModelMap model) {
         Computer computer = computerService.findById(id);
         model.addAttribute("computer", computer);
-        return new ModelAndView("modifyComputer", model);
+        return new ModelAndView("computer/modifyComputer", model);
     }
 
     @RequestMapping("/modifyComputerWithInput")

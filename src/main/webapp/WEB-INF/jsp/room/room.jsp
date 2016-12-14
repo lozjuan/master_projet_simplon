@@ -51,6 +51,11 @@
 							<input type="submit" value="Rechercher">
 						</div>
 					</form>
+					<c:if test="${erreur != null}">
+						<div style="color: red;">
+							<c:out value="${erreur}" />
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

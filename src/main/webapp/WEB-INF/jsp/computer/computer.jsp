@@ -46,10 +46,8 @@
 						<p>Inserer un ordinateur</p>
 						<div>
 							brand :
-							<input type="text" name="brand"> &nbsp;
-							model :
-							<input type="text" name="model"> &nbsp;
-							serial:
+							<input type="text" name="brand"> &nbsp; model :
+							<input type="text" name="model"> &nbsp; serial:
 							<input type="text" name="serial">
 							<input type="submit" value="Confirmer">
 						</div>
@@ -63,6 +61,11 @@
 							<input type="submit" value="Rechercher">
 						</div>
 					</form>
+					<c:if test="${erreur != null}">
+						<div style="color: red;">
+							<c:out value="${erreur}" />
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>

@@ -37,7 +37,7 @@ public class AuthController {
 
     @RequestMapping(value = "/login")
     public ModelAndView loginPage() {
-        return new ModelAndView("login");
+        return new ModelAndView("authentication/login");
     }
 
     @RequestMapping(value = "/logout")
@@ -71,7 +71,7 @@ public class AuthController {
             String url = "http://localhost:8080/emailChangePasswordWithToken?email=" + user.getEmail() + "&token=" + token.getToken();
             String body = "Voici l'url qui vous permettra de réinitialiser votre mot de passe : " + url;
             simplonEmailAPI.SendEmail(to, from, subject, body);
-            return new ModelAndView("recoveryMessageSent");
+            return new ModelAndView("message/recoveryMessageSent");
         }
     }
 
@@ -81,10 +81,10 @@ public class AuthController {
                                                      ModelMap model) {
         TokenPasswordRecovery token = tokenPasswordRecoveryService.getTokenPasswordRecovery(tokenAsString);
         if (tokenPasswordRecoveryService.isTokenExpired(token)) {
-            return new ModelAndView("settingNewPassword", model);
+            return new ModelAndView("message/settingNewPassword", model);
         }
         //TODO exception !
-        return new ModelAndView("changingPassword", model);
+        return new ModelAndView("authentication/changingPassword", model);
     }
 
     @RequestMapping("/saveNewPassword")
@@ -94,19 +94,19 @@ public class AuthController {
             PasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(newPassword));
             userService.addOrUpdate(user);
-            return new ModelAndView("changedPassword", model);
+            return new ModelAndView("authentication/changedPassword", model);
         }
         //TODO exception !
-        return new ModelAndView("settingNewPassword", model);
+        return new ModelAndView("authentication/settingNewPassword", model);
     }
 
     @RequestMapping("/newPassword")
     public ModelAndView changePasswordWithOutToken(ModelMap model) {
-        return new ModelAndView("settingNewPassword", model);
+        return new ModelAndView("authentication/settingNewPassword", model);
     }
 
     @RequestMapping(value = "/calendar")
     public ModelAndView getHomePage() {
-        return new ModelAndView("/calendar");
+        return new ModelAndView("calendar/calendar");
     }
 }

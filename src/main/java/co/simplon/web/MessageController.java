@@ -38,7 +38,7 @@ public class MessageController {
     public ModelAndView getMessageList(ModelMap model) {
         List<Message> messageList = messageService.getAll();
         model.addAttribute("messageList", messageList);
-        return new ModelAndView("message", model);
+        return new ModelAndView("message/message", model);
     }
 
     @RequestMapping(path = "/sendMessage")
@@ -68,7 +68,7 @@ public class MessageController {
         Message message = messageService.findById(idMessage);
         String email = messageService.getUserNameByMessageId(message.getId());
         model.addAttribute("email", email);
-        return new ModelAndView("replyMessage", model);
+        return new ModelAndView("message/replyMessage", model);
     }
 
     @RequestMapping(path = "/sendReply", method = RequestMethod.POST )
@@ -76,6 +76,6 @@ public class MessageController {
         String from = "simplonreservation@gmail.com";
         String subject = "Simplon reservation";
         simplonEmailAPI.SendEmail(email, from, subject, body);
-        return new ModelAndView("replyMessageSent");
+        return new ModelAndView("massage/replyMessageSent");
     }
 }

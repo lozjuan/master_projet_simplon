@@ -27,19 +27,19 @@ public class UserController {
     public ModelAndView getList(ModelMap model) {
         List<User> userList = userService.getAll();
         model.addAttribute("userList", userList);
-        return new ModelAndView("user", model);
+        return new ModelAndView("user/user", model);
     }
 
     @RequestMapping(path = "/signUp")
     public ModelAndView singUp(ModelMap model) {
-        return new ModelAndView("singup", model);
+        return new ModelAndView("authentication/singup", model);
     }
 
     @RequestMapping(path = "/userById")
     public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return new ModelAndView("searchUser", model);
+        return new ModelAndView("user/searchUser", model);
     }
 
     //TODO throw exception instead !
@@ -57,7 +57,7 @@ public class UserController {
             User user = new User(name, surname, email, encoder.encode(password), "user", 1);
             userService.addOrUpdate(user);
         }
-        return new ModelAndView("createdAccount");
+        return new ModelAndView("account/createdAccount");
     }
 
     @RequestMapping(path = "/addUser")
@@ -91,14 +91,14 @@ public class UserController {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         User currentUser = userService.authenticateUser(name);
         model.addAttribute("currentUser", currentUser);
-        return new ModelAndView("profil", model);
+        return new ModelAndView("account/profil", model);
     }
 
     @RequestMapping("/modifyUser")
     public ModelAndView modifyUser(@RequestParam("id") Integer id, ModelMap model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return new ModelAndView("modifyUser", model);
+        return new ModelAndView("user/modifyUser", model);
     }
 
     @RequestMapping("/modifyUserWithInput")

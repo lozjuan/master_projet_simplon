@@ -61,7 +61,7 @@ public class BookingController {
         model.addAttribute("computerList", computerList);
         List<User> userList = userService.getAll();
         model.addAttribute("userList", userList);
-        return new ModelAndView("booking", model);
+        return new ModelAndView("booking/booking", model);
     }
 
     @RequestMapping("/modifyBookingForm")
@@ -74,7 +74,7 @@ public class BookingController {
         model.addAttribute("computerList", computerList);
         List<User> userList = userService.getAll();
         model.addAttribute("userList", userList);
-        return new ModelAndView("modifyBooking", model);
+        return new ModelAndView("booking/modifyBooking", model);
     }
 
     @RequestMapping("/book")
@@ -101,7 +101,7 @@ public class BookingController {
     public ModelAndView modifyBooking(@RequestParam("id") Integer id, ModelMap model) {
         Booking booking = bookingService.findById(id);
         model.addAttribute("booking", booking);
-        return new ModelAndView("modifyBooking", model);
+        return new ModelAndView("booking/modifyBooking", model);
     }
 
     @RequestMapping("/modifyBookingWithInput")

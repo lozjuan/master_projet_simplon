@@ -67,7 +67,7 @@ public class RoomController {
 	public ModelAndView modifyComputer(@RequestParam("id") Integer id,ModelMap model) {
 		Room room=roomService.findById(id);
 		model.addAttribute("room",room);
-		return new ModelAndView("modifyRoom",model);
+		return new ModelAndView("room/modifyRoom",model);
 	}
 	
 	@RequestMapping("/modifyRoomWithInput")
