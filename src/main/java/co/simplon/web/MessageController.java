@@ -41,7 +41,7 @@ public class MessageController {
         return new ModelAndView("message/message", model);
     }
 
-    @RequestMapping(path = "/sendMessage")
+    @RequestMapping(path = "/sendMessage", method = RequestMethod.POST)
     public ModelAndView sendMessage(@RequestParam("content") String content, String userName) {
         Date createdAt = new Date();
         Date treatedAt = null;
@@ -71,11 +71,11 @@ public class MessageController {
         return new ModelAndView("message/replyMessage", model);
     }
 
-    @RequestMapping(path = "/sendReply", method = RequestMethod.POST )
+    @RequestMapping(path = "/sendReply", method = RequestMethod.POST)
     public ModelAndView sendReplyMessage(String body, String email) {
         String from = "simplonreservation@gmail.com";
         String subject = "Simplon reservation";
         simplonEmailAPI.SendEmail(email, from, subject, body);
-        return new ModelAndView("massage/replyMessageSent");
+        return new ModelAndView("message/replyMessageSent");
     }
 }

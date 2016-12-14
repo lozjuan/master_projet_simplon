@@ -16,7 +16,7 @@
         <property name="host" value="smtp.gmail.com" />
         <property name="port" value="587" />
         <property name="username" value="reservationsimplon@gmail.com" />
-		<property name="password" value="simplon12345CQP" />
+		<property name="password" value="" />
 
 		<property name="javaMailProperties">
         <props>

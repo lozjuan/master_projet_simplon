@@ -46,7 +46,7 @@ public class AuthController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return new ModelAndView("login");
+        return new ModelAndView("authentication/login");
     }
 
     @RequestMapping("/changePassword")
