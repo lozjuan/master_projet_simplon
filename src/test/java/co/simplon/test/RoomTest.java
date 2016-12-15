@@ -41,10 +41,6 @@ public class RoomTest extends TestCase {
 		mockMvc = MockMvcBuilders.standaloneSetup(new RoomController(roomServiceMock)).build();
 	}
 
-	// Add WebApplicationContext field here
-
-	// The setUp() method is omitted.
-
 	@Test
 	public void test_get_and_add_room() throws Exception {
 		Room first = new Room("room1", 14, "grande salle");
@@ -65,7 +61,7 @@ public class RoomTest extends TestCase {
 		MvcResult fullResult = mockMvc.perform(get("/room")).andExpect(status().isOk()).andReturn();
 		assertEquals(((List) fullResult.getModelAndView().getModel().get("roomList")).size(), 2);
 
-		mockMvc.perform(get("/addRoom?name=S1&places=15&description=SalleMontreuil")).andExpect(status().isFound());
+		mockMvc.perform(get("/room/addRoom?name=S1&places=15&description=SalleMontreuil")).andExpect(status().isFound());
 		assertEquals(roomList.size(), 3);
 	}
 
@@ -92,12 +88,7 @@ public class RoomTest extends TestCase {
 		MvcResult fullResult = mockMvc.perform(get("/room")).andExpect(status().isOk()).andReturn();
 		assertEquals(((List) fullResult.getModelAndView().getModel().get("roomList")).size(), 3);
 
-		mockMvc.perform(get("/deleteRoom?id=1")).andExpect(status().isFound());
+		mockMvc.perform(get("/room/deleteRoom?id=1")).andExpect(status().isFound());
 		assertEquals(2, roomList.size());
-	}
-	
-	@Test
-	public void test_is_available_room(){
-		
 	}
 }

@@ -67,17 +67,21 @@
 							</div>
 						</c:if>
 					</c:forEach>
-					<form method="get" action="/user/addUser">
+					<form method="post" action="/user/addUser">
 						<p>Inserer un utilisateur</p>
 						<div>
 							nom :
-							<input type="text" name="name"> prenom :
-							<input type="text" name="surname"> email:
-							<input type="text" name="email"> mdp:
-							<input type="text" name="password"> mdp2:
-							<input type="text" name="password_control"> droits:
+							<input type="text" name="name">
+							prenom :
+							<input type="text" name="surname">
+							email:
+							<input type="text" name="email">
+							mdp:
+							<input type="text" name="password">
+							droits:
 							<input type="text" name="role">
 							<input type="submit" value="Confirmer">
+							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
 					<form method="get" action="/user/userById">
@@ -88,6 +92,11 @@
 							<input type="submit" value="Rechercher">
 						</div>
 					</form>
+					<c:if test="${erreur != null}">
+                    	<div style="color: red;">
+                    		<c:out value="${erreur}" />
+                    	</div>
+                    </c:if>
 				</div>
 			</div>
 	</jsp:body>

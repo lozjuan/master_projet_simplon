@@ -38,10 +38,10 @@ public class MessageController {
     public ModelAndView getMessageList(ModelMap model) {
         List<Message> messageList = messageService.getAll();
         model.addAttribute("messageList", messageList);
-        return new ModelAndView("message", model);
+        return new ModelAndView("message/message", model);
     }
 
-    @RequestMapping(path = "/sendMessage")
+    @RequestMapping(path = "/sendMessage", method = RequestMethod.POST)
     public ModelAndView sendMessage(@RequestParam("content") String content, String userName) {
         Date createdAt = new Date();
         Date treatedAt = null;
@@ -68,14 +68,14 @@ public class MessageController {
         Message message = messageService.findById(idMessage);
         String email = messageService.getUserNameByMessageId(message.getId());
         model.addAttribute("email", email);
-        return new ModelAndView("replyMessage", model);
+        return new ModelAndView("message/replyMessage", model);
     }
 
-    @RequestMapping(path = "/sendReply", method = RequestMethod.POST )
+    @RequestMapping(path = "/sendReply")
     public ModelAndView sendReplyMessage(String body, String email) {
         String from = "simplonreservation@gmail.com";
         String subject = "Simplon reservation";
         simplonEmailAPI.SendEmail(email, from, subject, body);
-        return new ModelAndView("replyMessageSent");
+        return new ModelAndView("message/replyMessageSent");
     }
 }

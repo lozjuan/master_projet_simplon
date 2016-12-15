@@ -17,19 +17,15 @@
 			<br>
 			<br>
 			<div class="panel panel-default">
+
 				<div class="panel-heading">
 					<div class="panel-title">
 						<h4>Modifier MDP</h4>
 					</div>
 				</div>
 				<div class="panel-body">
-					<form method="get" action="/saveNewPassword">
-						email:
-						<input type="text" name="email"> MDP:
-						<input type="text" name="newPassword"> MDP2:
-						<input type="text" name="newPasswordControl">
-						<input type="submit" value="Confirmer">
-					</form>
+					<p>Votre mot de passe a été modifié</p>
+					<a href="/">Retour</a>
 				</div>
 			</div>
 	</jsp:body>
