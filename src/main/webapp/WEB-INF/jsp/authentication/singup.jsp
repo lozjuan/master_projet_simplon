@@ -32,6 +32,11 @@
 							<input type="password" required name="password_control">
 							<input type="submit" value="Confirmer">
 						</div>
+						<c:if test="${erreur != null}">
+                        	<div style="color: red;">
+                        		<c:out value="${erreur}" />
+                        	</div>
+                        </c:if>
 					</form>
 				</div>
 	</jsp:body>

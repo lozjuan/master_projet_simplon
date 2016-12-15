@@ -67,7 +67,7 @@
 							</div>
 						</c:if>
 					</c:forEach>
-					<form method="get" action="/user/addUser">
+					<form method="post" action="/user/addUser">
 						<p>Inserer un utilisateur</p>
 						<div>
 							nom :
@@ -81,6 +81,7 @@
 							droits:
 							<input type="text" name="role">
 							<input type="submit" value="Confirmer">
+							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
 					<form method="get" action="/user/userById">

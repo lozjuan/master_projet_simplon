@@ -71,7 +71,7 @@ public class MessageController {
         return new ModelAndView("message/replyMessage", model);
     }
 
-    @RequestMapping(path = "/sendReply", method = RequestMethod.POST)
+    @RequestMapping(path = "/sendReply")
     public ModelAndView sendReplyMessage(String body, String email) {
         String from = "simplonreservation@gmail.com";
         String subject = "Simplon reservation";

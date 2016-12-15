@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -29,17 +30,27 @@ public class ComputerController {
     }
 
     @RequestMapping(path = "/computerById")
-    public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
-        Computer computer = computerService.findById(id);
-        model.addAttribute("computer", computer);
+    public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model, RedirectAttributes redirectAttr) {
+        try {
+            Computer computer = computerService.findById(id);
+            model.addAttribute("computer", computer);
+        } catch (Exception e) {
+            redirectAttr.addFlashAttribute("erreur", "merci d'insérer l'Id de l'utilisateur.");
+            return new ModelAndView("redirect:/computer");
+        }
         return new ModelAndView("computer/searchPc", model);
     }
 
-    @RequestMapping(path = "/addComputer")
+    @RequestMapping(path = "/addComputer", method = RequestMethod.POST)
     public ModelAndView addComputer(@RequestParam("brand") String brand, @RequestParam("model") String model,
-                                    String serial) {
-        Computer computer = new Computer(brand, model, serial);
-        computerService.addOrUpdate(computer);
+                                    String serial, RedirectAttributes redirectAttr) {
+        if (brand.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le marque");
+        else if (model.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le model");
+        else if (serial.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le serial");
+        else  {
+            Computer computer = new Computer(brand, model, serial);
+            computerService.addOrUpdate(computer);
+        }
         return new ModelAndView("redirect:/computer");
     }
 

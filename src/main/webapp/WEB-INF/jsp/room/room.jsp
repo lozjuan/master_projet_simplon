@@ -33,7 +33,7 @@
 							<input type="submit" value="Modifier" />
 						</form>
 					</c:forEach>
-					<form method="get" action="/room/addRoom">
+					<form method="post" action="/room/addRoom">
 						<p>Inserer une salle</p>
 						<div>
 							name :
@@ -41,6 +41,7 @@
 							<input type="number" name="places"> description:
 							<input type="text" name="description">
 							<input type="submit" value="Confirmer">
+							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
 					<form method="get" action="/room/roomById">

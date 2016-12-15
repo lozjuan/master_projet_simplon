@@ -42,14 +42,17 @@
 						<hr>
 					</c:forEach>
 					</form>
-					<form method="get" action="/computer/addComputer">
+					<form method="post" action="/computer/addComputer">
 						<p>Inserer un ordinateur</p>
 						<div>
 							brand :
-							<input type="text" name="brand"> &nbsp; model :
-							<input type="text" name="model"> &nbsp; serial:
+							<input type="text" name="brand"> &nbsp;
+							model :
+							<input type="text" name="model"> &nbsp;
+							serial:
 							<input type="text" name="serial">
 							<input type="submit" value="Confirmer">
+							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
 					<hr>
