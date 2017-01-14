@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form type="password" method="get" action="/user/createUser">
+					<form type="password" method="get" action="${pageContext.request.contextPath}/user/createUser">
 						<div>
 							nom :
 							<input type="text" required name="name"> prenom :

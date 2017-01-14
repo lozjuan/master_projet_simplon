@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="modifybooking-user">
-					<form method="get" action="/computer">
+					<form method="get" action="${pageContext.request.contextPath}/computer">
 						${computer.id}&nbsp;${computer.brand}&nbsp;${computer.model}&nbsp;${computer.serial}
 						<input type="submit" value="retour">
 					</form>

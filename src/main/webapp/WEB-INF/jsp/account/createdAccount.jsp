@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <head>
 	<title>User</title>
@@ -22,7 +23,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form type="password" method="get" action="/">
+					<form type="password" method="get" action="${pageContext.request.contextPath}/login">
 						<div>
 							<h3>Votre compte a été créé</h3>
 							<input type="submit" value="Se connecter">

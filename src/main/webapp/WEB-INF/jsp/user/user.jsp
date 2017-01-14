@@ -30,16 +30,16 @@
 							<br/> ${user.email}
 							<br/> ${user.role}
 							<div>
-								<form method="post" action="user/deleteUser">
+								<form method="post" action="${pageContext.request.contextPath}/user/deleteUser">
 									<input name="id" value="${user.id}" type="hidden" />
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 									<input type="submit" value="Delete" />
 								</form>
-								<form method="get" action="user/modifyUser">
+								<form method="get" action="${pageContext.request.contextPath}/user/modifyUser">
 									<input name="id" value="${user.id}" type="hidden" />
 									<input type="submit" value="Modifier">
 								</form>
-								<form method="get" action="user/unableUser">
+								<form method="get" action="${pageContext.request.contextPath}/user/unableUser">
 									<input name="id" value="${user.id}" type="hidden" />
 									<input type="submit" value="Désactiver">
 								</form>
@@ -52,22 +52,22 @@
 							<br/> ${user.email}
 							<br/> ${user.role}
 							<div>
-								<form action="user/deleteUser">
+								<form action="${pageContext.request.contextPath}/user/deleteUser">
 									<input name="id" value="${user.id}" type="hidden" />
 									<input type="submit" value="Supprimer" />
 								</form>
-								<form method="get" action="user/modifyUser">
+								<form method="get" action="${pageContext.request.contextPath}/user/modifyUser">
 									<input name="id" value="${user.id}" type="hidden" />
 									<input type="submit" value="Modifier">
 								</form>
-								<form method="get" action="user/enableUser">
+								<form method="get" action="${pageContext.request.contextPath}/user/enableUser">
 									<input name="id" value="${user.id}" type="hidden" />
 									<input type="submit" value="Activer">
 								</form>
 							</div>
 						</c:if>
 					</c:forEach>
-					<form method="post" action="/user/addUser">
+					<form method="post" action="${pageContext.request.contextPath}/user/addUser">
 						<p>Inserer un utilisateur</p>
 						<div>
 							nom :
@@ -84,7 +84,7 @@
 							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
-					<form method="get" action="/user/userById">
+					<form method="get" action="${pageContext.request.contextPath}/user/userById">
 						<p>Recherche d'utilisateur</p>
 						<div>
 							id:

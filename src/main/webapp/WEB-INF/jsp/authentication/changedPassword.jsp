@@ -25,7 +25,7 @@
 				</div>
 				<div class="panel-body">
 					<p>Votre mot de passe a été modifié</p>
-					<a href="/">Retour</a>
+					<a href="${pageContext.request.contextPath}/">Retour</a>
 				</div>
 			</div>
 	</jsp:body>

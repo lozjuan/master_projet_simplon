@@ -15,27 +15,27 @@
 		<link rel="stylesheet" type="text/css" href="${bootstrapThemeCss}"/>
 		<link rel="stylesheet" type="text/css" href="${bootstrapDateTimePickerCss}"/>
 		<link rel="stylesheet" type="text/css" href="${fullCalendarPickerCss}"/>
-		<link rel="stylesheet" href="/ressources/css/normalize.css">
-		<link rel="stylesheet" href="/ressources/css/style2.css">
-		<link rel="stylesheet" href="/ressources/css/style3.css">
-		<link rel="stylesheet" href="/ressources/css/style4.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/ressources/css/normalize.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/ressources/css/style2.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/ressources/css/style3.css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/ressources/css/style4.css">
 
 
 		<!-- JS Dependencies -->
-		<script src="/ressources/js/jquery-3.1.1.min.js"></script>
-		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/ressources/js/moment.min.js"></script>
-		<script type="text/javascript" src="/ressources/js/bootstrap-datetimepicker.js"></script>
-		<script src="/ressources/js/index.js"></script>
-		<script src="/ressources/js/index2.js"></script>
+		<script src="${pageContext.request.contextPath}/ressources/js/jquery-3.1.1.min.js"></script>
+		<script src="${pageContext.request.contextPath}/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/ressources/js/moment.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/ressources/js/bootstrap-datetimepicker.js"></script>
+		<script src="${pageContext.request.contextPath}/ressources/js/index.js"></script>
+		<script src="${pageContext.request.contextPath}/ressources/js/index2.js"></script>
 
 		<!-- datetimepicker JS -->
-		<script src="/ressources/js/booking.js"></script
+		<script src="${pageContext.request.contextPath}/ressources/js/booking.js"></script
 
 		<!-- fullcalendar -->
-		<script type="text/javascript" src="/ressources/js/fullcalendar.min.js"></script>
-        <script type="text/javascript" src='/ressources/js/locale-all.js'></script>
-        <script type="text/javascript" src="/ressources/js/bookingCalendar.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/ressources/js/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/ressources/js/locale-all.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/ressources/js/bookingCalendar.js"></script>
 	</head>
 
   	<body>

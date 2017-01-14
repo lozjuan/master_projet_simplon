@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="search-user">
-					<form method="get" action="/user">
+					<form method="get" action="${pageContext.request.contextPath}/user">
 						${user.id}&nbsp;${user.name}&nbsp;${user.surname}&nbsp;${user.role}
 						<input type="submit" value="retour">
 					</form>

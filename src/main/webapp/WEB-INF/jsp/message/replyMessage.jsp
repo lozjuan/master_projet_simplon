@@ -23,7 +23,7 @@
 				</div>
 				<div class="panel-body">
 					<c:forEach items="${email}" var="email">
-						<form method="post" action="/message/sendReply">
+						<form method="post" action="${pageContext.request.contextPath}/message/sendReply">
 							<input type="text" name="body">
 							<input type="submit" value="envoyer">
 							<input type="hidden" name="email" value="${email}" />

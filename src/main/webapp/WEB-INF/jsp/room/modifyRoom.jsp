@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="modifybooking-room">
-					<form method=get action="modifyRoomWithInput">
+					<form method=get action="${pageContext.request.contextPath}/room/modifyRoomWithInput">
 						name :
 						<input type="text" name="name" value="${room.name}"> places :
 						<input type="text" name="places" value="${room.places}"> description :

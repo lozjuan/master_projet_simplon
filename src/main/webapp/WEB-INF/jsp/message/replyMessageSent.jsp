@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form method="get" action="/booking">
+					<form method="get" action="${pageContext.request.contextPath}/booking">
 						<p>Votre message a été envoyé</p>
 						<input type="submit" value="retour">
 				</div>

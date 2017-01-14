@@ -26,7 +26,7 @@ head>
 					</div>
 				</div>
 				<div class="search-room">
-					<form method="get" action="/room">
+					<form method="get" action="${pageContext.request.contextPath}/room">
 						${room.id}&nbsp;${room.name}&nbsp;${room.places}&nbsp;${room.description}
 						<input type="submit" value="retour">
 					</form>

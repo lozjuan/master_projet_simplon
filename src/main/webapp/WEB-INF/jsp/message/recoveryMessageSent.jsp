@@ -22,7 +22,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form method="get" action="/">
+					<form method="get" action="${pageContext.request.contextPath}/">
 						<p>Un Email vous a été envoyé avec le lien de réinitialisation</p>
 						<input type="submit" value="retour">
 				</div>

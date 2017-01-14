@@ -31,20 +31,20 @@
 						<br> ${booking.ends}
 						<br> ${booking.user.name}
 						<br>
-						<form action="deleteBook">
+						<form action="${pageContext.request.contextPath}/deleteBook">
 						    <security:authorize access="hasAuthority('admin')">
                                 <input name="id" value="${booking.id}" type="hidden" />
                                 <input type="submit" value="Delete" />
                             </security:authorize>
 						</form>
-						<form method="get" action="modifyBookingForm">
+						<form method="get" action="${pageContext.request.contextPath}/modifyBookingForm">
                             <security:authorize access="isAuthenticated()">
                                 <input name="id" value="${booking.id}" type="hidden" />
                                 <input type="submit" value="Modifier" />
                             </security:authorize>
 						</form>
 					</c:forEach>
-					<form method="get" action="book">
+					<form method="get" action="${pageContext.request.contextPath}/book">
 						<security:authorize access="isAuthenticated()">
 							<p>Reservez</p>
 							<br> Salles :

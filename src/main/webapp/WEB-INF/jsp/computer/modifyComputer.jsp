@@ -23,13 +23,15 @@
 					</div>
 				</div>
 				<div class="modifybooking-computer">
-					<form method=get action="modifyComputerWithInput">
+					<form method=get action="${pageContext.request.contextPath}/computer/modifyComputerWithInput">
 						brand :
-						<input type="text" name="brand" value="${computer.brand}"> model :
-						<input type="text" name="model" value="${computer.model}"> serial:
+						<input type="text" name="brand" value="${computer.brand}">
+						model :
+						<input type="text" name="model" value="${computer.model}">
+						serial:
 						<input type="text" name="serial" value="${computer.serial}">
 						<input name="id" value="${computer.id}" type="hidden" />
-						<input type="submit" value="Modify" />
+						<input type="submit" value="Modifier" />
 					</form>
 				</div>
 	</jsp:body>

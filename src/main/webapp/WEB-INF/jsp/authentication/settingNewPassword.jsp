@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form method="get" action="/saveNewPassword">
+					<form method="get" action="${pageContext.request.contextPath}/saveNewPassword">
 						email:
 						<input type="text" name="email"> MDP:
 						<input type="text" name="newPassword"> MDP2:

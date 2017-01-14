@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="modifybooking-user">
-					<form method=get action="modifyUserWithInput">
+					<form method=get action="${pageContext.request.contextPath}/user/modifyUserWithInput">
 						name :
 						<input type="text" name="name" value="${user.name}">
 						surname :

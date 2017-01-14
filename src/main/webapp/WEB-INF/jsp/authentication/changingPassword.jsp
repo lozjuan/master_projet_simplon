@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<form method="get" action="/emailChangePassword">
+					<form method="get" action="${pageContext.request.contextPath}/emailChangePassword">
 						email:
 						<input type="text" name="email">
 						<input type="submit" value="Confirmer">

@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="modifybooking">
-					<form method=get action="modifyBookingWithInput">
+					<form method=get action="${pageContext.request.contextPath}/modifyBookingWithInput">
 						Salles :
 						<select name="roomId">
 							<option value=""></option>

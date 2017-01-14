@@ -26,13 +26,13 @@
 					<c:forEach items="${messageList}" var="message">
 						<c:if test="${message.treated == 0}">
 							${message.id} ${message.content} ${message.createdAt}
-							<form action="message/setMessageAsTreated">
+							<form action="${pageContext.request.contextPath}/message/setMessageAsTreated">
 								<security:authorize access="hasAuthority('admin')">
 									<input name="id" value="${message.id}" type="hidden" />
 									<input type="submit" value="Traiter" />
 								</security:authorize>
 							</form>
-							<form action="message/reply">
+							<form action="${pageContext.request.contextPath}/message/reply">
 								<security:authorize access="hasAuthority('admin')">
 									<input name="idMessage" value="${message.id}" type="hidden" />
 									<input type="submit" value="Répondre" />
@@ -46,7 +46,7 @@
 						<br>
 					</c:forEach>
 
-					<form method="post" action="/message/sendMessage">
+					<form method="post" action="${pageContext.request.contextPath}/message/sendMessage">
 						<div>
 							rentrez votre message :
 							<input type="text" name="content">

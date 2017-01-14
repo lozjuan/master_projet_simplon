@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <head>
 	<title>Log in - Sign up</title>
@@ -65,7 +66,7 @@
                   <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
                 </div>
                 <div class="logmod__form">
-                  <form accept-charset="utf-8" action="/login" class="simform" method="post">
+                  <form accept-charset="utf-8" action="${pageContext.request.contextPath}/login" class="simform" method="post">
                     <div class="sminputs">
                       <div class="input full">
                         <label class="string optional" for="user-name">Email*</label>
@@ -82,13 +83,13 @@
                     <div class="simform__actions">
                       <input class="sumbit" name="commit" type="submit" value="Log In"/>
                        <input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
-                       <span class="simform__actions-sidetext"><a class="special" role="link" href="/changePassword">Forgot your password?<br>Click here</a></span>
+                       <span class="simform__actions-sidetext"><a class="special" role="link" href="${pageContext.request.contextPath}/changePassword">Forgot your password?<br>Click here</a></span>
                     </div>
                   </form>
                 </div>
                 <div class="logmod__alter">
                   <div class="logmod__alter-container">
-                    <a href="user/signUp" class="connect facebook">
+                    <a href="${pageContext.request.contextPath}/user/signUp" class="connect facebook">
                       <div class="connect__icon">
                         <i class="fa fa-facebook"></i>
                       </div>

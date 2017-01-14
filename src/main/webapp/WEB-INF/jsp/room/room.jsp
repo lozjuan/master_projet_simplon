@@ -24,16 +24,16 @@
 				<div class="panel-body">
 					<c:forEach items="${roomList}" var="room">
 						${room.id} ${room.name} ${room.places} ${room.description}
-						<form action="/room/deleteRoom">
+						<form action="${pageContext.request.contextPath}/room/deleteRoom">
 							<input name="id" value="${room.id}" type="hidden" />
 							<input type="submit" value="Delete" />
 						</form>
-						<form method="get" action="room/modifyRoom">
+						<form method="get" action="${pageContext.request.contextPath}/room/modifyRoom">
 							<input name="id" value="${room.id}" type="hidden" />
 							<input type="submit" value="Modifier" />
 						</form>
 					</c:forEach>
-					<form method="post" action="/room/addRoom">
+					<form method="post" action="${pageContext.request.contextPath}/room/addRoom">
 						<p>Inserer une salle</p>
 						<div>
 							name :
@@ -44,7 +44,7 @@
 							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
-					<form method="get" action="/room/roomById">
+					<form method="get" action="${pageContext.request.contextPath}/room/roomById">
 						<p>Recherche de salles</p>
 						<div>
 							id:

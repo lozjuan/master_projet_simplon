@@ -42,7 +42,7 @@
 						<hr>
 					</c:forEach>
 					</form>
-					<form method="post" action="/computer/addComputer">
+					<form method="post" action="${pageContext.request.contextPath}/computer/addComputer">
 						<p>Inserer un ordinateur</p>
 						<div>
 							brand :
@@ -56,7 +56,7 @@
 						</div>
 					</form>
 					<hr>
-					<form method="get" action="computer/computerById">
+					<form method="get" action="${pageContext.request.contextPath}/computer/computerById">
 						<p>Recherche ordinateur : inserer l'id</p>
 						<div>
 							id:

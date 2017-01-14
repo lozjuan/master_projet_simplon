@@ -38,7 +38,7 @@
 					${currentUser.role}
 					<br>
 					<br>
-					<form method="get" action="/newPassword">
+					<form method="get" action="${pageContext.request.contextPath}/newPassword">
 						<div>
 							<input type="submit" value="changer votre mot de passe">
 						</div>

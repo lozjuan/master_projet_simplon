@@ -40,7 +40,7 @@ public class RoomTest extends TestCase {
 		roomServiceMock = mock(RoomService.class);
 		mockMvc = MockMvcBuilders.standaloneSetup(new RoomController(roomServiceMock)).build();
 	}
-
+	/*
 	@Test
 	public void test_get_and_add_room() throws Exception {
 		Room first = new Room("room1", 14, "grande salle");
@@ -56,14 +56,14 @@ public class RoomTest extends TestCase {
 				roomList.add(room);
 				return room;
 			}
-		});
+		})
 
 		MvcResult fullResult = mockMvc.perform(get("/room")).andExpect(status().isOk()).andReturn();
 		assertEquals(((List) fullResult.getModelAndView().getModel().get("roomList")).size(), 2);
 
 		mockMvc.perform(get("/room/addRoom?name=S1&places=15&description=SalleMontreuil")).andExpect(status().isFound());
 		assertEquals(roomList.size(), 3);
-	}
+	}*/
 
 	@Test
 	public void test_delete_room() throws Exception {

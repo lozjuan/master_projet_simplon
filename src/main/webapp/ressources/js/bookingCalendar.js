@@ -1,7 +1,7 @@
 $(document).ready(function() {
  	var calendar = $('#calendar').fullCalendar({
  		locale: 'fr',
- 		events: '/getCalendarBookings',
+ 		events: '${pageContext.request.contextPath}/getCalendarBookings',
  		dayClick: function() {
  	        console.log('a day has been clicked!');
  	    },
