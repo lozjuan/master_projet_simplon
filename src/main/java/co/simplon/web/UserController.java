@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -27,62 +28,77 @@ public class UserController {
     public ModelAndView getList(ModelMap model) {
         List<User> userList = userService.getAll();
         model.addAttribute("userList", userList);
-        return new ModelAndView("user", model);
+        return new ModelAndView("user/user", model);
     }
 
     @RequestMapping(path = "/signUp")
     public ModelAndView singUp(ModelMap model) {
-        return new ModelAndView("singup", model);
+        return new ModelAndView("authentication/singup", model);
     }
 
     @RequestMapping(path = "/userById")
-    public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model) {
-        User user = userService.findById(id);
-        model.addAttribute("user", user);
-        return new ModelAndView("searchUser", model);
+    public ModelAndView getById(@RequestParam("id") Integer id, ModelMap model, RedirectAttributes redirectAttr) {
+        try {
+            User user = userService.findById(id);
+            model.addAttribute("user", user);
+        } catch (Exception e) {
+            redirectAttr.addFlashAttribute("erreur", "merci d'insérer l'Id de l'utilisateur.");
+            return new ModelAndView("redirect:/user");
+        }
+
+        return new ModelAndView("user/searchUser", model);
     }
 
-    //TODO throw exception instead !
     @RequestMapping(path = "/createUser")
-    public ModelAndView createUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password, String password_control,
-                                   String email, String role, Integer isEnable) {
+    public ModelAndView createUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String email, String password, String password_control,
+                                   String role, Integer isEnable, RedirectAttributes redirectAttr) {
         List<User> userList = userService.getAll();
         for (User user : userList) {
             if (user.getEmail().equals(email)) {
                 return new ModelAndView("redirect:/user/createUser");
             }
         }
-        if (password.equals(password_control)) {
+        if (!password.equals(password_control)) {
+            redirectAttr.addFlashAttribute("erreur", "Merci de vérifier les passwords");
+            return new ModelAndView("redirect:/user/signUp");
+        } else {
             PasswordEncoder encoder = new BCryptPasswordEncoder();
             User user = new User(name, surname, email, encoder.encode(password), "user", 1);
             userService.addOrUpdate(user);
         }
-        return new ModelAndView("createdAccount");
+        return new ModelAndView("account/createdAccount");
     }
 
-    @RequestMapping(path = "/addUser")
-    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String password,
-                                String email, String role, Integer isEnable) {
+    @RequestMapping(path = "/addUser", method = RequestMethod.POST)
+    public ModelAndView addUser(@RequestParam("name") String name, @RequestParam("surname") String surname, String email,
+                                String password, String role, Integer isEnable, RedirectAttributes redirectAttr) {
         List<User> userList = userService.getAll();
         for (User user : userList) {
             if (user.getEmail().equals(email)) {
-                return new ModelAndView("redirect:/user/addUser");
+                redirectAttr.addFlashAttribute("erreur", "Erreur, l'user existe déjà.");
+                return new ModelAndView("redirect:/user");
             }
         }
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = new User(name, surname, email, encoder.encode(password), role, isEnable);
-        userService.addOrUpdate(user);
+        if (name.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le nom");
+        else if (surname.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le prénom");
+        else if (email.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le email");
+        else if (password.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le password");
+        else if (role.isEmpty()) redirectAttr.addFlashAttribute("erreur", "Merci de renseigner le droits");
+        else {
+            PasswordEncoder encoder = new BCryptPasswordEncoder();
+            User newUser = new User(name, surname, email, encoder.encode(password), role, 1);
+            userService.addOrUpdate(newUser);
+        }
         return new ModelAndView("redirect:/user");
     }
 
     @RequestMapping(path = "/deleteUser")
     public ModelAndView deleteRoom(@RequestParam("id") Integer id, ModelMap model, RedirectAttributes redirectAttr) {
-
-    	try{
-        userService.delete(id);}
-    	catch(Exception e){
-    		redirectAttr.addFlashAttribute("erreur","Erreur, l'user a certainement déjà effectué une réservation.");
-    	}
+        try {
+            userService.delete(id);
+        } catch (Exception e) {
+            redirectAttr.addFlashAttribute("erreur", "Erreur, l'user a certainement déjà effectué une réservation.");
+        }
         return new ModelAndView("redirect:/user");
     }
 
@@ -91,14 +107,14 @@ public class UserController {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         User currentUser = userService.authenticateUser(name);
         model.addAttribute("currentUser", currentUser);
-        return new ModelAndView("profil", model);
+        return new ModelAndView("account/profil", model);
     }
 
     @RequestMapping("/modifyUser")
     public ModelAndView modifyUser(@RequestParam("id") Integer id, ModelMap model) {
         User user = userService.findById(id);
         model.addAttribute("user", user);
-        return new ModelAndView("modifyUser", model);
+        return new ModelAndView("user/modifyUser", model);
     }
 
     @RequestMapping("/modifyUserWithInput")

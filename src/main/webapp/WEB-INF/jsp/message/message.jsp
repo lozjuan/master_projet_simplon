@@ -46,11 +46,12 @@
 						<br>
 					</c:forEach>
 
-					<form method="get" action="/message/sendMessage">
+					<form method="post" action="/message/sendMessage">
 						<div>
 							rentrez votre message :
 							<input type="text" name="content">
 							<input type="submit" value="Envoyer">
+							<input type="hidden" name="${_csrf.parameterName}"  value="${_csrf.token}"/>
 						</div>
 					</form>
 				</div>

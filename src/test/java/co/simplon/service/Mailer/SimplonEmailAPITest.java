@@ -10,7 +10,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//Update your configuration file with the right path
 @ContextConfiguration(locations = {"/spring-config.xml", "/mailer-config.xml"})
 @WebAppConfiguration
 public class SimplonEmailAPITest {

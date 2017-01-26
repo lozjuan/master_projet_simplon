@@ -17,15 +17,24 @@
 			<br>
 			<br>
 			<div class="panel panel-default">
-
 				<div class="panel-heading">
 					<div class="panel-title">
 						<h4>Modifier MDP</h4>
 					</div>
 				</div>
 				<div class="panel-body">
-					<p>Votre mot de passe a été modifié</p>
-					<a href="/">Se connecter</a>
+					<form method="get" action="/saveNewPassword">
+						email:
+						<input type="text" name="email"> MDP:
+						<input type="text" name="newPassword"> MDP2:
+						<input type="text" name="newPasswordControl">
+						<input type="submit" value="Confirmer">
+					</form>
+					<c:if test="${erreur != null}">
+                    	<div style="color: red;">
+                    		<c:out value="${erreur}" />
+                    	</div>
+                    </c:if>
 				</div>
 			</div>
 	</jsp:body>
